@@ -1,0 +1,21 @@
+**Project Management**
+* [Roadmap](Roadmap)
+* [Release Process/Issue Tracking](Release-Process-and-Issue-Tracking)
+
+
+**Contributing**
+* [How to Contribute](How-to-Contribute)
+* [Submitting Bugs and Suggestions](Submitting-Bugs-and-Suggestions)
+* [Troubleshooting Issues](Troubleshooting-Issues)
+* [Engineering FAQ](Engineering-FAQ)
+* [How to update typings files](How-to-update-typings-files)
+* [Importing and using modules](Importing-and-using-modules)
+* [Angular UI Guidelines](Angular-UI-Guidelines)
+* [Contributor License Agreement](Contributor-License-Agreement)
+
+**Documentation**
+
+* [Overview](https://docs.microsoft.com/sql/sql-operations-studio/overview)
+* [Install SQL Operations Studio](https://docs.microsoft.com/sql/sql-operations-studio/download)
+* [Get Started](https://docs.microsoft.com/sql/sql-operations-studio/get-started-sql-server)
+* [FAQ](https://docs.microsoft.com/sql/sql-operations-studio/faq)
