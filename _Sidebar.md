@@ -15,7 +15,7 @@
 
 **Documentation**
 
-* [Overview](https://docs.microsoft.com/sql/sql-operations-studio/overview)
-* [Install SQL Operations Studio](https://docs.microsoft.com/sql/sql-operations-studio/download)
-* [Get Started](https://docs.microsoft.com/sql/sql-operations-studio/get-started-sql-server)
+* [Overview](https://aka.ms/sqlopsstudio)
+* [Install SQL Operations Studio](https://aka.ms/download-sqlopsstudio)
+* [Get Started](https://aka.ms/get-started-sqlopsstudio)
 * [FAQ](https://docs.microsoft.com/sql/sql-operations-studio/faq)
