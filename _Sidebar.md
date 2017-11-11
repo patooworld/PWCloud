@@ -1,7 +1,5 @@
 **Project Management**
-* [Roadmap](Roadmap)
 * [Release Process/Issue Tracking](Release-Process-and-Issue-Tracking)
-
 
 **Contributing**
 * [How to Contribute](How-to-Contribute)
