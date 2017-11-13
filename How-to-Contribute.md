@@ -9,6 +9,7 @@ If you want to understand how SQL Operations Studio works or want to debug an is
 
 * [git](https://git-scm.com)
 * [Node.JS](https://nodejs.org/en/) (Node version v7.9.0 with npm 4.2.0).
+  * **Note** this is the most common failure issue new contributors encounter. Please be sure that npm v4.2 is used - newer versions do not currently work.
 * [Python](https://www.python.org/downloads/) (version `v2.7` recommended, `v3.x.x` is __*not*__ supported), as well as a C/C++ compiler tool chain.
 * Note that if you get the error Error: %1 is not a valid Win32 application. you can fix that by running the gulp electron-ia32 command.
 * If you don't have gulp installed run npm install gulp-cli -g first.

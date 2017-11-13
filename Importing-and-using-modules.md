@@ -1,13 +1,16 @@
 # Importing npm modules
 ## Adding to the package.json
 
-This repo uses a npm-shrinkwrap, which will overwrite anything in the package.json. Therefore, just running `npm install --save {node module}` will not be enough to make those module download during `npm install`. The process to add a non-dev only dependency to SQL Operations Studio (for dev only dependencies, ignore this, the npm-shrinkwrap doesn't matter and `npm install --save-dev {node module}` will work just fine):
+This repository uses _npm-shrinkwrap_, which will overwrite anything in the package.json. Therefore, just running `npm install --save {node module}` will not be enough to make those module download during `npm install`. The process to add a non-dev only dependency to SQL Operations Studio is below. 
+  - Note that for dev only dependencies the below steps can be ignored as _npm-shrinkwrap_ doesn't matter. Using `npm install --save-dev {node module}` will work just fine
+  - While the below steps look complicated, they get around the inherent issues with shrinkwrap and are based on current known best practices. If you have an update / suggestion on improving please let us know!
 
+### Add a production npm dependency to the main application
 1. Either run `npm install --save {node module}` or add the node module to the package.json directly.
 
 2. Run `scripts/npm.{bat/sh} install`
 
-3. Run `npm prune --production` until it stops removing node modules (sometimes it will require a few runs, but they are relatively short); this step is to make sure we are only adding production dependencies to the npm-shrinkwrap.
+3. Run `npm prune --production` until it stops removing node modules (sometimes it will require a few runs, but they are relatively short); this step is to make sure we are only adding production dependencies to the npm-shrinkwrap file.
 
 5. For good measure, run `npm prune` to ensure there is no left over modules.
 
@@ -21,22 +24,22 @@ In theory, this will result in the only modification done to the npm-shrinkwrap.
 
 ### NPM shrinkwrap errors
 
-If you get errors during `npm shrinkwrap` that refers to extraneous packages, this means you need to run `npm prune`.
+If you get errors during `npm shrinkwrap` that refer to extraneous packages, this means you need to run `npm prune`.
 
 If you get errors about packages being expected but none exists, this means one of two things.
 
 - The package does not exist in your node modules folder and you need to run `scripts/npm.{bat/sh} install`.
 
-- The package does exist in your node modules folder, but one of the other packages which depends on it is expecting a different version. This is most commonly the problem when multiple packages depend on a single package, but on different versions of that package. If this is the case, there is a much bigger problem that needs to be resolved. You can either directly modify the depedency in your node modules folder to be the version you have locally to make `npm shrinkwrap` happy, however this is hacky and almost certainly not the proper solution, or you need to figure out how to make the two packages depend on the same version.
+- The package does exist in your node modules folder, but one of the other packages which depends on it is expecting a different version. This is most commonly the problem when multiple packages depend on a single package, but on different versions of that package. If this is the case, there is a much bigger problem that needs to be resolved. You can either directly modify the dependency in your node modules folder to be the version you have locally to make `npm shrinkwrap` happy (_warning_: this is hacky and almost certainly not the proper solution), or you need to figure out how to make the two packages depend on the same version.
 
 ### Want to be triple sure it worked correctly?
 
-Reinstall dev dependencies by running `scripts/npm.{bat/sh} install`, then run `gulp vscode-win32`. This will go through building, optimizing, and bundling; and if this is successful it is a good bet you added the node module correctly.
+Reinstall dev dependencies by running `scripts/npm.{bat/sh} install`, then run `gulp vscode-win32`. This will go through building, optimizing, and bundling. If this is successful it is a good bet you added the node module correctly.
 
 ## Getting node modules to resolve at run time
+To use your node module inside the application code you will need to register with the custom loader so it is available at runtime. Once this is done you can use `import` as normal inside the application code to reference and use the module.
 
-Npm modules can be imported as normal, however, because of the vscode customer loader, when adding new modules, there is a process of registering that module so that it will be resolved correctly at run time.
-
+### How to register a new node module with the custom loader
 In the file `src/vs/workbench/electron-browser/bootstrap/index.js` there is a main function which is were the customer loader is initialized. In this function there is a line of code
 
 ```

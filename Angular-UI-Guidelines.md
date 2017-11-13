@@ -63,7 +63,7 @@ export class MyModule {
   }
 }
 ```
-- Call `BootstrapService.bootstrap` and pass in any parameters you want your root Component to receive. (e.g. `myParams` in the Component example above will receive `{ myNumber: 1234, myBool: true }`.  The module will be bootstrapped and appended to the HTML element you pass. 
+- Call `BootstrapService.bootstrap` and pass in any parameters you want your root Component to receive. For example `myParams` in the Component example above will receive `{ myNumber: 1234, myBool: true }`.  The module will be bootstrapped and appended to the HTML element you pass. 
 ```
 import { IBootstrapService } from 'sql/parts/bootstrap/bootstrapService';
 import { MyModule, MY_SELECTOR } from 'sql/example/myModule';
@@ -82,7 +82,7 @@ bootstrapService.bootstrap(
 
 ### Detecting UI Changes
 
-Programmatic changes to the UI can go undetected by Angular. For example, if I dynamically change a class variable that is bound to the Angular UI, Angular may not notice. In this case, you have to manually tell Angular to detect changes.  
+Programmatic changes to the UI can go undetected by Angular. For example, if I dynamically change a class variable that is bound to the Angular UI, Angular may not notice. In this case you have to manually tell Angular to detect changes.
 
 Let's say you have a function `makeUiChanges()` that dynamically makes changes to the UI. To get Angular to notice these changes, you can either:
 - Use `ChangeDetectorRef` to manually check for changes:
