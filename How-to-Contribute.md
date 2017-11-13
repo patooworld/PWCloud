@@ -97,15 +97,15 @@ gulp compile
 ```bash
 # for macOS
 gulp --max_old_space_size=8192 vscode-darwin
-cd ../carbon-darwin
+cd ../sqlops-darwin
 
 # for windows
-gulp –max_old_space_size=8192 vscode-win32-ia32
-cd ../carbon-windows
+gulp –max_old_space_size=8192 vscode-win32-x64
+cd ../sqlops-windows-x64
 
 # for linux
 gulp –max_old_space_size=8192 vscode-linux-x64
-cd ../carbon-linux
+cd ../sqlops-linux-x64
 ```
 
 ### Clean up build, npm modules and reset your local git repository to a clean state
