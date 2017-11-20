@@ -3,7 +3,7 @@ Typing files enable the easy usage of JavaScript files in TypeScript projects. F
 Steps:
 - Add the dependency to the `/package.json` and `/shrinkwrap.json` files. 
 - Install the dependency:
-   - Windows: `scripts\npm install` or `npm install <new dependency>`
+   - Windows: `scripts\npm.bat install` or `npm install <new dependency>`
    - Mac/Linux: `scripts/npm.sh install` or `npm install <new dependency>`
 - Navigate to the `/src/` directory
 - Run `typings install --save <location to new dependency root .d.ts file>`. Add the `--global` flag if typings says that the package must be installed as a global 
