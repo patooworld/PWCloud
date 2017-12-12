@@ -2,10 +2,10 @@
 **A:** See [How to Contribute](How-to-Contribute).
 
 **Q:** How do I build?   
-**A:** Run `npm run watch` from the root directory. This will run a compiler that runs in the background and listens for changes you make to source files. When it notices changes, it will compile only the files that need to be recompiled. This is considerably faster than running a `npm run compile` every time you make changes. Note that `npm run watch` will never terminate (unless it crashes). If it outputs `Finished compilation with 0 errors after`, then it is done compiling for the moment. 
+**A:** See [How to Contribute](How-to-Contribute) for prerequisites. Run `npm run watch` from the root directory. This will run a compiler that runs in the background and listens for changes you make to source files. When it notices changes, it will compile only the files that need to be recompiled. This is considerably faster than running a `npm run compile` every time you make changes. Note that `npm run watch` will never terminate (unless it crashes). If it outputs `Finished compilation with 0 errors after`, then it is done compiling for the moment. 
 
 **Q:** How do I install the npm modules?   
-**A:** Run `.\scripts\npm.bat install` on Windows, `./scripts/npm.sh` install on OSX, or `./scripts/npm.sh install --arch=x64` on Linux. If this command is failing, try cleaning your repository (see _How do I clean my repository?_) then running `npm cache clean`, then trying again. 
+**A:** See [How to Contribute](How-to-Contribute) for prerequisites. Run `.\scripts\npm.bat install` on Windows, `./scripts/npm.sh` install on OSX, or `./scripts/npm.sh install --arch=x64` on Linux. If this command is failing, try cleaning your repository (see _How do I clean my repository?_) then running `npm cache clean`, then trying again. 
 
 **Q:** How do I clean my repository?  
 **A:** `git clean -dfx` 
