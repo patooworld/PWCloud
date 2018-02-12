@@ -5,76 +5,56 @@ There are many ways to contribute to the SQL Operations Studio project: logging 
 
 If you want to understand how SQL Operations Studio works or want to debug an issue, you'll want to get the source, build it, and run the tool locally.
 
+### Getting the sources
+
+```
+git clone https://github.com/Microsoft/sqlopsstudio.git
+```
+
 ### Installing Prerequisites
 
-* [git](https://git-scm.com)
-* [Node.JS](https://nodejs.org/en/) (Node version v7.9.0 with npm 4.2.0).
-  * **Note** this is the most common failure issue new contributors encounter. Please be sure that npm v4.2 is used - newer versions do not currently work.
-* [Python](https://www.python.org/downloads/) (version `v2.7` recommended, `v3.x.x` is __*not*__ supported), as well as a C/C++ compiler tool chain.
-* Note that if you get the error Error: %1 is not a valid Win32 application. you can fix that by running the gulp electron-ia32 command.
-* If you don't have gulp installed run npm install gulp-cli -g first.
+- [Git](https://git-scm.com)
+- [Node.JS](https://nodejs.org/en/), `>= 8.9.1, < 9.0.0`
+- [Yarn](https://yarnpkg.com/en/), follow the [installation guide](https://yarnpkg.com/en/docs/install)
+- [Python](https://www.python.org/downloads/), at least version 2.7 (version 3 is __*not*__ supported)
+- C/C++ compiler tool chain
+  - **Windows**
+    - Set a `PYTHON` environment variable pointing to your `python.exe`. Eg: `C:\Python27\python.exe`
+    - [Visual Studio 2013 for Windows Desktop](https://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx?wt.mc_id=github_microsoft_vscode) or [Visual Studio 2015](https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx?wt.mc_id=github_microsoft_vscode), make sure to select the option to install all C++ tools and the Windows SDK.
+    - You can also use Felix Rieseberg's [Windows Build Tools npm module](https://github.com/felixrieseberg/windows-build-tools) instead of Visual Studio. The `--debug` flag is helpful if you encounter any problems during installation
+    - Please note that building and debugging via the Windows subsystem for Linux (WSL) is currently not supported.
+  - **OS X**
+    - [Xcode](https://developer.apple.com/xcode/downloads/) and the Command Line Tools (Xcode -> Preferences -> Downloads), which will install `gcc` and the related toolchain containing `make`
+  - **Linux**
+    * `make`
+    * [GCC](https://gcc.gnu.org) or another compile toolchain
+    * [native-keymap](https://www.npmjs.com/package/native-keymap) needs `libx11-dev` and `libxkbfile-dev`.
+      * On Debian-based Linux: `sudo apt-get install libx11-dev libxkbfile-dev`
+      * On Red Hat-based Linux: `sudo yum install libX11-devel.x86_64 libxkbfile-devel.x86_64 # or .i686`.
+    * [keytar](https://www.npmjs.com/package/keytar) needs `libsecret-1-dev`.
+      * On Debian-based Linux: `sudo apt-get install libsecret-1-dev`.
+      * On Red Hat-based Linux: `sudo yum install libsecret-devel`.
+    * Building deb and rpm packages requires `fakeroot` and `rpm`, run: `sudo apt-get install fakeroot rpm`
 
-**Windows**
-* **Warning:** [nodejs/node-gyp#972](https://github.com/nodejs/node-gyp/issues/972) causes compile errors if you are using Visual Studio 2015 (`error C2373: '__pfnDliNotifyHook2': redefinition;`) so make sure to have at least node.js v6.x installed that includes the fix
-* **Warning:** [npm/npm#12698](https://github.com/npm/npm/issues/12698) prevents us from using `npm < 3.10.8`, be sure to install `npm >= 3.10.8` (`npm install -g npm@3.10.8`) after you have installed node.js.
-* In addition to [Python v2.7](https://www.python.org/downloads/release/python-279/), make sure you have a PYTHON environment variable set to `drive:\path\to\python.exe`, not to a folder
-* [Visual Studio 2013 for Windows Desktop](https://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx?wt.mc_id=github_microsoft_vscode) or [Visual Studio 2015](https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx?wt.mc_id=github_microsoft_vscode), make sure to select the option to install all C++ tools and the Windows SDK. You can also use Felix Rieseberg's [Windows Build Tools npm module](https://github.com/felixrieseberg/windows-build-tools). Then all you need is this one-liner
-   ```
-   npm install --global --production windows-build-tools
-   ```
+Finally, install all dependencies using `Yarn`:
 
-**OS X** 
-* Command line developer tools
-* Python should be installed already
-* [Xcode](https://developer.apple.com/xcode/downloads/) and the Command Line Tools (Xcode -> Preferences -> Downloads), which will install `gcc` and the related toolchain containing `make`
+```
+yarn
+```
 
-**Linux**
-* Python v2.7
-* `make`
-* A proper C/C++11 compiler tool chain, for example [GCC](https://gcc.gnu.org)
-* [native-keymap](https://www.npmjs.com/package/native-keymap) needs `libx11-dev` and `libxkbfile-dev`.
-  * On Debian-based Linux: `sudo apt-get install libx11-dev libxkbfile-dev`
-  * On Red Hat-based Linux: `sudo yum install libX11-devel.x86_64 libxkbfile-devel.x86_64 # or .i686`.
-* [keytar](https://www.npmjs.com/package/keytar) needs `libsecret-1-dev`.
-  * On Debian-based Linux: `sudo apt-get install libsecret-1-dev`.
-  * On Red Hat-based Linux: `sudo yum install libsecret-devel`.
-* Building deb and rpm packages requires `fakeroot` and `rpm`, run: `sudo apt-get install fakeroot rpm`
+If you are on Windows or Linux 64 bit systems and would like to compile to 32 bits, you'll need to set the `npm_config_arch` environment to `ia32` before running `yarn`. This will compile all native node modules for a 32 bit architecture.
+
+**Note:** For more information on how to install NPM modules globally on UNIX systems without resorting to `sudo`, refer to [this guide](http://www.johnpapa.net/how-to-use-npm-global-without-sudo-on-osx/).
 
 ### Build SQL Operations Studio
 After you have these tools installed, run the following commands to clone github repository, install dependencies, and compile source code:
 
-**OS X**
-
 ```bash
 git clone https://github.com/microsoft/sqlopsstudio
 cd sqlopsstudio
-./scripts/npm.sh install
-gulp compile
+yarn
+yarn run watch
 ```
-
-**Windows**
-
-```bash
-git clone https://github.com/microsoft/sqlopsstudio
-cd sqlopsstudio
-scripts\npm.bat install
-gulp compile
-```
-
-**Linux**
-
-```bash
-git clone https://github.com/microsoft/sqlopsstudio
-cd sqlopsstudio
-./scripts/npm.sh install --arch=x64
-gulp compile
-# for 32bit Linux or Windows
-#./scripts/npm.sh install --arch=ia32
-```
-
-**Note:** For more information on how to install NPM modules globally on UNIX systems without resorting to `sudo`, refer to [this guide](http://www.johnpapa.net/how-to-use-npm-global-without-sudo-on-osx/).
-
-**Note:** To install SQL Operations Studio's dependencies as `root` (eg: Docker environments) make sure you use `--unsafe-perm` when invoking `./scripts/npm.sh`.
 
 ### Run SQL Operations Studio in debug mode.
 
@@ -120,7 +100,7 @@ git clean -fxd
 From a terminal, where you have cloned the `sqlopsstudio` repository, execute the following command to run the TypeScript incremental builder:
 
 ```bash
-npm run watch
+yarn run watch
 ```
 
 It will do an initial full build and then watch for file changes, compiling those changes incrementally, enabling a fast, iterative coding experience.
