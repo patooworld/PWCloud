@@ -76,15 +76,15 @@ yarn run watch
 
 ```bash
 # for macOS
-gulp --max_old_space_size=8192 vscode-darwin
+gulp --max-old-space-size=8192 vscode-darwin
 cd ../sqlops-darwin
 
 # for windows
-gulp –max_old_space_size=8192 vscode-win32-x64
+gulp –-max-old-space-size=8192 vscode-win32-x64
 cd ../sqlops-windows-x64
 
 # for linux
-gulp –max_old_space_size=8192 vscode-linux-x64
+gulp –-max-old-space-size=8192 vscode-linux-x64
 cd ../sqlops-linux-x64
 ```
 
