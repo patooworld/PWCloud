@@ -76,7 +76,7 @@ The label for the node as it appears in Object Explorer
 - `isLeaf: boolean`
 Whether the node is a leaf node and therefore has no children
 
-- `metadata: ObjectMetadata`
+- `metadata: sqlops.ObjectMetadata`
 Metadata describing the object represented by this node
 
 - `errorMessage: string`
