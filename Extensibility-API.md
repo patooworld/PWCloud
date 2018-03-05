@@ -5,17 +5,15 @@ SQL Operations Studio provides an API that extensions can use to interact with o
 
 _Available starting in version 0.26.7 (February Public Preview)_
 
-Extensions can interact with connections using the `connection` namespace.
-
 ### Top-level Functions
 
-- `getCurrentConnection(): sqlops.connection.Connection`
+- `getCurrentConnection(): Thenable<sqlops.connection.Connection>`
 Gets the current connection based on the active editor or Object Explorer selection.
 
-- `getActiveConnections(): sqlops.connection.Connection[]`
+- `getActiveConnections(): Thenable<sqlops.connection.Connection[]>`
 Gets a list of all the user's connections that are active. Returns an empty list if there are no such connections.
 
-- `getCredentials(connectionId: string): { [name: string]: string }`
+- `getCredentials(connectionId: string): Thenable<{ [name: string]: string }>`
 Gets a dictionary containing the credentials associated with a connection. These would otherwise be returned as part of the options dictionary under a `sqlops.connection.Connection` object but get stripped from that object. 
 
 ### `Connection`
@@ -42,4 +40,116 @@ credentials: {
 	password: ‘abc123’
 }
 
+```
+
+## Object Explorer
+`sqlops.objectexplorer`
+
+_Not yet available_
+
+### Top-level Functions
+- `getNode(connectionId: string, nodePath?: string): Thenable<sqlops.objectexplorer.ObjectExplorerNode>`
+Get an Object Explorer node corresponding to the given connection and path. If no path is given, it returns the top-level node for the given connection. If there is no node at the given path, it returns `undefined`. 
+
+- `getActiveConnectionNodes(): Thenable<sqlops.objectexplorer.ObjectExplorerNode>`
+Get all active Object Explorer connection nodes.
+
+### ObjectExplorerNode
+- `connectionId: string`
+The id of the connection that the node exists under
+
+- `nodePath: string`
+The path of the node, as used for a call to the `getNode` function.
+
+- `nodeType: string`
+A string representing the type of the node
+
+- `nodeSubType: string`
+A string representing the subtype of the node
+
+- `nodeStatus: string`
+A string representing the status of the node
+
+- `label: string`
+The label for the node as it appears in Object Explorer
+
+- `isLeaf: boolean`
+Whether the node is a leaf node and therefore has no children
+
+- `metadata: ObjectMetadata`
+Metadata describing the object represented by this node
+
+- `errorMessage: string`
+Message shown if the node is in an error state
+
+- `isExpanded(): Thenable<boolean>`
+Whether the node is currently expanded in Object Explorer
+
+- `setExpandedState(expandedState: vscode.TreeItemCollapsibleState): Thenable<void>`
+Set whether the node is expanded or collapsed. If the state is set to None, the node will not be changed.
+
+- `setSelected(selected: boolean, clearOtherSelections?: boolean): Thenable<void>`
+Set whether the node is selected. If `clearOtherSelections` is true, clear any other selections when making the new selection. If it is false, leave any existing selections. `clearOtherSelections` defaults to true when `selected` is true and false when `selected` is false.
+
+- `getChildren(): Thenable<sqlops.objectexplorer.ObjectExplorerNode[]>`
+Get all the child nodes of this node. Returns an empty list if there are no children.
+
+- `getParent(): Thenable<sqlops.objectexplorer.ObjectExplorerNode>`
+Get the parent node of this node. Returns undefined if there is no parent.
+
+### Example Code
+```
+private async interactWithOENode(selectedNode: sqlops.objectexplorer.ObjectExplorerNode): Promise<void> {
+	let choices = ['Expand', 'Collapse', 'Select', 'Select (multi)', 'Deselect', 'Deselect (multi)'];
+	if (selectedNode.isLeaf) {
+		choices[0] += ' (is leaf)';
+		choices[1] += ' (is leaf)';
+	} else {
+		let expanded = await selectedNode.isExpanded();
+		if (expanded) {
+			choices[0] += ' (is expanded)';
+		} else {
+			choices[1] += ' (is collapsed)';
+		}
+	}
+	let parent = await selectedNode.getParent();
+	if (parent) {
+		choices.push('Get Parent');
+	}
+	let children = await selectedNode.getChildren();
+	children.forEach(child => choices.push(child.label));
+	let choice = await vscode.window.showQuickPick(choices);
+	let nextNode: sqlops.objectexplorer.ObjectExplorerNode = undefined;
+	if (choice === choices[0]) {
+		selectedNode.setExpandedState(vscode.TreeItemCollapsibleState.Expanded);
+	} else if (choice === choices[1]) {
+		selectedNode.setExpandedState(vscode.TreeItemCollapsibleState.Collapsed);
+	} else if (choice === choices[2]) {
+		selectedNode.setSelected(true);
+	} else if (choice === choices[3]) {
+		selectedNode.setSelected(true, false);
+	} else if (choice === choices[4]) {
+		selectedNode.setSelected(false);
+	} else if (choice === choices[5]) {
+		selectedNode.setSelected(false, true);
+	} else if (choice === 'Get Parent') {
+		nextNode = parent;
+	} else {
+		let childNode = children.find(child => child.label === choice);
+		nextNode = childNode;
+	}
+	if (nextNode) {
+		let updatedNode = await sqlops.objectexplorer.getNode(nextNode.connectionId, nextNode.nodePath);
+		this.interactWithOENode(updatedNode);
+	}
+}
+
+vscode.commands.registerCommand('mssql.objectexplorer.interact', () => {
+	sqlops.objectexplorer.getActiveConnectionNodes().then(activeConnections => {
+		vscode.window.showQuickPick(activeConnections.map(connection => connection.label + ' ' + connection.nodePath)).then(selection => {
+			let selectedNode = activeConnections.find(connection => connection.label + ' ' + connection.nodePath === selection);
+			this.interactWithOENode(selectedNode);
+		});
+	});
+});
 ```
