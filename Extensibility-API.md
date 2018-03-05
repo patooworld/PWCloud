@@ -146,8 +146,8 @@ private async interactWithOENode(selectedNode: sqlops.objectexplorer.ObjectExplo
 
 vscode.commands.registerCommand('mssql.objectexplorer.interact', () => {
 	sqlops.objectexplorer.getActiveConnectionNodes().then(activeConnections => {
-		vscode.window.showQuickPick(activeConnections.map(connection => connection.label + ' ' + connection.nodePath)).then(selection => {
-			let selectedNode = activeConnections.find(connection => connection.label + ' ' + connection.nodePath === selection);
+		vscode.window.showQuickPick(activeConnections.map(connection => connection.label + ' ' + connection.connectionId)).then(selection => {
+			let selectedNode = activeConnections.find(connection => connection.label + ' ' + connection.connectionId === selection);
 			this.interactWithOENode(selectedNode);
 		});
 	});
