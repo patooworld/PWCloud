@@ -45,7 +45,7 @@ credentials: {
 ## Object Explorer
 `sqlops.objectexplorer`
 
-_Not yet available_
+_Available starting in the March Public Preview (currently available in master)_
 
 ### Top-level Functions
 - `getNode(connectionId: string, nodePath?: string): Thenable<sqlops.objectexplorer.ObjectExplorerNode>`
