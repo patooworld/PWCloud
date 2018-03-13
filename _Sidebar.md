@@ -11,6 +11,10 @@
 * [Angular UI Guidelines](Angular-UI-Guidelines)
 * [Contributor License Agreement](Contributor-License-Agreement)
 
+**Extensibility Reference**
+* [Extensibility API](Extensibility_API)
+* [Contribution Points](Contribution_points)
+
 **Documentation**
 
 * [MS Docs Overview](https://aka.ms/sqlopsstudio-docs)
