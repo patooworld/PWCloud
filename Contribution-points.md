@@ -86,7 +86,7 @@ You can register insights using dashboard.insights. This is similiar to [Tutoria
 
 There are 4 different container types that we currently support:
 
-1. ### `widgets-container`
+1. `widgets-container`
 	<img src='./media/widgets_container.png'>
 	The list of widgets that will be displayed in the container. It’s a flow layout. It accepts the list of widgets.
 
@@ -109,7 +109,7 @@ There are 4 different container types that we currently support:
 	}
 	```
 	
-2. 	### `webview-container`
+2. 	`webview-container`
 	<img src='./media/webview_container.png'>
 	The webview will be displayed in the entire container. It expects webview id to be the same is tab ID
 
@@ -119,7 +119,7 @@ There are 4 different container types that we currently support:
 	}
 	```
 	
-3. 	### `grid-container`
+3. 	`grid-container`
 	<img src='./media/grid_container.png'>
 	The list of widgets or webviews that will be displayed in the grid layout
 
@@ -169,7 +169,7 @@ There are 4 different container types that we currently support:
 		]
 	```
 
-4. 	### `nav-section`
+4. 	`nav-section`
 	<img src='./media/nav_section.png'>
 	The navigation section will be displayed in the container
 
