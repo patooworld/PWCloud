@@ -14,6 +14,7 @@
 **Extensibility Reference**
 * [Extensibility API](Extensibility-API)
 * [Contribution Points](Contribution-points)
+* [Context](Sqlops-Context)
 
 **Documentation**
 
