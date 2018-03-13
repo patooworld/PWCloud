@@ -2,7 +2,7 @@ For general information about context in vscode and subsequently sqlops see [Ext
 
 In Sqlops we have specific context around database connections available for extensions.
 
-#Dashboard
+# Dashboard
 In dashboard we provide the following context variables.
 
 `connectionProvider` - A string of the identifier for the provider of the current connection. Ex. `connectionProvider == 'MSSQL'`.
