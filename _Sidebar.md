@@ -12,8 +12,8 @@
 * [Contributor License Agreement](Contributor-License-Agreement)
 
 **Extensibility Reference**
-* [Extensibility API](Extensibility_API)
-* [Contribution Points](Contribution_points)
+* [Extensibility API](Extensibility-API)
+* [Contribution Points](Contribution-points)
 
 **Documentation**
 
