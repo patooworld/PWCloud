@@ -54,6 +54,9 @@ Get an Object Explorer node corresponding to the given connection and path. If n
 - `getActiveConnectionNodes(): Thenable<sqlops.objectexplorer.ObjectExplorerNode>`
 Get all active Object Explorer connection nodes.
 
+- `findNodes(connectionId: string, type: string, schema: string, name: string, database: string, parentObjectNames: string[]): Thenable<sqlops.objectexplorer.ObjectExplorerNode[]>`
+Find all Object Explorer nodes that match the given metadata. The `schema`, `database`, and `parentObjectNames` arguments should be `undefined` when they are not applicable. `parentObjectNames` is a list of non-database parent objects, from highest to lowest level in Object Explorer, that the desired object is under. For example, when searching for a column "column1" that belongs to a table "schema1.table1" and database "database1" with connection ID `connectionId`, call `findNodes(connectionId, 'Column', undefined, 'column1', 'database1', ['schema1.table1'])`.
+
 ### ObjectExplorerNode
 - `connectionId: string`
 The id of the connection that the node exists under
