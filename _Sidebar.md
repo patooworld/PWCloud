@@ -1,5 +1,6 @@
 **Project Management**
 * [Release Process/Issue Tracking](Release-Process-and-Issue-Tracking)
+  * [Performance Issues](Performance-Issues)
 
 **Contributing**
 * [How to Contribute](How-to-Contribute)
