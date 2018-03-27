@@ -14,6 +14,7 @@
 * [Contributor License Agreement](Contributor-License-Agreement)
 
 **Extensibility Reference**
+* [Getting Started](Getting-started-with-Extensibility)
 * [Extensibility API](Extensibility-API)
 * [Contribution Points](Contribution-points)
 * [Context Variables](Sqlops-Context-Variables)
