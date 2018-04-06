@@ -8,10 +8,10 @@ We removed the DebugService in SQL Ops Studio. This does some magic when VS Code
 **Github Project:** https://github.com/kevcunnane/sqlops-debug 
  
 **Install Instructions**
-*To debug an extension in the Ops Studio installed on your machine:*
+*To debug an extension in the SQL Ops Studio installed on your machine:*
 -	Open Ops Studio and add “sqlops” to your path using the `Shell Command: Install 'sqlops' command in PATH` command
 -	Install the attached `SQL Operations Studio Debug` extension from https://marketplace.visualstudio.com/items?itemName=ms-mssql.sqlops-debug
--	Open your extension in VSCode and add the following launch.json file 
+-	Open your extension in VS Code and add the following launch.json file 
 -	Hit F5 to debug! Note that attach & test work too (just change the “type” to sqlopsExtensionHost and it’ll work)
  
 ```
@@ -35,10 +35,10 @@ We removed the DebugService in SQL Ops Studio. This does some magic when VS Code
 }
 ``` 
 
-*To debug against an Ops Studio Enlistment*
+*To debug against an SQL Ops Studio Enlistment*
 -	Create an environment variable SQLOPS_DEV (or similar) pointing to the root of your enlistment.
 -	Install the attached `SQL Operations Studio Debug` extension from https://marketplace.visualstudio.com/items?itemName=ms-mssql.sqlops-debug
--	Open your extension in VSCode and add the following launch.json file
+-	Open your extension in VS Code and add the following launch.json file
 -	Hit F5 to debug! Note that attach & test work too (just change the “type” to sqlopsExtensionHost and it’ll work)
  
 ```
