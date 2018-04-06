@@ -2,7 +2,7 @@
 
 If you’re looking to build SQL Operations Studio extensions you may have noticed there’s no debugging experience without jumping through some hoops. Well now worry no more! In Visual Studio Code, if you install the `sqlops-debug` extension you can launch SQL Operations Studio with your extension installed and auto-attach to the extension host like normal.
 
-Install the `SQL Operations Studio Debug` extension from https://marketplace.visualstudio.com/items?itemName=ms-mssql.sqlops-debug#overview
+Install the `SQL Operations Studio Debug` extension from https://marketplace.visualstudio.com/items?itemName=ms-mssql.sqlops-debug
  
 **Why didn’t this “just work” before now?**
 We removed the DebugService in SQL Ops Studio. This does some magic when VS Code is launched in the extension-testing mode. The “fix” is to add a sqlopsExtensionHost debugger type to the node debugger that does the attaching for you.
