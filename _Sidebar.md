@@ -18,6 +18,7 @@
 * [Extensibility API](Extensibility-API)
 * [Contribution Points](Contribution-points)
 * [Context Variables](Sqlops-Context-Variables)
+* [Debugging with VS Code](Debugging-an-Extension-with-VS-Code)
 
 **Documentation**
 
