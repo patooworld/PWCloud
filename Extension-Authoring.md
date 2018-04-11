@@ -12,9 +12,11 @@ To start your new extension, you can use the SQL Operations Studio Extension gen
 
 `yo sqlops`
 
+
 **Extensibility References**
 
 Please see [Extensibility References](https://github.com/Microsoft/sqlopsstudio/wiki/Getting-started-with-Extensibility) to learn about SQL Operations Studio Extensibility API. You can also see examples of how to use the API in existing [samples](https://github.com/Microsoft/sqlopsstudio/tree/master/samples).
+
 
 **Debugging Extension**
 
@@ -34,6 +36,7 @@ After writing your extension, you need to create a VSIX package to be able to in
 `npm install -g vsce`
 
 `vsce pacakge`
+
 
 **Publishing the Extension**
 
