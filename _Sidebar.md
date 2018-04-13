@@ -10,6 +10,7 @@
 * [Engineering FAQ](Engineering-FAQ)
 * [How to update typings files](How-to-update-typings-files)
 * [Importing and using modules](Importing-and-using-modules)
+* [UI Guidelines](UI-guidelines)
 * [Angular UI Guidelines](Angular-UI-Guidelines)
 * [Contributor License Agreement](Contributor-License-Agreement)
 
