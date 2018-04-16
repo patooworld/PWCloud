@@ -16,8 +16,7 @@ We removed the DebugService in SQL Ops Studio. This does some magic when VS Code
 -	Open your extension in VS Code and add the following launch.json file 
 -	Hit F5 to debug! Note that attach & test work too (just change the “type” to sqlopsExtensionHost and it’ll work)
  
-```
-// A launch configuration that compiles the extension and then opens it inside a new window
+```json
 {
     "version": "0.2.0",
     "configurations": [
@@ -25,17 +24,21 @@ We removed the DebugService in SQL Ops Studio. This does some magic when VS Code
             "name": "SqlOps Extension",
             "type": "sqlopsExtensionHost",
             "request": "launch",
-            "runtimeExecutable": sqlops",
-            "args": ["--extensionDevelopmentPath=${workspaceRoot}" ],
+            "runtimeExecutable": "sqlops",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceRoot}"
+            ],
             "stopOnEntry": false,
             "sourceMaps": true,
-            "outFiles": [ "${workspaceRoot}/out/**/*.js" ],
+            "outFiles": [
+                "${workspaceRoot}/out/**/*.js"
+            ],
             "preLaunchTask": "",
             "timeout": 25000
-        
+        }
     ]
 }
-``` 
+```
 
 *To debug against an SQL Ops Studio Enlistment*
 -	Create an environment variable SQLOPS_DEV (or similar) pointing to the root of your enlistment.
