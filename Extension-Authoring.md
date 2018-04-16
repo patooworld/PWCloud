@@ -35,7 +35,7 @@ After writing your extension, you need to create a VSIX package to be able to in
 
 `npm install -g vsce`
 
-`vsce pacakge`
+`vsce package`
 
 
 **Publishing the Extension**
