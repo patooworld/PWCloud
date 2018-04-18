@@ -8,7 +8,7 @@ Contribute tab, container, insight widget to the dashboard.
 
 `dashboard.tabs`
 
-Dashboard.tabs will create the tab sections inside the dashboard page. It excepts an object or an array of the object.  
+Dashboard.tabs will create the tab sections inside the dashboard page. It expects an object or an array of objects.  
 
 ```
 "dashboard.tabs": [
