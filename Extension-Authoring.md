@@ -44,6 +44,6 @@ To publish your new extension to SQL Ops Studio
 1. Create a new GitHub issue (https://github.com/Microsoft/sqlopsstudio/issues)
 2. Specify the location of your extension's package.json
 3. Specify the web page to download the vsix from
-4. Assign the new issue to @llali 
+4. Assign the new issue to llali 
 Your extension will be reviewed and will be added to the extension gallery
 
