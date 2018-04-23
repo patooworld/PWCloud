@@ -40,4 +40,10 @@ After writing your extension, you need to create a VSIX package to be able to in
 
 **Publishing the Extension**
 
-To publish your new extension to SQL Ops Studio, please update [extensionGallery.js](https://github.com/Microsoft/sqlopsstudio/blob/release/extensions/extensionsGallery.json) and add your extension information. Then send a PR against release\extension branch. The SQL Ops team will review the change and will publish the extension.
+To publish your new extension to SQL Ops Studio
+1. Create a new GitHub issue (https://github.com/Microsoft/sqlopsstudio/issues)
+2. Specify the location of your extension's package.json
+3. Specify the web page to download the vsix from
+4. Assign the new issue to @llali 
+Your extension will be reviewed and will be added to the extension gallery
+
