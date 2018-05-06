@@ -79,7 +79,7 @@ Over the course of this session, you will:
                             "columnsAsLabels": false
                         }
                     },
-                    "queryFile": "C:\Users\LabUser\.sqlops\sample.sql"
+                    "queryFile": "C:\\Users\\LabUser\\.sqlops\\sample.sql"
                 }
             }
         }
@@ -103,7 +103,49 @@ Over the course of this session, you will:
 6. You have now created a very simple extension. Now let's edit it.
 7. Type ```cd sample``` into the terminal and hit enter.
 8. Type ```code .``` into the terminal and hit enter. This opens a new VS Code window, and shows the folder contents of what is currently in the Sample directory.
-
+9. Click **sql** and open **query.sql** to see our target insight extension. 
+10. Select and delete what is currently in **query.sql.**
+11. Paste the following T-SQL:
+    ```sql
+    -- Get the space used by table TableName
+    SELECT TOP 10 tabl.name AS table_name,
+    --SUM(PART.rows) AS rows_count,
+    SUM(ALOC.total_pages) AS total_pages,
+    SUM(ALOC.used_pages) AS used_pages,
+    SUM(ALOC.data_pages) AS data_pages,
+    (SUM(ALOC.total_pages)*8/1024) AS total_space_MB,
+    (SUM(ALOC.used_pages)*8/1024) AS used_space_MB,
+    (SUM(ALOC.data_pages)*8/1024) AS data_space_MB
+    FROM sys.tables AS TABL
+    INNER JOIN sys.indexes AS INDX
+    ON TABL.object_id = INDX.object_id
+    INNER JOIN sys.partitions AS PART
+    ON INDX.object_id = PART.object_id
+    AND INDX.index_id = PART.index_id
+    INNER JOIN sys.allocation_units AS ALOC
+    ON PART.partition_id = ALOC.container_id
+    --WHERE TABL.name LIKE '%TableName%'
+    AND INDX.object_id > 255
+    AND INDX.index_id <= 1
+    GROUP BY TABL.name, 
+    INDX.object_id,
+    INDX.index_id,
+    INDX.name
+    ORDER BY --Object_Name(INDX.object_id),
+    (SUM(ALOC.total_pages)*8/1024) DESC
+    GO
+    ```    
+12. Open **README.md** and delete the contents of the readme. Paste the following:
+    ```
+    Sample insight widget extension.
+    ```
+13. Hit CTRL+` to open the integrated terminal. Type 'vsce package' to package your extension.
+14. Copy the directory link of your extension.
+15. Open **SQL Operations Studio.** Click **File**, then click **Install Extension from VSIX package.**
+16. Paste directory link of extension and click **Install**
+17. Click **Reload Now** on bottom right.
+18. Click on arrow next to **Localhost**, arrow next to **Databases**, then right click **AdventureWorks2014** and click **Manage**
+19. On the line next to **Home,** click **Sample** to see your sample extension. 
 
 ## Create an extension using Typescript
 1. Hit Ctrl+` to open the Integrated Terminal **Note:** This is not the apostrophe, this is the grave accent below the ESC key. 
@@ -214,4 +256,27 @@ Over the course of this session, you will:
 8. Run “npm run compile”
 9. Copy sql and media folder to ./out folder 
 10. Remove everything from readme.md
-11. Run vsce package 
+13. Hit CTRL+` to open the integrated terminal. Type 'vsce package' to package your extension.
+14. Copy the directory link of your extension.
+15. Open **SQL Operations Studio.** Click **File**, then click **Install Extension from VSIX package.**
+16. Paste directory link of extension and click **Install**
+17. Click **Reload Now** on bottom right.
+18. Click on arrow next to **Localhost**, arrow next to **Databases**, then right click **AdventureWorks2014** and click **Manage**
+19. On the line next to **Home,** click **Sample** to see your sample extension. 
+
+
+## Next Steps
+Thank you for attending this Microsoft Build session. Now that you have learned to build your own SQL Operations Studio extensions, we encourage you to continue to build extensions and contribute to our Extensions Marketplace.
+
+To learn to build your own extensions:
+- Get the [prerequisites](https://github.com/microsoft/sqlopsstudio/wiki/How-to-Contribute)
+- Follow along on our [Github Wiki Get Started](https://github.com/microsoft/sqlopsstudio/wiki/Getting-started-with-Extensibility)  
+- Read these blog posts:
+    - https://medium.com/@kevcunnane/writing-a-sql-operations-studio-extension-in-15-minutes-7dfd24a74dfe 
+    - https://medium.com/@kevcunnane/publishing-an-extension-for-sql-operations-studio-f5a5b323c13b 
+
+Want to learn more about SQL Operations Studio?
+- Leave a star on our [Github](https://github.com/microsoft/sqlopsstudio)
+- Download [SQL Operations Studio](https://aka.ms/sqlopsstudio)
+- Report Issues or suggest Feature Requests on our [Github Issues page](https://github.com/microsoft/sqlopsstudio/issues)
+- Follow us on Twitter @sqlopsstudio
