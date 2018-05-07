@@ -57,7 +57,7 @@ Over the course of this session, you will:
 8. Click **View as Chart** Icon on right of Results window.
 9. Click **Create Insight**.
 10. Edit name as 'Table Spaces'
-11. Edit queryfile as 'C:\Users\LabUser\\.sqlops\sample.sql'
+11. Edit queryfile as 'C:\Users\LabUser\.sqlops\sample.sql'
 12. Click bottom-left gear icon, then **Settings**
 13. Under **User Settings**, find the last ']'. Add a comma and new line, then copy and paste your insight widget:
     ```json
@@ -289,47 +289,74 @@ Over the course of this session, you will:
     - Setup linting using 'tslint'? **Y**
     - Initialize a git repository? **n**
 
+1. Wait for npm install to finish.
+1. Open Integrated Terminal with **Ctrl+`** and run ```npm run compile``` This will create a new **out** folder.
+1. Right click on the **out** folder and create a new folder called **sql**. This is where we will store .sql files to power our insight widgets.
+1. Right click on the **sql** folder and click **New File.** Name it *query.sql*
+1. Open *query.sql* and paste the following familiar sql query:
+1. Paste the following T-SQL:
+    ```sql
+    -- Get the space used by table TableName
+    SELECT TOP 10 tabl.name AS table_name,
+    --SUM(PART.rows) AS rows_count,
+    SUM(ALOC.total_pages) AS total_pages,
+    SUM(ALOC.used_pages) AS used_pages,
+    SUM(ALOC.data_pages) AS data_pages,
+    (SUM(ALOC.total_pages)*8/1024) AS total_space_MB,
+    (SUM(ALOC.used_pages)*8/1024) AS used_space_MB,
+    (SUM(ALOC.data_pages)*8/1024) AS data_space_MB
+    FROM sys.tables AS TABL
+    INNER JOIN sys.indexes AS INDX
+    ON TABL.object_id = INDX.object_id
+    INNER JOIN sys.partitions AS PART
+    ON INDX.object_id = PART.object_id
+    AND INDX.index_id = PART.index_id
+    INNER JOIN sys.allocation_units AS ALOC
+    ON PART.partition_id = ALOC.container_id
+    --WHERE TABL.name LIKE '%TableName%'
+    AND INDX.object_id > 255
+    AND INDX.index_id <= 1
+    GROUP BY TABL.name, 
+    INDX.object_id,
+    INDX.index_id,
+    INDX.name
+    ORDER BY --Object_Name(INDX.object_id),
+    (SUM(ALOC.total_pages)*8/1024) DESC
+    GO
+    ```        
+1. Save this query with Ctrl+S.
+1. In package.json, find **activationEvents** and remove the contents in that section (two lines). Type ```"*"``` in **activationEvents** section.
 1. In package.json 
-    Add command to contributions.commands
+    Add command to contributes.commands. **Note:** Ensure to add a comma at } bracket before.
     ```json
         {
-        "command": "sp_whoisactive3.simple.install",
-        "title": "Whoisactive: install",
-        "icon": {
-        "light": "./out/media/download.svg",
-        "dark": "./out/media/download_inverse.svg"
+        "command": "TypeInsight.simple.install",
+        "title": "TypeInsight: install"
         }
     ```
 
-    Add dashboard contribution to contributions
+1. In package.json, paste or type this snippet below in Contributes section.
     ```json 
-    "dashboard.tabs": [
+    ],
+        "dashboard.tabs": [
         {
-        "id": "sp_whoisactive3-simple",
-        "title": "whoisactive3",
+        "id": "TypeInsight-simple",
+        "title": "TypeInsight",
         "description": "Extension for checking who is active.",
         "container": {
             "nav-section": [
             {
-                "id": "sp_whoisactive3_insights",
+                "id": "TypeInsight_insights",
                 "title": "Insights",
-                "icon": {
-                "light": "./out/media/insights.svg",
-                "dark": "./out/media/insights_inverse.svg"
-                },
                 "container": {
-                "sp_whoisactive3-simple-insights": {}
+                "TypeInsight-simple-insights": {}
                 }
             },
             {
-                "id": "sp_whoisactive3_documentation",
+                "id": "TypeInsight_documentation",
                 "title": "Documentation",
-                "icon": {
-                "light": "./out/media/documentation.svg",
-                "dark": "./out/media/documentation_inverse.svg"
-                },
                 "container": {
-                "sp_whoisactive3-simple-insights3": {}
+                "TypeInsight-simple-insights3": {}
                 }
             }
             ]
@@ -338,22 +365,7 @@ Over the course of this session, you will:
     ],
     "dashboard.containers": [
         {
-        "id": "sp_whoisactive3-simple-insights",
-        "container": {
-            "widgets-container": [
-            {
-                "name": "Tasks",
-                "widget": {
-                "tasks-widget": [
-                    "sp_whoisactive3.simple.install"
-                ]
-                }
-            }
-            ]
-        }
-        },
-        {
-        "id": "sp_whoisactive3-simple-insights3",
+        "id": "TypeInsight-simple-insights",
         "container": {
             "widgets-container": [
             
@@ -364,7 +376,22 @@ Over the course of this session, you will:
                 "sizey": 1
                 },
                 "widget": {
-                "sp_whoisactive3-simple-CPU-usage": {}
+                "TypeInsight-simple-CPU-usage": {}
+                }
+            }
+            ]
+        }
+        },
+        {
+        "id": "TypeInsight-simple-insights3",
+        "container": {
+            "widgets-container": [
+            {
+                "name": "Tasks",
+                "widget": {
+                "tasks-widget": [
+                    "TypeInsight.simple.install"
+                ]
                 }
             }
             ]
@@ -373,7 +400,7 @@ Over the course of this session, you will:
     ],
     "dashboard.insights": [
         {
-        "id": "sp_whoisactive3-simple-CPU-usage",
+        "id": "TypeInsight-simple-CPU-usage",
         "contrib": {
             "type": {
             "bar": {
@@ -385,24 +412,26 @@ Over the course of this session, you will:
                 "showTopNData": 10
             }
             },
-            "queryFile": "./out/sql/cpuUsage.sql"
+            "queryFile": "./out/sql/query.sql"
         }
         }
-    ]    
+    ]
+    },      
     ```
-1. Run “npm install” 
-1. Run “npm run compile”
-1. Copy sql and media folder to ./out folder 
-1. Remove everything from readme.md
-1. Hit CTRL+` to open the integrated terminal. Type 'vsce package' to package your extension.
-1. Copy the directory link of your extension.
-1. Open **SQL Operations Studio.** Click **File**, then click **Install Extension from VSIX package.**
-1. Paste directory link of extension and click **Install**
-1. Click **Reload Now** on bottom right.
-1. Click on arrow next to **Localhost**, arrow next to **Databases**, then right click **AdventureWorks2014** and click **Manage**
-1. On the line next to **Home,** click **Sample** to see your sample extension. 
 
-    
+1. Dropdown **src** and open **extension.ts**, add the following line at the bottom of **activate** function to activate method.
+    ```typescript
+    sqlops.tasks.registerTask('TypeInsight.simple.install', e => vscode.window.showInformationMessage('test!'));
+    ```
+2. Run ```npm run compile```
+3. Remove everything from readme.md
+4. Hit CTRL+` to open the integrated terminal. Type 'vsce package' to package your extension.
+5. Copy the directory link of your extension.
+6. Open **SQL Operations Studio.** Click **File**, then click **Install Extension from VSIX package.**
+7. Paste directory link of extension and click **Install**
+8. Click **Reload Now** on bottom right.
+9. Click on arrow next to **Localhost**, arrow next to **Databases**, then right click **AdventureWorks2014** and click **Manage**
+10. On the line next to **Home,** click **Sample** to see your sample extension. 
 
 ## Next Steps
 Thank you for attending this Microsoft Build session. Now that you have learned to build your own SQL Operations Studio extensions, we encourage you to continue to build extensions and contribute to our Extensions Marketplace.
