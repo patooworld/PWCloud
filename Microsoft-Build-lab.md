@@ -483,7 +483,7 @@ All prerequisites are already install on machine. As a summary, here is what is 
 7. Paste directory link of extension and click **Install**
 8. Click **Reload Now** on bottom right.
 9. Click on arrow next to **Localhost**, arrow next to **Databases**, then right click **AdventureWorks2014** and click **Manage**
-10. On the line next to **Home,** click **Sample** to see your sample extension. 
+10. On the line next to **Home,** click **TypeSample** to see your sample extension. 
 
 ## Next Steps
 Thank you for attending this Microsoft Build session. Now that you have learned to build your own SQL Operations Studio extensions, we encourage you to continue to build extensions and contribute to our Extensions Marketplace.
