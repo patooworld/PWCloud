@@ -206,6 +206,7 @@ All prerequisites are already install on machine. As a summary, here is what is 
     ```
 25. Repeat Steps 13-19
 26. See if you can repeat what we just did using this query.
+
     **DB Size**
     ```sql
     with fs
