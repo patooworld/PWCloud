@@ -163,7 +163,8 @@ All prerequisites are already install on machine. As a summary, here is what is 
 17. Click **Reload Now** on bottom right.
 18. Click on arrow next to **Localhost**, arrow next to **Databases**, then right click **AdventureWorks2014** and click **Manage**
 19. On the line next to **Home,** click **Sample** to see your sample extension.
-20. (Optional) Try adding these insight widgets following Steps 9-20. Note: You can add new .sql files under SQL folder to have multiple widgets.
+20. Let's try adding multiple insight widgets. Go back to **Visual Studio Code** and add a new file under sql folder called **query2.sql**
+21. Paste the following query.
 
     **Top Active Connections**
     ```sql
@@ -172,6 +173,39 @@ All prerequisites are already install on machine. As a summary, here is what is 
     WHERE status = 'running'
     ```
 
+22. Now, go to package.json file so that we can create a new container for our widget. Find *dashboard.insights*.
+23. Type or paste the following below the existing insight json content:
+    ```json
+    {
+        "id": "sample2.insight",
+        "contrib": {
+            "queryFile":"./sql/query2.sql",
+            "type": {    
+                "count": {
+                    "dataDirection": "vertical",
+                    "dataType": "number",
+                    "legendPosition": "none",
+                    "labelFirstColumn": false
+                }
+            }
+        }
+    }
+    ```
+24. Find *widgets-container.* Type or paste the following:
+    ```json
+    {
+        "name": "sample2",
+        "gridItemConfig": {
+            "sizex": 2,
+            "sizey": 1
+        },
+        "widget": {
+            "sample2.insight": {}
+        }
+    }
+    ```
+25. Repeat Steps 13-19
+26. See if you can repeat what we just did using this query.
     **DB Size**
     ```sql
     with fs
