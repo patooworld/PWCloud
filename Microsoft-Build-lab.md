@@ -57,7 +57,7 @@ Over the course of this session, you will:
 8. Click **View as Chart** Icon on right of Results window.
 9. Click **Create Insight**.
 10. Edit name as 'Table Spaces'
-11. Edit queryfile as 'C:\Users\LabUser\.sqlops\sample.sql'
+11. Edit queryfile as 'C:\Users\LabUser\\.sqlops\sample.sql'
 12. Click bottom-left gear icon, then **Settings**
 13. Under **User Settings**, find the last ']'. Add a comma and new line, then copy and paste your insight widget:
     ```json
