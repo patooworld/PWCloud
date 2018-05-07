@@ -14,6 +14,23 @@ Over the course of this session, you will:
 - Create an Insight Widget extension
 - Create an extension using Typescript
 
+## Prerequisites
+All prerequisites are already install on machine. As a summary, here is what is pre-installed:
+- [SQL Operations Studio](https://aka.ms/sqlopsstudio)
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Git](https://git-scm.com)
+- [Node.JS](https://nodejs.org/en/), `>= 8.9.1, < 9.0.0`
+- [Yarn](https://yarnpkg.com/en/), follow the [installation guide](https://yarnpkg.com/en/docs/install)
+- [Python](https://www.python.org/downloads/), at least version 2.7 (version 3 is __*not*__ supported)
+- [Generator-sqlops](https://github.com/llali/generator-sqlops)
+- [SQL Server 2017 developer edition](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
+- Visual Studio Code extensions
+    - SQL Operations Studio debug
+    - mssql extension
+    - Debugger for Chrome
+- npm packages
+    - npm install -g vsce
+
 ## Create an insight widget
 1. Open SQL Operations Studio.
 2. Click new connection.
