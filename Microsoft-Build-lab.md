@@ -94,11 +94,11 @@ Over the course of this session, you will:
 3. Type ```yo sqlops``` and hit Enter. This opens the SQL Operations Studio Extension generator. This allows you to quickly get started on building an extension of your choice. 
 4. To start off, use arrow keys and hit enter on **New Dashboard Insight.**
 5. Follow these instructions:
-    Add a full dashboard tab? **Y**
-    What's the name of your extension?** **sample**
-    What's the identifier of the extension? *hit enter*
-    What's the description of your extension? **building a sample extension**
-    What's your publisher name? *hit enter*
+    - Add a full dashboard tab? **Y**
+    - What's the name of your extension? **sample**
+    - What's the identifier of the extension? *hit enter*
+    - What's the description of your extension? **building a sample extension**
+    - What's your publisher name? *hit enter*
      
 6. You have now created a very simple extension. Now let's edit it.
 7. Type ```cd sample``` into the terminal and hit enter.
@@ -152,13 +152,14 @@ Over the course of this session, you will:
 1. Type ```yo sqlops``` and hit Enter. This opens the SQL Operations Studio Extension generator. 
 1. To start off, use arrow keys and hit enter on **New Extension (Typescript)**
 1. Follow these instructions:
-    What's the name of your extension?** **TypeSample**
-    What's the identifier of the extension? *hit enter*
-    What's the description of your extension? **TypeScript extension**
-    What's your publisher name? msbuild
-    Enable stricter Typescript checking? **Y**
-    Setup linting using 'tslint'? **Y**
-    Initialize a git repository? **n**
+    - What's the name of your extension? **TypeSample**
+    - What's the identifier of the extension? *hit enter*
+    - What's the description of your extension? **TypeScript extension**
+    - What's your publisher name? msbuild
+    - Enable stricter Typescript checking? **Y**
+    - Setup linting using 'tslint'? **Y**
+    - Initialize a git repository? **n**
+
 1. In package.json 
     Add command to contributions.commands
     ```json
