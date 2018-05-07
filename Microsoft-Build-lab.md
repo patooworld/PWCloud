@@ -149,9 +149,17 @@ Over the course of this session, you will:
 
 ## Create an extension using Typescript
 1. Hit Ctrl+` to open the Integrated Terminal **Note:** This is not the apostrophe, this is the grave accent below the ESC key. 
-2. Type ```yo sqlops``` and hit Enter. This opens the SQL Operations Studio Extension generator. 
-3. To start off, use arrow keys and hit enter on **New Extension (Typescript)**
-4. In package.json 
+1. Type ```yo sqlops``` and hit Enter. This opens the SQL Operations Studio Extension generator. 
+1. To start off, use arrow keys and hit enter on **New Extension (Typescript)**
+1. Follow these instructions:
+    What's the name of your extension?** **TypeSample**
+    What's the identifier of the extension? *hit enter*
+    What's the description of your extension? **TypeScript extension**
+    What's your publisher name? msbuild
+    Enable stricter Typescript checking? **Y**
+    Setup linting using 'tslint'? **Y**
+    Initialize a git repository? **n**
+1. In package.json 
     Add command to contributions.commands
     ```json
         {
@@ -252,17 +260,17 @@ Over the course of this session, you will:
         }
     ]    
     ```
-7. Run “npm install” 
-8. Run “npm run compile”
-9. Copy sql and media folder to ./out folder 
-10. Remove everything from readme.md
-13. Hit CTRL+` to open the integrated terminal. Type 'vsce package' to package your extension.
-14. Copy the directory link of your extension.
-15. Open **SQL Operations Studio.** Click **File**, then click **Install Extension from VSIX package.**
-16. Paste directory link of extension and click **Install**
-17. Click **Reload Now** on bottom right.
-18. Click on arrow next to **Localhost**, arrow next to **Databases**, then right click **AdventureWorks2014** and click **Manage**
-19. On the line next to **Home,** click **Sample** to see your sample extension. 
+1. Run “npm install” 
+1. Run “npm run compile”
+1. Copy sql and media folder to ./out folder 
+1. Remove everything from readme.md
+1. Hit CTRL+` to open the integrated terminal. Type 'vsce package' to package your extension.
+1. Copy the directory link of your extension.
+1. Open **SQL Operations Studio.** Click **File**, then click **Install Extension from VSIX package.**
+1. Paste directory link of extension and click **Install**
+1. Click **Reload Now** on bottom right.
+1. Click on arrow next to **Localhost**, arrow next to **Databases**, then right click **AdventureWorks2014** and click **Manage**
+1. On the line next to **Home,** click **Sample** to see your sample extension. 
 
 
 ## Next Steps
