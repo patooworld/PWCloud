@@ -145,7 +145,58 @@ Over the course of this session, you will:
 16. Paste directory link of extension and click **Install**
 17. Click **Reload Now** on bottom right.
 18. Click on arrow next to **Localhost**, arrow next to **Databases**, then right click **AdventureWorks2014** and click **Manage**
-19. On the line next to **Home,** click **Sample** to see your sample extension. 
+19. On the line next to **Home,** click **Sample** to see your sample extension.
+20. (Optional) Try adding these insight widgets following Steps 9-20:
+
+    **Top Active Connections**
+    ```sql
+    SELECT count(session_id) as [Active Sessions]
+    FROM sys.dm_exec_sessions
+    WHERE status = 'running'
+    ```
+
+    **Top Slowest Queries**
+    ```sql
+    declare @qds_status int = (SELECT actual_state 
+    FROM sys.database_query_store_options)  
+    if @qds_status > 0
+    Begin
+    WITH SlowestQry AS( 
+        SELECT TOP 5  
+            q.query_id, 
+            MAX(rs.max_duration ) max_duration 
+        FROM sys.query_store_query_text AS qt    
+        JOIN sys.query_store_query AS q    
+            ON qt.query_text_id = q.query_text_id    
+        JOIN sys.query_store_plan AS p    
+            ON q.query_id = p.query_id    
+        JOIN sys.query_store_runtime_stats AS rs    
+            ON p.plan_id = rs.plan_id   
+        WHERE rs.last_execution_time > DATEADD(week, -1, GETUTCDATE())   
+        AND is_internal_query = 0 
+        GROUP BY q.query_id 
+        ORDER BY MAX(rs.max_duration ) DESC) 
+    SELECT  
+        q.query_id,  
+        format(rs.last_execution_time,'yyyy-MM-dd hh:mm:ss') as [last_execution_time],
+        rs.max_duration,  
+        p.plan_id 
+    FROM sys.query_store_query_text AS qt    
+        JOIN sys.query_store_query AS q    
+            ON qt.query_text_id = q.query_text_id    
+        JOIN sys.query_store_plan AS p    
+            ON q.query_id = p.query_id    
+        JOIN sys.query_store_runtime_stats AS rs    
+            ON p.plan_id = rs.plan_id   
+        JOIN SlowestQry tq 
+            ON tq.query_id = q.query_id 
+    WHERE rs.last_execution_time > DATEADD(week, -1, GETUTCDATE())   
+    AND is_internal_query = 0 
+    order by format(rs.last_execution_time,'yyyy-MM-dd hh:mm:ss')
+    END
+    else 
+    select 0 as [query_id], getdate() as [QDS is not enabled], 0 as  [max_duration]
+    ``` 
 
 ## Create an extension using Typescript
 1. Hit Ctrl+` to open the Integrated Terminal **Note:** This is not the apostrophe, this is the grave accent below the ESC key. 
@@ -273,6 +324,7 @@ Over the course of this session, you will:
 1. Click on arrow next to **Localhost**, arrow next to **Databases**, then right click **AdventureWorks2014** and click **Manage**
 1. On the line next to **Home,** click **Sample** to see your sample extension. 
 
+    
 
 ## Next Steps
 Thank you for attending this Microsoft Build session. Now that you have learned to build your own SQL Operations Studio extensions, we encourage you to continue to build extensions and contribute to our Extensions Marketplace.
