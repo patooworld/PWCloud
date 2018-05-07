@@ -146,7 +146,7 @@ Over the course of this session, you will:
 17. Click **Reload Now** on bottom right.
 18. Click on arrow next to **Localhost**, arrow next to **Databases**, then right click **AdventureWorks2014** and click **Manage**
 19. On the line next to **Home,** click **Sample** to see your sample extension.
-20. (Optional) Try adding these insight widgets following Steps 9-20:
+20. (Optional) Try adding these insight widgets following Steps 9-20. Note: You can add new .sql files under SQL folder to have multiple widgets.
 
     **Top Active Connections**
     ```sql
@@ -155,9 +155,24 @@ Over the course of this session, you will:
     WHERE status = 'running'
     ```
 
+    **DB Size**
+    ```sql
+    with fs
+    as
+    (
+        select database_id, type, size * 8.0 / 1024 size
+        from sys.master_files
+    )
+    select 
+        name,
+        (select sum(size) from fs where type = 0 and fs.database_id = db.database_id) DataFileSizeMB,
+        (select sum(size) from fs where type = 1 and fs.database_id = db.database_id) LogFileSizeMB
+    from sys.databases db
+    where database_id > 4
+    ```
+
     **All DB Space Used**
     ```sql
-    ------------------------------Data file size----------------------------
     declare @dbsize table
     (Dbname nvarchar(128),
         file_Size_MB decimal(20,2)default (0),
