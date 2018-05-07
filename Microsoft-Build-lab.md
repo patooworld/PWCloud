@@ -155,47 +155,110 @@ Over the course of this session, you will:
     WHERE status = 'running'
     ```
 
-    **Top Slowest Queries**
+    **All DB Space Used**
     ```sql
-    declare @qds_status int = (SELECT actual_state 
-    FROM sys.database_query_store_options)  
-    if @qds_status > 0
-    Begin
-    WITH SlowestQry AS( 
-        SELECT TOP 5  
-            q.query_id, 
-            MAX(rs.max_duration ) max_duration 
-        FROM sys.query_store_query_text AS qt    
-        JOIN sys.query_store_query AS q    
-            ON qt.query_text_id = q.query_text_id    
-        JOIN sys.query_store_plan AS p    
-            ON q.query_id = p.query_id    
-        JOIN sys.query_store_runtime_stats AS rs    
-            ON p.plan_id = rs.plan_id   
-        WHERE rs.last_execution_time > DATEADD(week, -1, GETUTCDATE())   
-        AND is_internal_query = 0 
-        GROUP BY q.query_id 
-        ORDER BY MAX(rs.max_duration ) DESC) 
-    SELECT  
-        q.query_id,  
-        format(rs.last_execution_time,'yyyy-MM-dd hh:mm:ss') as [last_execution_time],
-        rs.max_duration,  
-        p.plan_id 
-    FROM sys.query_store_query_text AS qt    
-        JOIN sys.query_store_query AS q    
-            ON qt.query_text_id = q.query_text_id    
-        JOIN sys.query_store_plan AS p    
-            ON q.query_id = p.query_id    
-        JOIN sys.query_store_runtime_stats AS rs    
-            ON p.plan_id = rs.plan_id   
-        JOIN SlowestQry tq 
-            ON tq.query_id = q.query_id 
-    WHERE rs.last_execution_time > DATEADD(week, -1, GETUTCDATE())   
-    AND is_internal_query = 0 
-    order by format(rs.last_execution_time,'yyyy-MM-dd hh:mm:ss')
-    END
-    else 
-    select 0 as [query_id], getdate() as [QDS is not enabled], 0 as  [max_duration]
+    ------------------------------Data file size----------------------------
+    declare @dbsize table
+    (Dbname nvarchar(128),
+        file_Size_MB decimal(20,2)default (0),
+        Space_Used_MB decimal(20,2)default (0),
+        Free_Space_MB decimal(20,2) default (0))
+    insert into @dbsize
+        (Dbname,file_Size_MB,Space_Used_MB,Free_Space_MB)
+    exec sp_msforeachdb
+    'use [?];
+      select DB_NAME() AS DbName,
+    sum(size)/128.0 AS File_Size_MB,
+    sum(CAST(FILEPROPERTY(name, ''SpaceUsed'') AS INT))/128.0 as Space_Used_MB,
+    SUM( size)/128.0 - sum(CAST(FILEPROPERTY(name,''SpaceUsed'') AS INT))/128.0 AS Free_Space_MB
+    from sys.database_files  where type=0 group by type'
+    
+    -------------------log size--------------------------------------
+    
+    declare @logsize table
+    (Dbname nvarchar(128),
+        Log_File_Size_MB decimal(20,2)default (0),
+        log_Space_Used_MB decimal(20,2)default (0),
+        log_Free_Space_MB decimal(20,2)default (0))
+    insert into @logsize
+        (Dbname,Log_File_Size_MB,log_Space_Used_MB,log_Free_Space_MB)
+    exec sp_msforeachdb
+    'use [?];
+      select DB_NAME() AS DbName,
+    sum(size)/128.0 AS Log_File_Size_MB,
+    sum(CAST(FILEPROPERTY(name, ''SpaceUsed'') AS INT))/128.0 as log_Space_Used_MB,
+    SUM( size)/128.0 - sum(CAST(FILEPROPERTY(name,''SpaceUsed'') AS INT))/128.0 AS log_Free_Space_MB
+    from sys.database_files  where type=1 group by type'
+    --------------------------------database free size
+    declare @dbfreesize table
+    (name nvarchar(128),
+        database_size varchar(50),
+        Freespace varchar(50)default (0.00))
+    insert into @dbfreesize
+        (name,database_size,Freespace)
+    exec sp_msforeachdb
+    'use [?];SELECT database_name = db_name()
+        ,database_size = ltrim(str((convert(DECIMAL(15, 2), dbsize) + convert(DECIMAL(15, 2), logsize)) * 8192 / 1048576, 15, 2) + ''MB'')
+        ,''unallocated space'' = ltrim(str((
+                    CASE
+                        WHEN dbsize >= reservedpages
+                            THEN (convert(DECIMAL(15, 2), dbsize) - convert(DECIMAL(15, 2), reservedpages)) * 8192 / 1048576
+                        ELSE 0
+                        END
+                    ), 15, 2) + '' MB'')
+    FROM (
+        SELECT dbsize = sum(convert(BIGINT, CASE
+                        WHEN type = 0
+                            THEN size
+                        ELSE 0
+                        END))
+            ,logsize = sum(convert(BIGINT, CASE
+                        WHEN type <> 0
+                            THEN size
+                        ELSE 0
+                        END))
+        FROM sys.database_files
+    ) AS files
+    ,(
+        SELECT reservedpages = sum(a.total_pages)
+            ,usedpages = sum(a.used_pages)
+            ,pages = sum(CASE
+                    WHEN it.internal_type IN (
+                            202
+                            ,204
+                            ,211
+                            ,212
+                            ,213
+                            ,214
+                            ,215
+                            ,216
+                            )
+                        THEN 0
+                    WHEN a.type <> 1
+                        THEN a.used_pages
+                    WHEN p.index_id < 2
+                        THEN a.data_pages
+                    ELSE 0
+                    END)
+        FROM sys.partitions p
+        INNER JOIN sys.allocation_units a
+            ON p.partition_id = a.container_id
+        LEFT JOIN sys.internal_tables it
+            ON p.object_id = it.object_id
+    ) AS partitions'
+    -----------------------------------
+    select TOP 10
+        d.Dbname,
+        --(file_size_mb + log_file_size_mb) as DBsize,
+        --d.file_Size_MB,
+        d.Space_Used_MB,
+        --d.Free_Space_MB,
+        --l.Log_File_Size_MB,
+        l.log_Space_Used_MB--,
+        --l.log_Free_Space_MB,
+        --fs.Freespace as DB_Freespace
+    from @dbsize d join @logsize l on d.Dbname=l.Dbname join @dbfreesize fs on d.Dbname=fs.name
+    order by d.Space_Used_MB DESC
     ``` 
 
 ## Create an extension using Typescript
