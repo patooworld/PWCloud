@@ -42,8 +42,9 @@ After writing your extension, you need to create a VSIX package to be able to in
 
 To publish your new extension to SQL Ops Studio
 1. Add your extension to https://github.com/Microsoft/sqlopsstudio/blob/release/extensions/extensionsGallery.json
-2. Create a PR against release/extensions branch
-3. Send a review request to llali
+2. We don't have support to host third party extension for now. Instead of downloading the extension, SQL Ops has the option to browses to the download page. To be able to set a download page for your extension please set the value of asset "Microsoft.SQLOps.DownloadPage". 
+3. Create a PR against release/extensions branch
+4. Send a review request to llali
 
 Your extension will be reviewed and will be added to the extension gallery.
 
