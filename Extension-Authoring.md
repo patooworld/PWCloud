@@ -31,7 +31,7 @@ Steps
 
 **Creating Extension Package**
 
-After writing your extension, you need to create a VSIX package to be able to install it in SQP Operations Studio. You can use [vsce](https://github.com/Microsoft/vscode-vsce) to create VSIX package.
+After writing your extension, you need to create a VSIX package to be able to install it in SQL Operations Studio. You can use [vsce](https://github.com/Microsoft/vscode-vsce) to create VSIX package.
 
 `npm install -g vsce`
 
