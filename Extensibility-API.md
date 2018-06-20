@@ -45,7 +45,7 @@ credentials: {
 ## Object Explorer
 `sqlops.objectexplorer`
 
-_Available starting in the March Public Preview (currently available in master)_
+_Available starting in version 0.27.3 (March Public Preview)_
 
 ### Top-level Functions
 - `getNode(connectionId: string, nodePath?: string): Thenable<sqlops.objectexplorer.ObjectExplorerNode>`
@@ -156,3 +156,6 @@ vscode.commands.registerCommand('mssql.objectexplorer.interact', () => {
 	});
 });
 ```
+
+## Proposed APIs
+We have added proposed APIs to allow extensions to display custom UI in dialogs, wizards, and document tabs, among other capabilities. See the [proposed API types file](https://github.com/Microsoft/sqlopsstudio/blob/master/src/sql/sqlops.proposed.d.ts) for more documentation, though be aware that these APIs are subject to change at any time. Examples of how to use some of these APIs can be found in the ["sqlservices" sample extension](https://github.com/Microsoft/sqlopsstudio/tree/master/samples/sqlservices).
