@@ -34,7 +34,7 @@ All prerequisites are already install on machine. As a summary, here is what is 
 ## Create an insight widget
 1. Open SQL Operations Studio.
 2. Click new connection.
-3. Click **Localhost** and click **Connect**
+3. Select **Localhost** from **Saved Locations** and click **Connect.**
 4. Click arrow next to localhost under Servers, then click arrow by databases, then **right click** AdventureWorks2014 and click **New Query**
 5. Copy and paste this snippet
     ```sql
@@ -107,7 +107,7 @@ All prerequisites are already install on machine. As a summary, here is what is 
 
 ## Create an insight extension
 1. Open **Visual Studio Code** from the bottom task bar.
-2. Hit Ctrl+` to open the Integrated Terminal **Note:** This is not the apostrophe, this is the grave accent below the ESC key. 
+2. If the terminal is not already open, Hit Ctrl+` to open the Integrated Terminal **Note:** This is not the apostrophe, this is the grave accent below the ESC key.
 3. Type ```yo sqlops``` and hit Enter. This opens the SQL Operations Studio Extension generator. This allows you to quickly get started on building an extension of your choice. 
 4. To start off, use arrow keys and hit enter on **New Dashboard Insight.**
 5. Follow these instructions:
@@ -115,7 +115,8 @@ All prerequisites are already install on machine. As a summary, here is what is 
     - What's the name of your extension? **sample**
     - What's the identifier of the extension? *hit enter*
     - What's the description of your extension? **building a sample extension**
-    - What's your publisher name? *hit enter*
+    - What's your publisher name? *MSBuild*
+        - The publish name must be set, we recommend *MSBuild* but you can use any publisher name.
      
 6. You have now created a very simple extension. Now let's edit it.
 7. Type ```cd sample``` into the terminal and hit enter.
@@ -156,8 +157,9 @@ All prerequisites are already install on machine. As a summary, here is what is 
     ```
     Sample insight widget extension.
     ```
-13. Hit CTRL+` to open the integrated terminal. Type 'vsce package' to package your extension.
-14. Copy the directory link of your extension.
+13. Click **File->Save All**. 
+13. Hit CTRL+` to open the integrated terminal. Type 'vsce package' to package your extension. Type 'Y' and enter when prompted if you would like to continue without the repository field.
+14. Use “Ctrl + C” to copy the file location of the vsix package from the terminal.
 15. Open **SQL Operations Studio.** Click **File**, then click **Install Extension from VSIX package.**
 16. Paste directory link of extension and click **Install**
 17. Click **Reload Now** on bottom right.
@@ -204,8 +206,8 @@ All prerequisites are already install on machine. As a summary, here is what is 
         }
     }
     ```
-25. Repeat Steps 13-19
-26. See if you can repeat what we just did using this query.
+25. Repeat Steps 13-19 and remember to Save All.
+26. Using what you have learned, create two additional insight widgets using the following queries.
 
     **DB Size**
     ```sql
@@ -327,6 +329,7 @@ All prerequisites are already install on machine. As a summary, here is what is 
     from @dbsize d join @logsize l on d.Dbname=l.Dbname join @dbfreesize fs on d.Dbname=fs.name
     order by d.Space_Used_MB DESC
     ``` 
+![extensions](https://doc-08-6k-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/9ac83t79sbqop21lt2fonvgofafg2842/1531771200000/14668596040140584533/*/1mqzXkYsQ0jU1l4zG8gHi67IjHtlFjKRm)
 
 ## Create an extension using Typescript
 1. Hit Ctrl+` to open the Integrated Terminal **Note:** This is not the apostrophe, this is the grave accent below the ESC key. 
@@ -341,8 +344,9 @@ All prerequisites are already install on machine. As a summary, here is what is 
     - Setup linting using 'tslint'? **Y**
     - Initialize a git repository? **n**
 
-1. Wait for npm install to finish.
-1. Open Integrated Terminal with **Ctrl+`** and run ```npm run compile``` This will create a new **out** folder.
+1. After npm install finishes, switch to the typescript directory using ```cd typescript```
+1. Open Integrated Terminal with **Ctrl+`** and run ```npm run compile```
+1. Open the project explorer by entering ```code .``` You should see a new **out** folder.
 1. Right click on the **out** folder and create a new folder called **sql**. This is where we will store .sql files to power our insight widgets.
 1. Right click on the **sql** folder and click **New File.** Name it *query.sql*
 1. Open *query.sql* and paste the following familiar sql query:
@@ -389,7 +393,7 @@ All prerequisites are already install on machine. As a summary, here is what is 
 
 1. In package.json, paste or type this snippet below in Contributes section.
     ```json 
-    ],
+    ,
         "dashboard.tabs": [
         {
         "id": "TypeInsight-simple",
@@ -467,17 +471,16 @@ All prerequisites are already install on machine. As a summary, here is what is 
             "queryFile": "./out/sql/query.sql"
         }
         }
-    ]
-    },      
+    ]      
     ```
 
-1. Dropdown **src** and open **extension.ts**, add the following line at the bottom of **activate** function to activate method.
+1. Dropdown **src** and open **extension.ts**, add the following line to the end of **export function activate** to activate method.
     ```typescript
     sqlops.tasks.registerTask('TypeInsight.simple.install', e => vscode.window.showInformationMessage('test!'));
     ```
 2. Run ```npm run compile```
-3. Remove everything from readme.md
-4. Hit CTRL+` to open the integrated terminal. Type 'vsce package' to package your extension.
+3. Remove everything from readme.md and save. (“File>Save All” if you have not saved the other files already)
+4. Hit CTRL+` to open the integrated terminal. Type 'vsce package' to package your extension. Type 'Y' and enter when prompted if you would like to continue without the repository field.
 5. Copy the directory link of your extension.
 6. Open **SQL Operations Studio.** Click **File**, then click **Install Extension from VSIX package.**
 7. Paste directory link of extension and click **Install**
