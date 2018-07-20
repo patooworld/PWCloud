@@ -27,7 +27,7 @@ Dashboard.tabs will create the tab sections inside the dashboard page. It expect
 
 `dashboard.containers`
 
-Instead of specify dashboard container inline (inside the dashboard.tab). You can register containers using dashboard.containers. It excepts an object or an array of the object.
+Instead of specifying dashboard container inline (inside the dashboard.tab). You can register containers using dashboard.containers. It accepts an object or an array of the object.
 
 ```
 "dashboard.containers": [
