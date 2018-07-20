@@ -8,7 +8,7 @@ To develop an extension you need Node.js installed and available in your $PATH. 
 
 To start your new extension, you can use the SQL Operations Studio Extension generator. The Yeoman [extension generator](https://www.npmjs.com/package/generator-sqlops) makes it very easy to create simple extension projects. To Launch the generator, type the following in a command prompt:
 
-`npm install -g yo`
+`npm install -g yo generator-sqlops`
 
 `yo sqlops`
 
