@@ -22,6 +22,7 @@
 * [Debugging with VS Code](Debugging-an-Extension-with-VS-Code)
 * [Extension Authoring](Extension-Authoring)
 * [Microsoft Build lab](Microsoft-Build-lab)
+* [Microsoft Ignite lab](Microsoft-Ignite-lab)
 * [List of Extensions](List-of-Extensions)
 
 **Documentation**
