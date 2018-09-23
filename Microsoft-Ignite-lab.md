@@ -12,7 +12,7 @@ Over the course of this session, you will:
 - Build your first sqlops extension using a [Visual Studio Code](https://code.visualstudio.com/) environment.
 - Use an [Extension generator](https://github.com/llali/generator-sqlops) to help write an extension
 - Create an Insight Widget extension
-- Create an extension using Typescript
+- Create an extension using Typescript to create a Wizard extension (first time End-To-End tutorial)
 
 ## Prerequisites
 All prerequisites are already install on machine. As a summary, here is what is pre-installed:
