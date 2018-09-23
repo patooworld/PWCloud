@@ -488,6 +488,243 @@ All prerequisites are already install on machine. As a summary, here is what is 
 9. Click on arrow next to **Localhost**, arrow next to **Databases**, then right click **AdventureWorks2014** and click **Manage**
 10. On the line next to **Home,** click **TypeSample** to see your sample extension. 
 
+
+# Creating a 'Script As' Wizard extension
+
+# Creating the extension
+## Getting Started
+1. Run `yo sqlops` from the command line
+    - Choose "New Extension (TypeScript)" at the first prompt
+    - The remaining prompts can be filled out as you want. I recommend answering yes to all yes/no questions in order to match my setup.
+2. Open the code in VS Code by running `code .`
+3. Your extension can already run! Go to the debug tab in VS Code and hit the green play button to open SQL Operations Studio with your extension installed. Press `ctrl+shift+p` to open the command palette and type "Hello World" and hit enter to run the default "Hello World" command contributed by your extension.
+4. Open `README.md` in the created extension and delete the contents, then save it.
+## Writing Code
+1. Create a folder under `src` called `typings` and download the latest [API typings file](https://raw.githubusercontent.com/Microsoft/sqlopsstudio/master/src/sql/sqlops.proposed.d.ts) and save it in that folder as `sqlops.proposed.d.ts`
+2. Open `package.json` and add the command to open the wizard by replacing the `"contributes"` section with the code from Code Sample 1 below and the `"activationEvents"` section with the code from Code Sample 2. This will cause the extension to register a new command that we will use to open the wizard and to start the extension whenever SQL Operations Studio starts.
+3. Open `src/extension.ts` and add code to execute the command you just registered by replacing the `activate` extension's code with the code from Code Sample 3 below
+4. Create the `ScriptWizard` class at the bottom of that file with the code from Code Sample 4. This sample shows a basic use of the wizard framework to open a wizard that has 2 pages but no content yet.
+5. Save the file, then go to the debug pane in VS Code and click the green play button. SQL Operations Studio should open. Once SQL Operations Studio opens connect to the server in Object Explorer and then press `ctrl+shift+p` to open the command palette, then start typing "Open Script As Wizard" and press enter once that option is displayed to open the wizard. Note that you have to connect in Object Explorer before opening the wizard so that the wizard has a server to use for scripting. You now have an extension that opens a 2-page wizard with no content.
+6. Add content to page 1 of the wizard by replacing the `setupPage1` function with the one from Code Sample 5 below, which uses the model view framework to add an object type dropdown and an object choice listbox.
+7. Add the `fillInObjectChoices` function referenced in `setupPage1` to the `ScriptWizard` class using the code from Code Sample 6. This code uses the data protocol API to list scriptable objects by type. After this step you can save and rerun the extension like before and when you open the wizard you should see that it has the dropdown and list box that you added and that it lists the available objects when you choose a type.
+8. Add content to page 2 of the wizard by replacing the `setupPage2` function with the one from Code Sample 7 below, which uses the model view framework to add a dropdown box to select the script type. Again you can debug the extension after this step and see that both pages now have content.
+9. Update the `setupWizard` function to add a callback when the "Done" button is pressed that uses the data protocol API to generate the requested script by replacing the `setupWizard` function with the one from Code Sample 8. If you have written a VS Code extension before you will notice that this code uses some VS Code APIs to open the generated script. SQL Operations Studio exposes most existing VS Code APIs for extension authors to use.
+
+## Finishing Touches
+At this point you should have a working wizard that scripts the selected object. To try it out save the `extension.ts` file and run the extension like before. Connect to the saved server in Object Explorer and press `ctrl+shift+p` to open the command palette, then type "Open Script As Wizard" and hit enter to open the wizard. You can interact with the wizard and it will create the requested script when you go through both pages and click "Done".
+
+To package your extension as an installable `.vsix` file you can run `vsce package` from the command line.
+
+## Code Samples
+### Code Sample 1 - `package.json contributes`
+```
+"contributes": {
+    "commands": [
+        {
+            "command": "extension.scriptObjects",
+            "title": "Open Script As Wizard"
+        }
+    ]
+},
+```
+
+### Code Sample 2 - `package.json activationEvents`
+```
+"activationEvents": [
+    "*"
+],
+```
+
+### Code Sample 3 - `extension.ts activate`
+```
+// The command has been defined in the package.json file
+// Now provide the implementation of the command with  registerCommand
+// The commandId parameter must match the command field in package.json
+context.subscriptions.push(vscode.commands.registerCommand('extension.scriptObjects', async () => {
+    let connection = await sqlops.connection.getCurrentConnection();
+    let wizard = new ScriptWizard(connection);
+    wizard.open();
+}));
+```
+
+### Code Sample 4 - `extension.ts ScriptWizard`
+```
+class ScriptWizard {
+    private objectType: string;
+    private selectedObjectLabel: string;
+    private scriptType: string;
+    private scriptTypeDropdown: sqlops.DropDownComponent | undefined;
+    private wizard: sqlops.window.modelviewdialog.Wizard;
+    private page1: sqlops.window.modelviewdialog.WizardPage;
+    private page2: sqlops.window.modelviewdialog.WizardPage;
+    private objectMetadataMap = new Map<string, sqlops.ObjectMetadata>();
+    static scriptOperations = new Map<string, sqlops.ScriptOperation>([
+        ['Select', sqlops.ScriptOperation.Select],
+        ['Create', sqlops.ScriptOperation.Create],
+        ['Insert', sqlops.ScriptOperation.Insert],
+        ['Update', sqlops.ScriptOperation.Update],
+        ['Delete', sqlops.ScriptOperation.Delete],
+        ['Execute', sqlops.ScriptOperation.Execute],
+        ['Alter', sqlops.ScriptOperation.Alter]
+    ]);
+    static scriptOperationsByType = new Map<string, string[]>([
+        ['Table', ['Create', 'Delete']],
+        ['View', ['Create', 'Select', 'Alter', 'Delete']],
+        ['StoredProcedure', ['Create', 'Execute', 'Alter', 'Delete']]
+    ]);
+
+    constructor(private connection: sqlops.connection.Connection) {
+        this.objectType = '';
+        this.selectedObjectLabel = '';
+        this.scriptType = '';
+        this.scriptTypeDropdown = undefined;
+        this.page1 = this.setupPage1();
+        this.page2 = this.setupPage2();
+        this.wizard = this.setupWizard(); 
+    }
+
+    public open(): void {
+        this.wizard.open();
+    }
+
+    private setupPage1(): sqlops.window.modelviewdialog.WizardPage {
+        let page1 = sqlops.window.modelviewdialog.createWizardPage('Select object');
+        page1.registerContent(view => Promise.resolve());
+        return page1;
+    }
+
+    private setupPage2(): sqlops.window.modelviewdialog.WizardPage {
+        let page2 = sqlops.window.modelviewdialog.createWizardPage('Details');
+        page2.registerContent(view => Promise.resolve());
+        return page2;
+    }
+
+    private setupWizard(): sqlops.window.modelviewdialog.Wizard {
+        this.wizard = sqlops.window.modelviewdialog.createWizard('Script Wizard');
+        this.wizard.pages = [this.page1, this.page2];
+        this.wizard.generateScriptButton.hidden = true;
+        return this.wizard;
+    }
+}
+```
+
+### Code Sample 5 - `ScriptWizard setupPage1 function`
+```
+private setupPage1(): sqlops.window.modelviewdialog.WizardPage {
+    let page1 = sqlops.window.modelviewdialog.createWizardPage('Select object');
+    page1.registerContent(async view => {
+        let typeSelection = view.modelBuilder.dropDown().withValidation(component => component.value !== '').component();
+        let objectDropdown = view.modelBuilder.listBox().component();
+
+        typeSelection.values = ['', 'Table', 'View', 'StoredProcedure'];
+        typeSelection.onValueChanged(value => {
+            this.objectType = value.selected;
+            this.fillInObjectChoices(objectDropdown);
+        });
+
+        objectDropdown.onRowSelected(() => {
+            this.selectedObjectLabel = objectDropdown.values[objectDropdown.selectedRow || 0];
+        });
+
+        let flexView = view.modelBuilder.formContainer().withFormItems([
+            {
+                component: typeSelection,
+                title: 'Type'
+            },
+            {
+                component: objectDropdown,
+                title: 'Object to script'
+            }
+        ]).component();
+
+        return view.initializeModel(flexView);
+    });
+
+    return page1;
+}
+```
+
+### Code Sample 6 - `ScriptWizard fillInObjectChoices function`
+```
+private async fillInObjectChoices(objectDropdown: sqlops.ListBoxComponent): Promise<void> {
+    this.objectMetadataMap.clear();
+    let metadataProvider = sqlops.dataprotocol.getProvider<sqlops.MetadataProvider>(this.connection.providerName, sqlops.DataProviderType.MetadataProvider);
+    let objectMetadata = (await metadataProvider.getMetadata(await sqlops.connection.getUriForConnection(this.connection.connectionId))).objectMetadata;
+    let matchingObjects: string[] = [];
+    objectMetadata.forEach(metadata => {
+        if (metadata.metadataTypeName === this.objectType) {
+            let objectLabel = (metadata.schema ? `${metadata.schema}.` : '') + metadata.name;
+            matchingObjects.push(objectLabel);
+            this.objectMetadataMap.set(objectLabel, metadata);
+        }
+    });
+    objectDropdown.values = matchingObjects;
+    if (this.scriptTypeDropdown && this.objectType) {
+        this.scriptTypeDropdown.values = ScriptWizard.scriptOperationsByType.get(this.objectType) as string[];
+    }
+}
+```
+
+### Code Sample 7 - `ScriptWizard setupPage2 function`
+```
+private setupPage2(): sqlops.window.modelviewdialog.WizardPage {
+    let page2 = sqlops.window.modelviewdialog.createWizardPage('Details');
+    page2.registerContent(async view => {
+        let scriptTypeDropdown = view.modelBuilder.dropDown().component();
+        
+        scriptTypeDropdown.values = [];
+        ScriptWizard.scriptOperations.forEach((_, key) => {
+            (scriptTypeDropdown.values as string[]).push(key);
+        });
+        scriptTypeDropdown.onValueChanged(value => this.scriptType = value.selected);
+        let formContainer = view.modelBuilder.formContainer().withFormItems([
+            {
+                component: scriptTypeDropdown,
+                title: 'Operation'
+            }
+        ]).component();
+        this.scriptTypeDropdown = scriptTypeDropdown;
+        return view.initializeModel(formContainer);
+    });
+    
+    return page2;
+}
+```
+
+### Code Sample 8 - `ScriptWizard setupWizard function`
+```
+private setupWizard(): sqlops.window.modelviewdialog.Wizard {
+    this.wizard = sqlops.window.modelviewdialog.createWizard('Script Wizard');
+    this.wizard.pages = [this.page1, this.page2];
+    this.wizard.generateScriptButton.hidden = true;
+    this.wizard.doneButton.onClick(async () => {
+        let scriptingProvider = sqlops.dataprotocol.getProvider<sqlops.ScriptingProvider>(this.connection.providerName, sqlops.DataProviderType.ScriptingProvider);
+        let chosenObject = this.objectMetadataMap.get(this.selectedObjectLabel);
+        if (chosenObject && this.objectType) {
+            let result = await scriptingProvider.scriptAsOperation(await sqlops.connection.getUriForConnection(this.connection.connectionId), ScriptWizard.scriptOperations.get(this.scriptType) as sqlops.ScriptOperation, chosenObject, {
+                filePath: '',
+                scriptCompatibilityOption: 'Script140Compat',
+                targetDatabaseEngineEdition: 'SqlServerStandardEdition',
+                targetDatabaseEngineType: 'SingleInstance'
+            });
+            if (result.script) {
+                let document = await vscode.workspace.openTextDocument({
+                    language: 'sql',
+                    content: result.script
+                });
+                vscode.window.showTextDocument(document);
+            }
+        }
+    });
+    return this.wizard;
+}
+```
+
+
+
+
+
+
 ## Next Steps
 Thank you for attending this Microsoft Build session. Now that you have learned to build your own SQL Operations Studio extensions, we encourage you to continue to build extensions and contribute to our Extensions Marketplace.
 
