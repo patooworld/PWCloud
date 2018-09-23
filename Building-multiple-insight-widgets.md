@@ -1,6 +1,6 @@
 # Introduction
 
-Welcome to Microsoft Build! In this session, you will learn to build your own extensions for [SQL Operations Studio](https://aka.ms/sqlopsstudio). SQL Operations Studio is a data management tool that enables you to work with SQL Server, Azure SQL DB and SQL DW from Windows, macOS and Linux. In addition to providing core functionality like a rich T-SQL editing experience, we also provide an Extension Marketplace where the community can contribute their own **Extensions** so that anyone can use the extension.
+In this session, you will learn to build your own extensions for [SQL Operations Studio](https://aka.ms/sqlopsstudio). SQL Operations Studio is a data management tool that enables you to work with SQL Server, Azure SQL DB and SQL DW from Windows, macOS and Linux. In addition to providing core functionality like a rich T-SQL editing experience, we also provide an Extension Marketplace where the community can contribute their own **Extensions** so that anyone can use the extension.
 
 These extensions are generally lighted up through our **Dashboard**, where users can quickly monitor and troubleshoot their databases.
 
