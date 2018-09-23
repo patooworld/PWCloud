@@ -754,4 +754,4 @@ Want to learn more about SQL Operations Studio?
 - Leave a star on our [Github](https://github.com/microsoft/sqlopsstudio)
 - Download [SQL Operations Studio](https://aka.ms/sqlopsstudio)
 - Report Issues or suggest Feature Requests on our [Github Issues page](https://github.com/microsoft/sqlopsstudio/issues)
-- Follow us on Twitter @sqlopsstudio
+- Follow us on Twitter [@sqlopsstudio](https://twitter.com/sqlopsstudio)
