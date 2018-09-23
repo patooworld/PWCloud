@@ -21,7 +21,7 @@
 * [Context Variables](Sqlops-Context-Variables)
 * [Debugging with VS Code](Debugging-an-Extension-with-VS-Code)
 * [Extension Authoring](Extension-Authoring)
-* [Microsoft Build lab](Microsoft-Build-lab)
+* [Building multiple insight widgets](Building-multiple-insight-widgets)
 * [Microsoft Ignite lab](Microsoft-Ignite-lab)
 * [List of Extensions](List-of-Extensions)
 
