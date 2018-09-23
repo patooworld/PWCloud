@@ -489,10 +489,15 @@ All prerequisites are already install on machine. As a summary, here is what is 
 10. On the line next to **Home,** click **TypeSample** to see your sample extension. 
 
 
+
+
+
+
 # Creating a 'Script As' Wizard extension
 
 # Creating the extension
 ## Getting Started
+1. Hit **Ctrl+`** to open the Integrated Terminal Note: This is not the apostrophe, this is the grave accent below the ESC key.
 1. Run `yo sqlops` from the command line
     - Choose "New Extension (TypeScript)" at the first prompt
     - The remaining prompts can be filled out as you want. I recommend answering yes to all yes/no questions in order to match my setup.
@@ -500,22 +505,9 @@ All prerequisites are already install on machine. As a summary, here is what is 
 3. Your extension can already run! Go to the debug tab in VS Code and hit the green play button to open SQL Operations Studio with your extension installed. Press `ctrl+shift+p` to open the command palette and type "Hello World" and hit enter to run the default "Hello World" command contributed by your extension.
 4. Open `README.md` in the created extension and delete the contents, then save it.
 ## Writing Code
-1. Create a folder under `src` called `typings` and download the latest [API typings file](https://raw.githubusercontent.com/Microsoft/sqlopsstudio/master/src/sql/sqlops.proposed.d.ts) and save it in that folder as `sqlops.proposed.d.ts`
-2. Open `package.json` and add the command to open the wizard by replacing the `"contributes"` section with the code from Code Sample 1 below and the `"activationEvents"` section with the code from Code Sample 2. This will cause the extension to register a new command that we will use to open the wizard and to start the extension whenever SQL Operations Studio starts.
-3. Open `src/extension.ts` and add code to execute the command you just registered by replacing the `activate` extension's code with the code from Code Sample 3 below
-4. Create the `ScriptWizard` class at the bottom of that file with the code from Code Sample 4. This sample shows a basic use of the wizard framework to open a wizard that has 2 pages but no content yet.
-5. Save the file, then go to the debug pane in VS Code and click the green play button. SQL Operations Studio should open. Once SQL Operations Studio opens connect to the server in Object Explorer and then press `ctrl+shift+p` to open the command palette, then start typing "Open Script As Wizard" and press enter once that option is displayed to open the wizard. Note that you have to connect in Object Explorer before opening the wizard so that the wizard has a server to use for scripting. You now have an extension that opens a 2-page wizard with no content.
-6. Add content to page 1 of the wizard by replacing the `setupPage1` function with the one from Code Sample 5 below, which uses the model view framework to add an object type dropdown and an object choice listbox.
-7. Add the `fillInObjectChoices` function referenced in `setupPage1` to the `ScriptWizard` class using the code from Code Sample 6. This code uses the data protocol API to list scriptable objects by type. After this step you can save and rerun the extension like before and when you open the wizard you should see that it has the dropdown and list box that you added and that it lists the available objects when you choose a type.
-8. Add content to page 2 of the wizard by replacing the `setupPage2` function with the one from Code Sample 7 below, which uses the model view framework to add a dropdown box to select the script type. Again you can debug the extension after this step and see that both pages now have content.
-9. Update the `setupWizard` function to add a callback when the "Done" button is pressed that uses the data protocol API to generate the requested script by replacing the `setupWizard` function with the one from Code Sample 8. If you have written a VS Code extension before you will notice that this code uses some VS Code APIs to open the generated script. SQL Operations Studio exposes most existing VS Code APIs for extension authors to use.
+**1.** Create a folder under `src` called `typings` and download the latest [API typings file](https://raw.githubusercontent.com/Microsoft/sqlopsstudio/master/src/sql/sqlops.proposed.d.ts) and save it in that folder as `sqlops.proposed.d.ts`
+**2.** Open `package.json` and add the command to open the wizard by replacing the `"contributes"` section with the code from Code Sample 1 below:
 
-## Finishing Touches
-At this point you should have a working wizard that scripts the selected object. To try it out save the `extension.ts` file and run the extension like before. Connect to the saved server in Object Explorer and press `ctrl+shift+p` to open the command palette, then type "Open Script As Wizard" and hit enter to open the wizard. You can interact with the wizard and it will create the requested script when you go through both pages and click "Done".
-
-To package your extension as an installable `.vsix` file you can run `vsce package` from the command line.
-
-## Code Samples
 ### Code Sample 1 - `package.json contributes`
 ```
 "contributes": {
@@ -528,12 +520,16 @@ To package your extension as an installable `.vsix` file you can run `vsce packa
 },
 ```
 
+**3.** Replace the `"activationEvents"` section with the code from Code Sample 2:
 ### Code Sample 2 - `package.json activationEvents`
 ```
 "activationEvents": [
     "*"
 ],
-```
+``` 
+This will cause the extension to register a new command that we will use to open the wizard and to start the extension whenever SQL Operations Studio starts.
+
+**4.** Open `src/extension.ts` and add code to execute the command you just registered by replacing the `activate` extension's code with the code from Code Sample 3 below:
 
 ### Code Sample 3 - `extension.ts activate`
 ```
@@ -547,6 +543,7 @@ context.subscriptions.push(vscode.commands.registerCommand('extension.scriptObje
 }));
 ```
 
+**5.** Create the `ScriptWizard` class at the bottom of that file with the code from Code Sample 4. This sample shows a basic use of the wizard framework to open a wizard that has 2 pages but no content yet:
 ### Code Sample 4 - `extension.ts ScriptWizard`
 ```
 class ScriptWizard {
@@ -608,6 +605,14 @@ class ScriptWizard {
 }
 ```
 
+**6.** Save the file, then go to the debug pane in VS Code and **click the green play button**. SQL Operations Studio should open. 
+
+Once SQL Operations Studio opens, **connect to localhost by clicking on it** in Object Explorer.
+
+Then press **`ctrl+shift+p`** to open the command palette, then start typing **"Open Script As Wizard"** and press **enter** once that option is displayed to open the wizard. Note that you have to connect in Object Explorer before opening the wizard so that the wizard has a server to use for scripting. You now have an extension that opens a 2-page wizard with no content!
+
+**7.** Go back to Visual Studio Code. Add content to page 1 of the wizard by replacing the `setupPage1` function with the one from Code Sample 5 below, which uses the model view framework to add an object type dropdown and an object choice listbox.
+
 ### Code Sample 5 - `ScriptWizard setupPage1 function`
 ```
 private setupPage1(): sqlops.window.modelviewdialog.WizardPage {
@@ -644,6 +649,8 @@ private setupPage1(): sqlops.window.modelviewdialog.WizardPage {
 }
 ```
 
+**8.** Add the **`fillInObjectChoices`** function referenced in `setupPage1` to the `ScriptWizard` class using the code from Code Sample 6. 
+
 ### Code Sample 6 - `ScriptWizard fillInObjectChoices function`
 ```
 private async fillInObjectChoices(objectDropdown: sqlops.ListBoxComponent): Promise<void> {
@@ -664,6 +671,10 @@ private async fillInObjectChoices(objectDropdown: sqlops.ListBoxComponent): Prom
     }
 }
 ```
+
+This code uses the data protocol API to list scriptable objects by type. After this step you can save and rerun the extension like before in **Step 6** and when you open the wizard you should see that it has the dropdown and list box that you added and that it lists the available objects when you choose a type.
+
+**9.** Add content to page 2 of the wizard by replacing the `setupPage2` function with the one from Code Sample 7 below, which uses the model view framework to add a dropdown box to select the script type. Again you can debug the extension after this step and see that both pages now have content.
 
 ### Code Sample 7 - `ScriptWizard setupPage2 function`
 ```
@@ -690,6 +701,8 @@ private setupPage2(): sqlops.window.modelviewdialog.WizardPage {
     return page2;
 }
 ```
+
+**10.** Update the `setupWizard` function to add a callback when the "Done" button is pressed that uses the data protocol API to generate the requested script by replacing the `setupWizard` function with the one from Code Sample 8:
 
 ### Code Sample 8 - `ScriptWizard setupWizard function`
 ```
@@ -720,13 +733,15 @@ private setupWizard(): sqlops.window.modelviewdialog.Wizard {
 }
 ```
 
+If you have written a VS Code extension before you will notice that this code uses some VS Code APIs to open the generated script. SQL Operations Studio exposes most existing VS Code APIs for extension authors to use.
 
+## Finishing Touches
+At this point you should have a working wizard that scripts the selected object. To try it out save the **`extension.ts`** file and run the extension like before. Connect to the saved server in Object Explorer and press `ctrl+shift+p` to open the command palette, then type "Open Script As Wizard" and hit enter to open the wizard. You can interact with the wizard and it will create the requested script when you go through both pages and click "Done".
 
-
-
+To package your extension as an installable `.vsix` file, you can run `vsce package` from the command line in Visual Studio Code.
 
 ## Next Steps
-Thank you for attending this Microsoft Build session. Now that you have learned to build your own SQL Operations Studio extensions, we encourage you to continue to build extensions and contribute to our Extensions Marketplace.
+Thank you for attending this Microsoft Ignite session. Now that you have learned to build your own SQL Operations Studio extensions, we encourage you to continue to build extensions and contribute to our Extensions Marketplace.
 
 To learn to build your own extensions:
 - Get the [prerequisites](https://github.com/microsoft/sqlopsstudio/wiki/How-to-Contribute)
