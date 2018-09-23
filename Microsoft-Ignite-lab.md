@@ -12,7 +12,7 @@ Over the course of this session, you will:
 - Build your first sqlops extension using a [Visual Studio Code](https://code.visualstudio.com/) environment.
 - Use an [Extension generator](https://github.com/llali/generator-sqlops) to help write an extension
 - Create an Insight Widget extension
-- Create an extension using Typescript to create a Wizard extension (first time End-To-End tutorial)
+- **Never before seen End-To-End Tutorial** to create an extension using Typescript to create a Wizard extension 
 
 ## Prerequisites
 All prerequisites are already install on machine. As a summary, here is what is pre-installed:
@@ -329,183 +329,29 @@ All prerequisites are already install on machine. As a summary, here is what is 
     from @dbsize d join @logsize l on d.Dbname=l.Dbname join @dbfreesize fs on d.Dbname=fs.name
     order by d.Space_Used_MB DESC
     ``` 
-![extensions](https://doc-08-6k-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/9ac83t79sbqop21lt2fonvgofafg2842/1531771200000/14668596040140584533/*/1mqzXkYsQ0jU1l4zG8gHi67IjHtlFjKRm)
 
-## Create an extension using Typescript
-1. Hit Ctrl+` to open the Integrated Terminal **Note:** This is not the apostrophe, this is the grave accent below the ESC key. 
-1. Type ```yo sqlops``` and hit Enter. This opens the SQL Operations Studio Extension generator. 
-1. To start off, use arrow keys and hit enter on **New Extension (Typescript)**
-1. Follow these instructions:
-    - What's the name of your extension? **TypeSample**
-    - What's the identifier of the extension? *hit enter*
-    - What's the description of your extension? **TypeScript extension**
-    - What's your publisher name? msbuild
-    - Enable stricter Typescript checking? **Y**
-    - Setup linting using 'tslint'? **Y**
-    - Initialize a git repository? **n**
-
-1. After npm install finishes, switch to the typescript directory using ```cd typescript```
-1. Open Integrated Terminal with **Ctrl+`** and run ```npm run compile```
-1. Open the project explorer by entering ```code .``` You should see a new **out** folder.
-1. Right click on the **out** folder and create a new folder called **sql**. This is where we will store .sql files to power our insight widgets.
-1. Right click on the **sql** folder and click **New File.** Name it *query.sql*
-1. Open *query.sql* and paste the following familiar sql query:
-1. Paste the following T-SQL:
-    ```sql
-    -- Get the space used by table TableName
-    SELECT TOP 10 tabl.name AS table_name,
-    --SUM(PART.rows) AS rows_count,
-    SUM(ALOC.total_pages) AS total_pages,
-    SUM(ALOC.used_pages) AS used_pages,
-    SUM(ALOC.data_pages) AS data_pages,
-    (SUM(ALOC.total_pages)*8/1024) AS total_space_MB,
-    (SUM(ALOC.used_pages)*8/1024) AS used_space_MB,
-    (SUM(ALOC.data_pages)*8/1024) AS data_space_MB
-    FROM sys.tables AS TABL
-    INNER JOIN sys.indexes AS INDX
-    ON TABL.object_id = INDX.object_id
-    INNER JOIN sys.partitions AS PART
-    ON INDX.object_id = PART.object_id
-    AND INDX.index_id = PART.index_id
-    INNER JOIN sys.allocation_units AS ALOC
-    ON PART.partition_id = ALOC.container_id
-    --WHERE TABL.name LIKE '%TableName%'
-    AND INDX.object_id > 255
-    AND INDX.index_id <= 1
-    GROUP BY TABL.name, 
-    INDX.object_id,
-    INDX.index_id,
-    INDX.name
-    ORDER BY --Object_Name(INDX.object_id),
-    (SUM(ALOC.total_pages)*8/1024) DESC
-    GO
-    ```        
-1. Save this query with Ctrl+S.
-1. In package.json, find **activationEvents** and remove the contents in that section (two lines). Type ```"*"``` in **activationEvents** section.
-1. In package.json 
-    Add command to contributes.commands. **Note:** Ensure to add a comma at } bracket before.
-    ```json
-        {
-        "command": "TypeInsight.simple.install",
-        "title": "TypeInsight: install"
-        }
-    ```
-
-1. In package.json, paste or type this snippet below in Contributes section.
-    ```json 
-    ,
-        "dashboard.tabs": [
-        {
-        "id": "TypeInsight-simple",
-        "title": "TypeInsight",
-        "description": "Extension for checking who is active.",
-        "container": {
-            "nav-section": [
-            {
-                "id": "TypeInsight_insights",
-                "title": "Insights",
-                "container": {
-                "TypeInsight-simple-insights": {}
-                }
-            },
-            {
-                "id": "TypeInsight_documentation",
-                "title": "Documentation",
-                "container": {
-                "TypeInsight-simple-insights3": {}
-                }
-            }
-            ]
-        }
-        }
-    ],
-    "dashboard.containers": [
-        {
-        "id": "TypeInsight-simple-insights",
-        "container": {
-            "widgets-container": [
-            
-            {
-                "name": "Top 10 CPU Usage",
-                "gridItemConfig": {
-                "sizex": 2,
-                "sizey": 1
-                },
-                "widget": {
-                "TypeInsight-simple-CPU-usage": {}
-                }
-            }
-            ]
-        }
-        },
-        {
-        "id": "TypeInsight-simple-insights3",
-        "container": {
-            "widgets-container": [
-            {
-                "name": "Tasks",
-                "widget": {
-                "tasks-widget": [
-                    "TypeInsight.simple.install"
-                ]
-                }
-            }
-            ]
-        }
-        }
-    ],
-    "dashboard.insights": [
-        {
-        "id": "TypeInsight-simple-CPU-usage",
-        "contrib": {
-            "type": {
-            "bar": {
-                "dataDirection": "vertical",
-                "dataType": "number",
-                "legendPosition": "none",
-                "labelFirstColumn": false,
-                "columnsAsLabels": true,
-                "showTopNData": 10
-            }
-            },
-            "queryFile": "./out/sql/query.sql"
-        }
-        }
-    ]      
-    ```
-
-1. Dropdown **src** and open **extension.ts**, add the following line to the end of **export function activate** to activate method.
-    ```typescript
-    sqlops.tasks.registerTask('TypeInsight.simple.install', e => vscode.window.showInformationMessage('test!'));
-    ```
-2. Run ```npm run compile```
-3. Remove everything from readme.md and save. (“File>Save All” if you have not saved the other files already)
-4. Hit CTRL+` to open the integrated terminal. Type 'vsce package' to package your extension. Type 'Y' and enter when prompted if you would like to continue without the repository field.
-5. Copy the directory link of your extension.
-6. Open **SQL Operations Studio.** Click **File**, then click **Install Extension from VSIX package.**
-7. Paste directory link of extension and click **Install**
-8. Click **Reload Now** on bottom right.
-9. Click on arrow next to **Localhost**, arrow next to **Databases**, then right click **AdventureWorks2014** and click **Manage**
-10. On the line next to **Home,** click **TypeSample** to see your sample extension. 
-
-
-
-
-
-
-# Creating a 'Script As' Wizard extension
+# Creating a 'Script As' Wizard extension using Typescript
 
 # Creating the extension
 ## Getting Started
 1. Hit **Ctrl+`** to open the Integrated Terminal Note: This is not the apostrophe, this is the grave accent below the ESC key.
-1. Run `yo sqlops` from the command line
-    - Choose "New Extension (TypeScript)" at the first prompt
-    - The remaining prompts can be filled out as you want. I recommend answering yes to all yes/no questions in order to match my setup.
+1. Type `yo sqlops` from the command line and press enter.
+1. To start off, use arrow keys and hit enter on **New Extension (Typescript)** 
+Follow these instructions:
+    - What's the name of your extension? **WizardSample**
+    - What's the identifier of the extension? *hit enter*
+    - What's the description of your extension? **Wizard extension**
+    - What's your publisher name? ignite
+    - Enable stricter Typescript checking? **Y**
+    - Setup linting using 'tslint'? **Y**
+    - Initialize a git repository? **n**
+1. After npm install finishes, switch to the extension directory using ```cd WizardSample```
 2. Open the code in VS Code by running `code .`
 3. Your extension can already run! Go to the debug tab in VS Code and hit the green play button to open SQL Operations Studio with your extension installed. Press `ctrl+shift+p` to open the command palette and type "Hello World" and hit enter to run the default "Hello World" command contributed by your extension.
 4. Open `README.md` in the created extension and delete the contents, then save it.
 ## Writing Code
 **1.** Create a folder under `src` called `typings` and download the latest [API typings file](https://raw.githubusercontent.com/Microsoft/sqlopsstudio/master/src/sql/sqlops.proposed.d.ts) and save it in that folder as `sqlops.proposed.d.ts`
+
 **2.** Open `package.json` and add the command to open the wizard by replacing the `"contributes"` section with the code from Code Sample 1 below:
 
 ### Code Sample 1 - `package.json contributes`
