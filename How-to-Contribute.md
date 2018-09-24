@@ -1,14 +1,14 @@
-# Contributing to SQL Operations Studio
-There are many ways to contribute to the SQL Operations Studio project: logging bugs, submitting pull requests, reporting issues, and creating suggestions.
+# Contributing to Azure Data Studio
+There are many ways to contribute to the Azure Data Studio project: logging bugs, submitting pull requests, reporting issues, and creating suggestions.
 
 ## Build and Run From Source
 
-If you want to understand how SQL Operations Studio works or want to debug an issue, you'll want to get the source, build it, and run the tool locally.
+If you want to understand how Azure Data Studio works or want to debug an issue, you'll want to get the source, build it, and run the tool locally.
 
 ### Getting the sources
 
 ```
-git clone https://github.com/Microsoft/sqlopsstudio.git
+git clone https://github.com/Microsoft/azuredatastudio.git
 ```
 
 ### Installing Prerequisites
@@ -46,17 +46,17 @@ If you are on Windows or Linux 64 bit systems and would like to compile to 32 bi
 
 **Note:** For more information on how to install NPM modules globally on UNIX systems without resorting to `sudo`, refer to [this guide](http://www.johnpapa.net/how-to-use-npm-global-without-sudo-on-osx/).
 
-### Build SQL Operations Studio
+### Build Azure Data Studio
 After you have these tools installed, run the following commands to clone github repository, install dependencies, and compile source code:
 
 ```bash
-git clone https://github.com/microsoft/sqlopsstudio
-cd sqlopsstudio
+git clone https://github.com/microsoft/azuredatastudio
+cd azuredatastudio
 yarn
 yarn run watch
 ```
 
-### Run SQL Operations Studio in debug mode.
+### Run Azure Data Studio in debug mode.
 
 **OS X and Linux**
 
@@ -111,8 +111,8 @@ You can either use VS Code or the Chrome Developer Tools to debug SQL Operations
 
 #### Using VSCode
 * Install the [Debugger for Chrome](https://marketplace.visualstudio.com/items/msjsdiag.debugger-for-chrome) extension. This extension will let you attach to and debug client side code running in Chrome.
-* Open the `sqlopsstudio` repository folder
-* Choose the `Launch sqlops` launch configuration from the launch dropdown in the Debug viewlet and press `F5`.
+* Open the `azuredatastudio` repository folder
+* Choose the `Launch azuredatastudio` launch configuration from the launch dropdown in the Debug viewlet and press `F5`.
 
 
 #### Using the Chrome Developer Tools
@@ -123,7 +123,7 @@ You can either use VS Code or the Chrome Developer Tools to debug SQL Operations
   <img src='./media/chrome_developer_tools.png'>
 
 ### Automated Testing
-Run the unit tests directly from a terminal by running `./scripts/test.sh` from the `sqlopsstudio` folder (`scripts\test` on Windows). The [test README](https://github.com/Microsoft/sqlopsstudio/blob/master/test/README.md) has complete details on how to run and debug tests, as well as how to produce coverage reports.
+Run the unit tests directly from a terminal by running `./scripts/test.sh` from the `azuredatastudio` folder (`scripts\test` on Windows). The [test README](https://github.com/Microsoft/azuredatastudio/blob/master/test/README.md) has complete details on how to run and debug tests, as well as how to produce coverage reports.
 
 ### Linting
 We use [tslint](https://github.com/palantir/tslint) for linting our sources. You can run tslint across the sources by calling `gulp tslint` from a terminal or command prompt.
@@ -131,7 +131,7 @@ We use [tslint](https://github.com/palantir/tslint) for linting our sources. You
 To lint the source as you make changes you can install the [tslint extension](https://marketplace.visualstudio.com/items/eg2.tslint). 
 
 ## Work Branches
-Even if you have push rights on the Microsoft/sqlopsstudio repository, you should create a personal fork and create feature branches there when you need them. This keeps the main repository clean and your personal workflow cruft out of sight.
+Even if you have push rights on the Microsoft/azuredatastudio repository, you should create a personal fork and create feature branches there when you need them. This keeps the main repository clean and your personal workflow cruft out of sight.
 
 ## Pull Requests
 Before we can accept a pull request from you, you'll need to sign a [[Contributor License Agreement (CLA)|Contributor-License-Agreement]]. It is an automated process and you only need to do it once.
@@ -139,12 +139,12 @@ Before we can accept a pull request from you, you'll need to sign a [[Contributo
 To enable us to quickly review and accept your pull requests, always create one pull request per issue and [link the issue in the pull request](https://github.com/blog/957-introducing-issue-mentions). Never merge multiple requests in one unless they have the same root cause. Be sure to follow our coding guidelines and keep code changes as small as possible. Avoid pure formatting changes to code that has not been modified otherwise. Pull requests should contain tests whenever possible. 
 
 ### Where to Contribute
-Check out the [full issues list](https://github.com/Microsoft/sqlopsstudio/issues?utf8=%E2%9C%93&q=is%3Aopen+is%3Aissue) for a list of all potential areas for contributions. 
+Check out the [full issues list](https://github.com/Microsoft/azuredatastudio/issues?utf8=%E2%9C%93&q=is%3Aopen+is%3Aissue) for a list of all potential areas for contributions. 
 
 To improve the chances to get a pull request merged you should select an issue that is labelled with the [`help-wanted`](https://github.com/Microsoft/sqlopsstudio/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22) or [`bug`](https://github.com/Microsoft/sqlopsstudio/issues?q=is%3Aopen+is%3Aissue+label%3A%22bug%22) labels. If the issue you want to work on is not labelled with `help-wanted` or `bug`, you can start a conversation with the issue owner asking whether an external contribution will be considered.
 
 ## Suggestions
-We're also interested in your feedback for the future of SQL Operations Studio. You can submit a suggestion or feature request through the issue tracker. To make this process more effective, we're asking that these include more information to help define them more clearly. 
+We're also interested in your feedback for the future of Azure Data Studio. You can submit a suggestion or feature request through the issue tracker. To make this process more effective, we're asking that these include more information to help define them more clearly. 
 
 ## Discussion Etiquette
 
