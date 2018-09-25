@@ -1,3 +1,6 @@
+# Read First
+During the Microsoft Ignite lab you will be following these instructions on a virtual machine and should open this guide in the virtual machine so that you can copy/paste code. Open a web browser in the virtual machine and type in `https://github.com/Microsoft/azuredatastudio/wiki/Microsoft-Ignite-lab` to access this guide
+
 # Introduction
 
 Welcome to Microsoft Ignite! In this session, you will learn to build your own extensions for [Azure Data Studio](https://aka.ms/azuredatastudio). Azure Data Studio is a data management tool that enables you to work with SQL Server, Azure SQL DB and SQL DW from Windows, macOS and Linux. In addition to providing core functionality like a rich T-SQL editing experience, we also provide an Extension Marketplace where the community can contribute their own **Extensions** so that anyone can use the extension.
