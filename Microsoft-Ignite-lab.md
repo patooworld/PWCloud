@@ -405,7 +405,7 @@ Follow these instructions:
     - What's the identifier of the extension? *hit enter*
     - What's the description of your extension? **Wizard extension**
     - What's your publisher name? ignite
-    - Enable stricter Typescript checking? **Y**
+    - Enable stricter Typescript checking? **n**
     - Setup linting using 'tslint'? **Y**
     - Initialize a git repository? **n**
 1. After npm install finishes, switch to the extension directory using ```cd WizardSample```
