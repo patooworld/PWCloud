@@ -410,10 +410,10 @@ Follow these instructions:
     - Setup linting using 'tslint'? **Y**
     - Initialize a git repository? **n**
 1. After npm install finishes, switch to the extension directory using ```cd WizardSample```
-2. Open the code in VS Code by running `code .`
-3. Your extension can already run! Go to the debug tab in VS Code and hit the green play button to open Azure Data Studio with your extension installed. Press `ctrl+shift+p` to open the command palette and type "Hello World" and hit enter to run the default "Hello World" command contributed by your extension.
-4. Open `README.md` in the created extension and delete the contents, then save it.
-5. Open `.vscode/launch.json` in the created extension and replace both lines where it says `"runtimeExecutable": "sqlops",` with `"runtimeExecutable": "azuredatastudio",` and then save the file
+1. Open the code in VS Code by running `code .`
+1. Open `README.md` in the created extension and delete the contents, then save it.
+1. Open `.vscode/launch.json` in the created extension and replace both lines where it says `"runtimeExecutable": "sqlops",` with `"runtimeExecutable": "azuredatastudio",` and then save the file
+1. Your extension can already run! Go to the debug tab in VS Code and hit the green play button to open Azure Data Studio with your extension installed. Press `ctrl+shift+p` to open the command palette and type "Hello World" and hit enter to run the default "Hello World" command contributed by your extension.
 ## Writing Code
 **1.** Create a folder under `src` called `typings` and download the latest [API typings file](https://raw.githubusercontent.com/Microsoft/sqlopsstudio/master/src/sql/sqlops.proposed.d.ts) and save it in that folder as `sqlops.proposed.d.ts`
 
