@@ -1,6 +1,6 @@
 # Introduction
 
-Welcome to Microsoft Ignite! In this session, you will learn to build your own extensions for [SQL Operations Studio](https://aka.ms/sqlopsstudio). SQL Operations Studio is a data management tool that enables you to work with SQL Server, Azure SQL DB and SQL DW from Windows, macOS and Linux. In addition to providing core functionality like a rich T-SQL editing experience, we also provide an Extension Marketplace where the community can contribute their own **Extensions** so that anyone can use the extension.
+Welcome to Microsoft Ignite! In this session, you will learn to build your own extensions for [Azure Data Studio](https://aka.ms/azuredatastudio). Azure Data Studio is a data management tool that enables you to work with SQL Server, Azure SQL DB and SQL DW from Windows, macOS and Linux. In addition to providing core functionality like a rich T-SQL editing experience, we also provide an Extension Marketplace where the community can contribute their own **Extensions** so that anyone can use the extension.
 
 These extensions are generally lighted up through our **Dashboard**, where users can quickly monitor and troubleshoot their databases.
 
@@ -16,7 +16,7 @@ Over the course of this session, you will:
 
 ## Prerequisites
 All prerequisites are already install on machine. As a summary, here is what is pre-installed:
-- [SQL Operations Studio](https://aka.ms/sqlopsstudio)
+- [Azure Data Studio](https://aka.ms/azuredatastudio)
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Git](https://git-scm.com)
 - [Node.JS](https://nodejs.org/en/), `>= 8.9.1, < 9.0.0`
@@ -25,14 +25,14 @@ All prerequisites are already install on machine. As a summary, here is what is 
 - [Generator-sqlops](https://github.com/llali/generator-sqlops)
 - [SQL Server 2017 developer edition](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 - Visual Studio Code extensions
-    - SQL Operations Studio debug
+    - Azure Data Studio debug
     - mssql extension
     - Debugger for Chrome
 - npm packages
     - npm install -g vsce
 
 ## Create an insight widget
-1. Open SQL Operations Studio.
+1. Open Azure Data Studio.
 2. Click new connection.
 3. Select **Localhost** from **Saved Locations** and click **Connect.**
 4. Click arrow next to localhost under Servers, then click arrow by databases, then **right click** AdventureWorks2014 and click **New Query**
@@ -310,7 +310,7 @@ All prerequisites are already install on machine. As a summary, here is what is 
 13. Click **File->Save All**. 
 13. Hit CTRL+` to open the integrated terminal. Type 'vsce package' to package your extension. Type 'Y' and enter when prompted if you would like to continue without the repository field.
 14. Use “Ctrl + C” to copy the file location of the vsix package from the terminal.
-15. Open **SQL Operations Studio.** Click **File**, then click **Install Extension from VSIX package.**
+15. Open **Azure Data Studio.** Click **File**, then click **Install Extension from VSIX package.**
 16. Paste directory link of extension and click **Install**
 17. Click **Reload Now** on bottom right.
 18. Click on arrow next to **Localhost**, arrow next to **Databases**, then right click **AdventureWorks2014** and click **Manage**
@@ -410,7 +410,7 @@ Follow these instructions:
     - Initialize a git repository? **n**
 1. After npm install finishes, switch to the extension directory using ```cd WizardSample```
 2. Open the code in VS Code by running `code .`
-3. Your extension can already run! Go to the debug tab in VS Code and hit the green play button to open SQL Operations Studio with your extension installed. Press `ctrl+shift+p` to open the command palette and type "Hello World" and hit enter to run the default "Hello World" command contributed by your extension.
+3. Your extension can already run! Go to the debug tab in VS Code and hit the green play button to open Azure Data Studio with your extension installed. Press `ctrl+shift+p` to open the command palette and type "Hello World" and hit enter to run the default "Hello World" command contributed by your extension.
 4. Open `README.md` in the created extension and delete the contents, then save it.
 ## Writing Code
 **1.** Create a folder under `src` called `typings` and download the latest [API typings file](https://raw.githubusercontent.com/Microsoft/sqlopsstudio/master/src/sql/sqlops.proposed.d.ts) and save it in that folder as `sqlops.proposed.d.ts`
@@ -436,7 +436,7 @@ Follow these instructions:
     "*"
 ],
 ``` 
-This will cause the extension to register a new command that we will use to open the wizard and to start the extension whenever SQL Operations Studio starts.
+This will cause the extension to register a new command that we will use to open the wizard and to start the extension whenever Azure Data Studio starts.
 
 **4.** Open `src/extension.ts` and add code to execute the command you just registered by replacing the `activate` extension's code with the code from Code Sample 3 below:
 
@@ -514,9 +514,9 @@ class ScriptWizard {
 }
 ```
 
-**6.** Save the file, then go to the debug pane in VS Code and **click the green play button**. SQL Operations Studio should open. 
+**6.** Save the file, then go to the debug pane in VS Code and **click the green play button**. Azure Data Studio should open. 
 
-Once SQL Operations Studio opens, **connect to localhost by clicking on it** in Object Explorer.
+Once Azure Data Studio opens, **connect to localhost by clicking on it** in Object Explorer.
 
 Then press **`ctrl+shift+p`** to open the command palette, then start typing **"Open Script As Wizard"** and press **enter** once that option is displayed to open the wizard. Note that you have to connect in Object Explorer before opening the wizard so that the wizard has a server to use for scripting. You now have an extension that opens a 2-page wizard with no content!
 
@@ -642,7 +642,7 @@ private setupWizard(): sqlops.window.modelviewdialog.Wizard {
 }
 ```
 
-If you have written a VS Code extension before you will notice that this code uses some VS Code APIs to open the generated script. SQL Operations Studio exposes most existing VS Code APIs for extension authors to use.
+If you have written a VS Code extension before you will notice that this code uses some VS Code APIs to open the generated script. Azure Data Studio exposes most existing VS Code APIs for extension authors to use.
 
 ## Finishing Touches
 At this point you should have a working wizard that scripts the selected object. To try it out save the **`extension.ts`** file and run the extension like before. Connect to the saved server in Object Explorer and press `ctrl+shift+p` to open the command palette, then type "Open Script As Wizard" and hit enter to open the wizard. You can interact with the wizard and it will create the requested script when you go through both pages and click "Done".
@@ -650,7 +650,7 @@ At this point you should have a working wizard that scripts the selected object.
 To package your extension as an installable `.vsix` file, you can run `vsce package` from the command line in Visual Studio Code.
 
 ## Next Steps
-Thank you for attending this Microsoft Ignite session. Now that you have learned to build your own SQL Operations Studio extensions, we encourage you to continue to build extensions and contribute to our Extensions Marketplace.
+Thank you for attending this Microsoft Ignite session. Now that you have learned to build your own Azure Data Studio extensions, we encourage you to continue to build extensions and contribute to our Extensions Marketplace.
 
 To learn to build your own extensions:
 - Get the [prerequisites](https://github.com/microsoft/sqlopsstudio/wiki/How-to-Contribute)
@@ -659,8 +659,8 @@ To learn to build your own extensions:
     - https://medium.com/@kevcunnane/writing-a-sql-operations-studio-extension-in-15-minutes-7dfd24a74dfe 
     - https://medium.com/@kevcunnane/publishing-an-extension-for-sql-operations-studio-f5a5b323c13b 
 
-Want to learn more about SQL Operations Studio?
-- Leave a star on our [Github](https://github.com/microsoft/sqlopsstudio)
-- Download [SQL Operations Studio](https://aka.ms/sqlopsstudio)
+Want to learn more about Azure Data Studio?
+- Leave a star on our [Github](https://github.com/microsoft/azuredatastudio)
+- Download [Azure Data Studio](https://aka.ms/azuredatastudio)
 - Report Issues or suggest Feature Requests on our [Github Issues page](https://github.com/microsoft/sqlopsstudio/issues)
 - Follow us on Twitter [@sqlopsstudio](https://twitter.com/sqlopsstudio)
