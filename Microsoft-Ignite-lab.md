@@ -142,7 +142,7 @@ All prerequisites are already install on machine. As a summary, here is what is 
 
 6. Click File->Save As:
     ```
-    C:\Users\LabUser\.sqlops\sample.sql
+    C:\Users\LabUser\.azuredatastudio\sample.sql
     ```
 7. Click Run.
 8. Click **View as Chart** Icon on right of Results window.
@@ -171,7 +171,7 @@ All prerequisites are already install on machine. As a summary, here is what is 
                             "columnsAsLabels": false
                         }
                     },
-                    "queryFile": "C:\\Users\\LabUser\\.sqlops\\sample.sql"
+                    "queryFile": "C:\\Users\\LabUser\\.azuredatastudio\\sample.sql"
                 }
             }
         }
