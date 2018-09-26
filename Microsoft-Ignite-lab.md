@@ -149,13 +149,13 @@ All prerequisites are already install on machine. As a summary, here is what is 
 9. Set Chart Type as **horizontalBar** and Data Direction to **Vertical**
 9. Click **Create Insight**.
 10. Edit name as 'DB Space'
-11. Edit queryfile as 'C:\Users\LabUser\\.sqlops\sample.sql'
+11. Select the whole JSON snippet and **Copy** all of it.
 12. Click bottom-left gear icon, then **Settings**
-13. Under **User Settings**, find the last ']'. Add a comma and new line, then copy and paste your insight widget:
+13. Under **User Settings** on the right, find the **second** to last '}'. Add a comma and new line, then copy and paste your insight widget.:
     ```json
-    "dashboard.database.widgets": [
+    "server.database.widgets": [
         {
-            "name": "Table Spaces",
+            "name": "DB Space",
             "gridItemConfig": {
                 "sizex": 2,
                 "sizey": 1
@@ -171,14 +171,14 @@ All prerequisites are already install on machine. As a summary, here is what is 
                             "columnsAsLabels": false
                         }
                     },
-                    "queryFile": "C:\\Users\\LabUser\\.azuredatastudio\\sample.sql"
+                    "queryFile": "C:\\Users\\LabUser\\Documents\\sample.sql"
                 }
             }
         }
     ]
     ```
-14. Hit Ctrl+S to save your settings file
-15. Right click **AdventureWorks2014** under servers and click **Manage.** You should now be able to see the table spaces widget! 
+14. Hit **Ctrl+S** to save your settings file
+15. Right click **localhost** and click **Manage.** You should now be able to see the table spaces widget! 
 
 ## Create an insight extension
 1. Open **Visual Studio Code** from the bottom task bar.
@@ -190,8 +190,8 @@ All prerequisites are already install on machine. As a summary, here is what is 
     - What's the name of your extension? **sample**
     - What's the identifier of the extension? *hit enter*
     - What's the description of your extension? **building a sample extension**
-    - What's your publisher name? *ignite*
-        - The publish name must be set, we recommend *ignite* but you can use any publisher name.
+    - What's your publisher name? *MSIgnite*
+        - The publish name must be set, we recommend *MSIgnite* but you can use any publisher name.
      
 6. You have now created a very simple extension. Now let's edit it.
 7. Type ```cd sample``` into the terminal and hit enter.
@@ -302,8 +302,69 @@ All prerequisites are already install on machine. As a summary, here is what is 
     order by d.Space_Used_MB DESC
 
     ```
-12. Open **package.json.** Under **contributes** and **dashboard.insights, change bar to **horizontalbar** and datadirection from horizontal to **vertical**.    
-12. Open **README.md** and delete the contents of the readme. Paste the following:
+12. Open **package.json.** Under **contributes** and **dashboard.insights, change bar to **horizontalbar** and datadirection from horizontal to **vertical**.
+
+If you are completely lost at this point, replace package.json contents with:
+
+    ```json
+    {
+    "name": "sample",
+    "displayName": "sample",
+    "description": "building a sample extension",
+    "version": "0.0.1",
+    "publisher": "ignite",
+    "engines": {
+        "vscode": "^1.27.0",
+        "sqlops": "*"
+    },
+    "categories": [
+        "Other"
+    ],
+    "contributes": {
+        "dashboard.insights": [
+            {
+                "id": "sample.insight",
+                "contrib": {
+                    "queryFile": "./sql/query.sql",
+                    "type": {
+                        "horizontalBar": {
+                            "dataDirection": "vertical",
+                            "dataType": "number",
+                            "legendPosition": "none",
+                            "labelFirstColumn": false,
+                            "columnsAsLabels": true
+                        }
+                    }
+                }
+            }
+        ]
+        ,
+        "dashboard.tabs": [
+            {
+                "id": "sample.tab",
+                "title": "sample",
+                "description": "",
+                "container": {
+                    "widgets-container": [
+                        {
+                            "name": "sample",
+                            "gridItemConfig": {
+                                "sizex": 2,
+                                "sizey": 1
+                            },
+                            "widget": {
+                                "sample.insight": {}
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
+    ```
+    
+12. Open **README.md** and delete the contents inside the readme. Paste the following:
     ```
     Sample insight widget extension.
     ```
