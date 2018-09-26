@@ -306,7 +306,7 @@ All prerequisites are already install on machine. As a summary, here is what is 
 
 If you are completely lost at this point, replace package.json contents with:
 
-    ```json
+    ```
     {
     "name": "sample",
     "displayName": "sample",
@@ -361,10 +361,11 @@ If you are completely lost at this point, replace package.json contents with:
             }
         ]
     }
-}
+    }    
     ```
     
 12. Open **README.md** and delete the contents inside the readme. Paste the following:
+
     ```
     Sample insight widget extension.
     ```
