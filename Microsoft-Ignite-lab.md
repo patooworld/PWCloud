@@ -373,7 +373,7 @@ If you are completely lost at this point, replace package.json contents with:
 15. Open **Azure Data Studio.** Click **File**, then click **Install Extension from VSIX package.**
 16. Paste directory link of extension and click **Install**
 17. Click **Reload Now** on bottom right.
-18. Click on arrow next to **Localhost**, arrow next to **Databases**, then right click **AdventureWorks2014** and click **Manage**
+18. Click on localhost to connect. Then right-click on localhost and click **Manage**
 19. On the line next to **Home,** click **Sample** to see your sample extension.
 20. Let's try adding multiple insight widgets. Go back to **Visual Studio Code** and add a new file under sql folder called **query2.sql**
 21. Paste the following query.
