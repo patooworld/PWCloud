@@ -306,13 +306,12 @@ All prerequisites are already install on machine. As a summary, here is what is 
 
 If you are completely lost at this point, replace package.json contents with:
 
-    ```
     {
     "name": "sample",
     "displayName": "sample",
     "description": "building a sample extension",
     "version": "0.0.1",
-    "publisher": "ignite",
+    "publisher": "msignite",
     "engines": {
         "vscode": "^1.27.0",
         "sqlops": "*"
@@ -362,7 +361,6 @@ If you are completely lost at this point, replace package.json contents with:
         ]
     }
     }    
-    ```
     
 12. Open **README.md** and delete the contents inside the readme. Paste the following:
 
