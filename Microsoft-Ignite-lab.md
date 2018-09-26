@@ -143,11 +143,8 @@ All prerequisites are already install on machine. As a summary, here is what is 
     order by d.Space_Used_MB DESC
     ```
 
-6. Click File->Save As:
-    ```
-    C:\Users\LabUser\.azuredatastudio\sample.sql
-    ```
-7. Click Run.
+6. Click **File->Save As** and save the sql file with the name **sample.sql** to Documents.
+7. Click **Run** on top left of query window.
 8. Click **View as Chart** Icon on right of Results window.
 9. Set Chart Type as **horizontalBar** and Data Direction to **Vertical**
 9. Click **Create Insight**.
