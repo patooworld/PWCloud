@@ -371,8 +371,8 @@ If you are completely lost at this point, replace package.json contents with:
 13. Hit CTRL+` to open the integrated terminal. Type 'vsce package' to package your extension. Type 'Y' and enter when prompted if you would like to continue without the repository field.
 14. Use “Ctrl + C” to copy the file location of the vsix package from the terminal.
 15. Open **Azure Data Studio.** Click **File**, then click **Install Extension from VSIX package.**
-16. Paste directory link of extension and click **Install**
-17. Click **Reload Now** on bottom right.
+16. Paste directory link of extension and click **Install.** If you can't find it, try pasting: **C:\Users\LabUser\sample\sample-0.0.1**
+17. Click **Yes** to third-party extensions on bottom-right, and **Reload Now** on bottom right.
 18. Click on localhost to connect. Then right-click on localhost and click **Manage**
 19. On the line next to **Home,** click **Sample** to see your sample extension.
 20. Let's try adding multiple insight widgets. Go back to **Visual Studio Code** and add a new file under sql folder called **query2.sql**
