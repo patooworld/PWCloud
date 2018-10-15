@@ -1,5 +1,5 @@
 # Getting Started with Azure Data Studio Extensibility
-Azure Data Studio has several extensibility mechanisms to customize the user experience and make those customizations available to the entire user community.  The core Azure Data Studio platform is build on Visual Studio Code, so most of the VS Code extensibility APIs are available.  Additionally, we've provided additional extensibility points for data management specific activities.
+Azure Data Studio has several extensibility mechanisms to customize the user experience and make those customizations available to the entire user community.  The core Azure Data Studio platform is built on Visual Studio Code, so most of the VS Code extensibility APIs are available.  Additionally, we've provided additional extensibility points for data management specific activities.
 
 Some of the key extensibility points are listed below.
 
