@@ -25,7 +25,8 @@ All prerequisites are already install on machine. As a summary, here is what is 
 - [Node.JS](https://nodejs.org/en/), `>= 8.9.1, < 9.0.0`
 - [Yarn](https://yarnpkg.com/en/), follow the [installation guide](https://yarnpkg.com/en/docs/install)
 - [Python](https://www.python.org/downloads/), at least version 2.7 (version 3 is __*not*__ supported)
-- [Generator-sqlops](https://github.com/llali/generator-sqlops)
+- [Yeoman](http://yeoman.io), `npm install -g yo`
+- [Generator-sqlops](https://github.com/llali/generator-sqlops), `npm install -g generator-sqlops`
 - [SQL Server 2017 developer edition](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 - Visual Studio Code extensions
     - Azure Data Studio debug
