@@ -29,7 +29,7 @@ All prerequisites are already install on machine. As a summary, here is what is 
 - [Generator-sqlops](https://github.com/llali/generator-sqlops), `npm install -g generator-sqlops`
 - [SQL Server 2017 developer edition](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 - Visual Studio Code extensions
-    - Azure Data Studio debug
+    - [SQL Operations Studio debug](https://marketplace.visualstudio.com/items?itemName=ms-mssql.sqlops-debug)
     - mssql extension
     - Debugger for Chrome
 - npm packages
