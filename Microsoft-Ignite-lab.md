@@ -715,6 +715,8 @@ To package your extension as an installable `.vsix` file, you can run `vsce pack
 ## Next Steps
 Thank you for attending this Microsoft Ignite session. Now that you have learned to build your own Azure Data Studio extensions, we encourage you to continue to build extensions and contribute to our Extensions Marketplace.
 
+If you want to extend the code you created here it is available in its own GitHub repository at https://github.com/MattIrv/AzureDataStudioScriptAsDemo
+
 To learn to build your own extensions:
 - Get the [prerequisites](https://github.com/microsoft/sqlopsstudio/wiki/How-to-Contribute)
 - Follow along on our [Github Wiki Get Started](https://github.com/microsoft/sqlopsstudio/wiki/Getting-started-with-Extensibility)  
@@ -726,4 +728,4 @@ Want to learn more about Azure Data Studio?
 - Leave a star on our [Github](https://github.com/microsoft/azuredatastudio)
 - Download [Azure Data Studio](https://aka.ms/azuredatastudio)
 - Report Issues or suggest Feature Requests on our [Github Issues page](https://github.com/microsoft/sqlopsstudio/issues)
-- Follow us on Twitter [@sqlopsstudio](https://twitter.com/sqlopsstudio)
+- Follow us on Twitter [@azuredatastudio](https://twitter.com/azuredatastudio)
