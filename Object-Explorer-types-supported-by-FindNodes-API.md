@@ -1,4 +1,4 @@
-SQL Operations Studio ships with support for the following types when using [Object Explorer's `findNodes` API](https://github.com/Microsoft/sqlopsstudio/wiki/Extensibility-API#object-explorer):
+Azure Data Studio ships with support for the following types when using [Object Explorer's `findNodes` API](https://github.com/Microsoft/sqlopsstudio/wiki/Extensibility-API#object-explorer):
 
 ```
 AggregateFunction

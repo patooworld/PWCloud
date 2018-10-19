@@ -27,7 +27,7 @@ credentials: {
 
 ## Object Explorer
 `sqlops.objectexplorer`
-Also see the [list of types that SQL Operations Studio supports by default](https://github.com/Microsoft/sqlopsstudio/wiki/Object-Explorer-types-supported-by-FindNodes-API) for the `findNodes` API.
+Also see the [list of types that Azure Data Studio supports by default](https://github.com/Microsoft/sqlopsstudio/wiki/Object-Explorer-types-supported-by-FindNodes-API) for the `findNodes` API.
 ```
 private async interactWithOENode(selectedNode: sqlops.objectexplorer.ObjectExplorerNode): Promise<void> {
 	let choices = ['Expand', 'Collapse', 'Select', 'Select (multi)', 'Deselect', 'Deselect (multi)'];

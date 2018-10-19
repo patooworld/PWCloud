@@ -1,19 +1,19 @@
-Note that this is not a guide on Angular; this is a guide on the specifics of using Angular inside SQL Operations Studio. 
+Note that this is not a guide on Angular; this is a guide on the specifics of using Angular inside Azure Data Studio. 
 
-SQL Operations Studio uses [Angular2](https://angular.io/docs/ts/latest/quickstart.html) to display some UI components. SQL Operations Studio uses a slightly different Angular design philosophy than most Angular applications due to the fact that SQL Operations Studio:
+Azure Data Studio uses [Angular2](https://angular.io/docs/ts/latest/quickstart.html) to display some UI components. Azure Data Studio uses a slightly different Angular design philosophy than most Angular applications due to the fact that Azure Data Studio:
 - is a fork of an existing non-Angular app.
 - reuses Angular Components from [vscode-mssql](https://github.com/Microsoft/vscode-mssql).
 - uses a custom module loader.
 
 The UI for standard Angular applications is handled entirely with Angular. In such applications, a single root Angular Module is [bootstrapped](https://angular.io/docs/ts/latest/guide/appmodule.html), launching with an entry point into a `bootstrap` (root) component. The single root Angular Module persists for the entire duration of the UI's existence. 
 
-SQL Operations Studio's UI is handled differently. SQL Operations Studio has a mixture of both raw JavaScript/HTML and Angular. SQL Operations Studio has various Angular Modules sprinkled throughout its UI, each of which can be constructed or deconstructed at any time. 
+Azure Data Studio's UI is handled differently. Azure Data Studio has a mixture of both raw JavaScript/HTML and Angular. Azure Data Studio has various Angular Modules sprinkled throughout its UI, each of which can be constructed or deconstructed at any time. 
 
-SQL Operations Studio's unique UI results in the need to have patterns that differ from what the official documentation suggests. Specifically, SQL Operations Studio differs in the ways described below. 
+Azure Data Studio's unique UI results in the need to have patterns that differ from what the official documentation suggests. Specifically, Azure Data Studio differs in the ways described below. 
 
 ### Bootstrapping Modules
 
-Bootstrapping is the process of instantiating an instance of an Angular Module. Bootstrapping an Angular Module in SQL Operations Studio requires the following steps.
+Bootstrapping is the process of instantiating an instance of an Angular Module. Bootstrapping an Angular Module in Azure Data Studio requires the following steps.
 
 - Create a root Angular Component. This is what describes the initial UI of the Module. Pass `this._el.nativeElement.tagName` to `BootstrapService.getBootstrapParams` to receive any parameters you pass when calling `bootstrap`. 
 ```

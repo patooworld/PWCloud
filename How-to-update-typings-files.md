@@ -1,4 +1,4 @@
-Typing files enable the easy usage of JavaScript files in TypeScript projects. For SQL Operations Studio, the typings files are located at `/src/typings`. If you add a new npm dependency or update an existing one, you may need to update the typings files in order to enable proper compilation and intellisense. 
+Typing files enable the easy usage of JavaScript files in TypeScript projects. For Azure Data Studio, the typings files are located at `/src/typings`. If you add a new npm dependency or update an existing one, you may need to update the typings files in order to enable proper compilation and intellisense. 
 
 Steps:
 - Add the dependency to the `/package.json` and `/shrinkwrap.json` files. 

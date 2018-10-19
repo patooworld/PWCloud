@@ -28,7 +28,7 @@
 **Documentation**
 
 * [MS Docs Overview](https://aka.ms/sqlopsstudio-docs)
-* [Install SQL Operations Studio](https://aka.ms/sqlopsstudio)
+* [Install Azure Data Studio](https://aka.ms/sqlopsstudio)
 * [Get Started](https://aka.ms/get-started-sqlopsstudio)
 * [How to Disable Telemetry Reporting](How-to-Disable-Telemetry-Reporting)
 * [FAQ](https://docs.microsoft.com/sql/sql-operations-studio/faq)

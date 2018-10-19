@@ -107,7 +107,7 @@ It will do an initial full build and then watch for file changes, compiling thos
 
 
 ### Debugging
-You can either use VS Code or the Chrome Developer Tools to debug SQL Operations Studio.
+You can either use VS Code or the Chrome Developer Tools to debug Azure Data Studio.
 
 #### Using VSCode
 * Install the [Debugger for Chrome](https://marketplace.visualstudio.com/items/msjsdiag.debugger-for-chrome) extension. This extension will let you attach to and debug client side code running in Chrome.
@@ -117,8 +117,8 @@ You can either use VS Code or the Chrome Developer Tools to debug SQL Operations
 
 #### Using the Chrome Developer Tools
 
-* Run the `Developer: Toggle Developer Tools` command from the Command Palette in your development instance of SQL Operations Studio to launch the Chrome tools.
-* It's also possible to debug the released versions of SQL Operations Studio, since the sources link to sourcemaps hosted online.
+* Run the `Developer: Toggle Developer Tools` command from the Command Palette in your development instance of Azure Data Studio to launch the Chrome tools.
+* It's also possible to debug the released versions of Azure Data Studio, since the sources link to sourcemaps hosted online.
 
   <img src='./media/chrome_developer_tools.png'>
 

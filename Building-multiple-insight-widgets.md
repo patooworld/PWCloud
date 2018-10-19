@@ -1,6 +1,6 @@
 # Introduction
 
-In this session, you will learn to build your own extensions for [SQL Operations Studio](https://aka.ms/sqlopsstudio). SQL Operations Studio is a data management tool that enables you to work with SQL Server, Azure SQL DB and SQL DW from Windows, macOS and Linux. In addition to providing core functionality like a rich T-SQL editing experience, we also provide an Extension Marketplace where the community can contribute their own **Extensions** so that anyone can use the extension.
+In this session, you will learn to build your own extensions for [Azure Data Studio](https://aka.ms/sqlopsstudio). Azure Data Studio is a data management tool that enables you to work with SQL Server, Azure SQL DB and SQL DW from Windows, macOS and Linux. In addition to providing core functionality like a rich T-SQL editing experience, we also provide an Extension Marketplace where the community can contribute their own **Extensions** so that anyone can use the extension.
 
 These extensions are generally lighted up through our **Dashboard**, where users can quickly monitor and troubleshoot their databases.
 
@@ -16,7 +16,7 @@ Over the course of this session, you will:
 
 ## Prerequisites
 All prerequisites are already install on machine. As a summary, here is what is pre-installed:
-- [SQL Operations Studio](https://aka.ms/sqlopsstudio)
+- [Azure Data Studio](https://aka.ms/sqlopsstudio)
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Git](https://git-scm.com)
 - [Node.JS](https://nodejs.org/en/), `>= 8.9.1, < 9.0.0`
@@ -25,14 +25,14 @@ All prerequisites are already install on machine. As a summary, here is what is 
 - [Generator-sqlops](https://github.com/llali/generator-sqlops)
 - [SQL Server 2017 developer edition](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 - Visual Studio Code extensions
-    - SQL Operations Studio debug
+    - Azure Data Studio debug
     - mssql extension
     - Debugger for Chrome
 - npm packages
     - npm install -g vsce
 
 ## Create an insight widget
-1. Open SQL Operations Studio.
+1. Open Azure Data Studio.
 2. Click new connection.
 3. Select **Localhost** from **Saved Locations** and click **Connect.**
 4. Click arrow next to localhost under Servers, then click arrow by databases, then **right click** AdventureWorks2014 and click **New Query**
@@ -108,7 +108,7 @@ All prerequisites are already install on machine. As a summary, here is what is 
 ## Create an insight extension
 1. Open **Visual Studio Code** from the bottom task bar.
 2. If the terminal is not already open, Hit Ctrl+` to open the Integrated Terminal **Note:** This is not the apostrophe, this is the grave accent below the ESC key.
-3. Type ```yo sqlops``` and hit Enter. This opens the SQL Operations Studio Extension generator. This allows you to quickly get started on building an extension of your choice. 
+3. Type ```yo sqlops``` and hit Enter. This opens the Azure Data Studio Extension generator. This allows you to quickly get started on building an extension of your choice. 
 4. To start off, use arrow keys and hit enter on **New Dashboard Insight.**
 5. Follow these instructions:
     - Add a full dashboard tab? **Y**
@@ -160,7 +160,7 @@ All prerequisites are already install on machine. As a summary, here is what is 
 13. Click **File->Save All**. 
 13. Hit CTRL+` to open the integrated terminal. Type 'vsce package' to package your extension. Type 'Y' and enter when prompted if you would like to continue without the repository field.
 14. Use “Ctrl + C” to copy the file location of the vsix package from the terminal.
-15. Open **SQL Operations Studio.** Click **File**, then click **Install Extension from VSIX package.**
+15. Open **Azure Data Studio.** Click **File**, then click **Install Extension from VSIX package.**
 16. Paste directory link of extension and click **Install**
 17. Click **Reload Now** on bottom right.
 18. Click on arrow next to **Localhost**, arrow next to **Databases**, then right click **AdventureWorks2014** and click **Manage**
@@ -333,7 +333,7 @@ All prerequisites are already install on machine. As a summary, here is what is 
 
 ## Create an extension using Typescript
 1. Hit Ctrl+` to open the Integrated Terminal **Note:** This is not the apostrophe, this is the grave accent below the ESC key. 
-1. Type ```yo sqlops``` and hit Enter. This opens the SQL Operations Studio Extension generator. 
+1. Type ```yo sqlops``` and hit Enter. This opens the Azure Data Studio Extension generator. 
 1. To start off, use arrow keys and hit enter on **New Extension (Typescript)**
 1. Follow these instructions:
     - What's the name of your extension? **TypeSample**
@@ -482,14 +482,14 @@ All prerequisites are already install on machine. As a summary, here is what is 
 3. Remove everything from readme.md and save. (“File>Save All” if you have not saved the other files already)
 4. Hit CTRL+` to open the integrated terminal. Type 'vsce package' to package your extension. Type 'Y' and enter when prompted if you would like to continue without the repository field.
 5. Copy the directory link of your extension.
-6. Open **SQL Operations Studio.** Click **File**, then click **Install Extension from VSIX package.**
+6. Open **Azure Data Studio.** Click **File**, then click **Install Extension from VSIX package.**
 7. Paste directory link of extension and click **Install**
 8. Click **Reload Now** on bottom right.
 9. Click on arrow next to **Localhost**, arrow next to **Databases**, then right click **AdventureWorks2014** and click **Manage**
 10. On the line next to **Home,** click **TypeSample** to see your sample extension. 
 
 ## Next Steps
-Thank you for attending this Microsoft Build session. Now that you have learned to build your own SQL Operations Studio extensions, we encourage you to continue to build extensions and contribute to our Extensions Marketplace.
+Thank you for attending this Microsoft Build session. Now that you have learned to build your own Azure Data Studio extensions, we encourage you to continue to build extensions and contribute to our Extensions Marketplace.
 
 To learn to build your own extensions:
 - Get the [prerequisites](https://github.com/microsoft/sqlopsstudio/wiki/How-to-Contribute)
@@ -498,8 +498,8 @@ To learn to build your own extensions:
     - https://medium.com/@kevcunnane/writing-a-sql-operations-studio-extension-in-15-minutes-7dfd24a74dfe 
     - https://medium.com/@kevcunnane/publishing-an-extension-for-sql-operations-studio-f5a5b323c13b 
 
-Want to learn more about SQL Operations Studio?
+Want to learn more about Azure Data Studio?
 - Leave a star on our [Github](https://github.com/microsoft/sqlopsstudio)
-- Download [SQL Operations Studio](https://aka.ms/sqlopsstudio)
+- Download [Azure Data Studio](https://aka.ms/sqlopsstudio)
 - Report Issues or suggest Feature Requests on our [Github Issues page](https://github.com/microsoft/sqlopsstudio/issues)
 - Follow us on Twitter @sqlopsstudio

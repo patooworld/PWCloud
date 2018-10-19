@@ -65,7 +65,7 @@ Argument of type 'typeof MyClass' is not assignable to parameter of type 'AsyncD
 ```
 
 **Q:** How can I inspect the HTML or CSS?    
-**A:** Install the "Debugger for Chrome" extension for vscode. Run SQL Operations Studio. Detach the vscode debugger if you have it attached. Then go to Help -> Toggle Developer Tools. This will launch the Chrome Debugger. The "Select an element in the page to inspect it Ctrl + Shift + C" icon is particularly helpful. 
+**A:** Install the "Debugger for Chrome" extension for vscode. Run Azure Data Studio. Detach the vscode debugger if you have it attached. Then go to Help -> Toggle Developer Tools. This will launch the Chrome Debugger. The "Select an element in the page to inspect it Ctrl + Shift + C" icon is particularly helpful. 
 
 **Q:** What is the difference between editors and inputs?   
 **A:** Editors contain the UI logic and are intended to be stateless. Inputs contain the state for editors and do not alter the UI. There can be many inputs for a single editor. 
@@ -81,7 +81,7 @@ In the case where there are split editors (2 editors simultaneously side-by-side
 1. Open file <sqlopsstudio repo root path>\extensions\mssql\client\src\config.json. Under service property, check the version value of sqltoolservice extension. For eg., "version": "1.2.0-alpha.1".  
 2. Open build folder path for sqltoolsservice: <sqltoolsservice root path>\src\Microsoft.SqlTools.ServiceLayer\bin\Debug\netcoreapp2.0\publish.  
 3. Copy the sqltoolsservice binaries from above publish folder to sqlopsstudio sqltoolsservice extension path ([sqlopsstudio repo root path]\extensions\mssql\sqltoolsservice\Windows\[Version]\). The [Version] should be the same as version value in step 1.  
-4. Run SQL Operations Studio.  
+4. Run Azure Data Studio.  
 5. Open Sqltoolservice project in VS code IDE.   
 6. Select Debug in the Activity Bar. Select 'Attach(Remote Debug)' in the drop-down next to debug 'Play' icon.  
 7. Click on the Debug/Play button.  

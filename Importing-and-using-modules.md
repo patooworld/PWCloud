@@ -1,7 +1,7 @@
 # Importing npm modules
 ## Adding to the package.json
 
-This repository uses _npm-shrinkwrap_, which will overwrite anything in the package.json. Therefore, just running `npm install --save {node module}` will not be enough to make those module download during `npm install`. The process to add a non-dev only dependency to SQL Operations Studio is below. 
+This repository uses _npm-shrinkwrap_, which will overwrite anything in the package.json. Therefore, just running `npm install --save {node module}` will not be enough to make those module download during `npm install`. The process to add a non-dev only dependency to Azure Data Studio is below. 
   - Note that for dev only dependencies the below steps can be ignored as _npm-shrinkwrap_ doesn't matter. Using `npm install --save-dev {node module}` will work just fine
   - While the below steps look complicated, they get around the inherent issues with shrinkwrap and are based on current known best practices. If you have an update / suggestion on improving please let us know!
 
