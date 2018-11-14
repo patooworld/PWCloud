@@ -48,10 +48,10 @@ https://github.com/Microsoft/azuredatastudio/blob/release/extensions/extensionsG
 
 2. Upload the VSIX package
 
-### Third party extensions:
+Third party extensions:
 We don't have support to host third party extensions for now. Instead of downloading the extension, ADS has the option to browses to the download page. To be able to set a download page for your extension please set the value of asset "Microsoft.SQLOps.DownloadPage".
 
-### Microsoft extensions:
+Microsoft extensions:
 contact alanren for help.
 
 3. Create a PR against release/extensions branch
