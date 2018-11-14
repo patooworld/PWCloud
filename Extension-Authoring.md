@@ -6,7 +6,7 @@ If you're interested in extending SQL Operation Studio, you can do that by creat
 
 To develop an extension you need Node.js installed and available in your $PATH. Node.js includes npm, the Node.js Package Manager, which will be used to install the extension generator.
 
-To start your new extension, you can use the SQL Operations Studio Extension generator. The Yeoman [extension generator](https://www.npmjs.com/package/generator-sqlops) makes it very easy to create simple extension projects. To Launch the generator, type the following in a command prompt:
+To start your new extension, you can use the Azure Data Studio Extension generator. The Yeoman [extension generator](https://www.npmjs.com/package/generator-sqlops) makes it very easy to create simple extension projects. To Launch the generator, type the following in a command prompt:
 
 `npm install -g yo generator-sqlops`
 
@@ -15,7 +15,7 @@ To start your new extension, you can use the SQL Operations Studio Extension gen
 
 **Extensibility References**
 
-Please see [Extensibility References](https://github.com/Microsoft/sqlopsstudio/wiki/Getting-started-with-Extensibility) to learn about SQL Operations Studio Extensibility API. You can also see examples of how to use the API in existing [samples](https://github.com/Microsoft/sqlopsstudio/tree/master/samples).
+Please see [Extensibility References](https://github.com/Microsoft/azuredatastudio/wiki/Getting-started-with-Extensibility) to learn about Azure Data Studio Extensibility API. You can also see examples of how to use the API in existing [samples](https://github.com/Microsoft/azuredatastudio/tree/master/samples).
 
 
 **Debugging Extension**
@@ -24,14 +24,14 @@ You can debug your new extension using Visual Studio Code extension [SQL Operati
 
 Steps
 - Open your extension with [Visual Studio Code](https://code.visualstudio.com/)
-- Install SQL Operations Studio Debug extension
+- Install Azure Data Studio Debug extension
 - Press F5 or click the Debug icon and click Start
-- A new instance of SQL Operations Studio will start in a special mode (Extension Development Host) and this new instance is now aware of your extension.
+- A new instance of Azure Data Studio will start in a special mode (Extension Development Host) and this new instance is now aware of your extension.
 
 
 **Creating Extension Package**
 
-After writing your extension, you need to create a VSIX package to be able to install it in SQL Operations Studio. You can use [vsce](https://github.com/Microsoft/vscode-vsce) to create VSIX package.
+After writing your extension, you need to create a VSIX package to be able to install it in Azure Data Studio. You can use [vsce](https://github.com/Microsoft/vscode-vsce) to create VSIX package.
 
 `npm install -g vsce`
 
@@ -40,13 +40,21 @@ After writing your extension, you need to create a VSIX package to be able to in
 
 **Publishing the Extension**
 
-To publish your new extension to SQL Ops Studio
-1. Add your extension to https://github.com/Microsoft/sqlopsstudio/blob/release/extensions/extensionsGallery.json
-2. We don't have support to host third party extension for now. Instead of downloading the extension, SQL Ops has the option to browses to the download page. To be able to set a download page for your extension please set the value of asset "Microsoft.SQLOps.DownloadPage". 
+To publish your new extension to Azure Data Studio
+1. Add your extension to the extension gallery file or edit it if updating your extension. update these 2 files accordingly.
+If the new extension release works with the latest stable version of ADS update this file: https://github.com/Microsoft/azuredatastudio/blob/release/extensions/extensionsGallery.json
+If the new extension release works with the insiders build of ADS update this file:
+https://github.com/Microsoft/azuredatastudio/blob/release/extensions/extensionsGallery-insider.json
+
+2. Upload the VSIX package
+Third party extensions:
+We don't have support to host third party extensions for now. Instead of downloading the extension, ADS has the option to browses to the download page. To be able to set a download page for your extension please set the value of asset "Microsoft.SQLOps.DownloadPage".
+Microsoft extensions:
+contact alanren for help.
 3. Create a PR against release/extensions branch
-4. Send a review request to llali
+4. Send a review request to alanrenmsft
 
 Your extension will be reviewed and will be added to the extension gallery.
 
 **Publishing Extension Updates**
-The process to publish updates is similar to publishing the extension. Please make sure the version is updated in package.json
+The process to publish updates is similar to publishing the extension. Please make sure the version is updated in your package.json
