@@ -14,7 +14,7 @@ git clone https://github.com/Microsoft/azuredatastudio.git
 ### Installing Prerequisites
 
 - [Git](https://git-scm.com)
-- [Node.JS](https://nodejs.org/en/), `>= 8.9.1, < 9.0.0`
+- [Node.JS](https://nodejs.org/en/), `>= 8.12.0, < 9.0.0`
 - [Yarn](https://yarnpkg.com/en/), follow the [installation guide](https://yarnpkg.com/en/docs/install)
 - [Python](https://www.python.org/downloads/), at least version 2.7 (version 3 is __*not*__ supported)
 - C/C++ compiler tool chain
