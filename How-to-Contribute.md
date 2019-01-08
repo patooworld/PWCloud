@@ -125,6 +125,13 @@ You can either use VS Code or the Chrome Developer Tools to debug Azure Data Stu
 ### Automated Testing
 Run the unit tests directly from a terminal by running `./scripts/test.sh` from the `azuredatastudio` folder (`scripts\test` on Windows). The [test README](https://github.com/Microsoft/azuredatastudio/blob/master/test/README.md) has complete details on how to run and debug tests, as well as how to produce coverage reports.
 
+Run the integration tests directly from a terminal by running `./scripts/sql-test-integration.sh` from the `azuredatastudio` folder (`scripts\sql-test-integration.bat` on Windows).
+To debug the integration tests, run the script mentioned above and then attach to the extension host.
+
+(Windows only for now) Run the smoke tests directly from a terminal by running `node test\index.js` from the `azuredatastudio\test\smoke\` folder.
+
+To debug the smoke test, in VSCode, select `Launch Smoke Test` from the launch option.
+
 ### Linting
 We use [tslint](https://github.com/palantir/tslint) for linting our sources. You can run tslint across the sources by calling `gulp tslint` from a terminal or command prompt.
 
