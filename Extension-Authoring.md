@@ -1,4 +1,4 @@
-If you're interested in extending SQL Operation Studio, you can do that by creating your own extension and publish it to SQL Ops extension gallery.
+If you're interested in extending Azure Data Studio, you can do that by creating your own extension and publish it to the Azure Data Studio extension gallery.
 
 **Writing an Extension**
 
