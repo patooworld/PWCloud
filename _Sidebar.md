@@ -26,7 +26,7 @@
 * [List of Extensions](List-of-Extensions)
 
 **Documentation**
-
+* [Microsoft Ready 2019 Lab](Microsoft-Ready-Lab-2019)
 * [MS Docs Overview](https://aka.ms/sqlopsstudio-docs)
 * [Install Azure Data Studio](https://aka.ms/sqlopsstudio)
 * [Get Started](https://aka.ms/get-started-sqlopsstudio)
