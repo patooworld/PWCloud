@@ -190,8 +190,8 @@ All prerequisites are already install on machine. As a summary, here is what is 
     - What's the name of your extension? **sample**
     - What's the identifier of the extension? *hit enter*
     - What's the description of your extension? **building a sample extension**
-    - What's your publisher name? *MSIgnite*
-        - The publish name must be set, we recommend *MSIgnite* but you can use any publisher name.
+    - What's your publisher name? *MSReady*
+        - The publish name must be set, we recommend *MSReady* but you can use any publisher name.
      
 6. You have now created a very simple extension. Now let's edit it.
 7. Type ```cd sample``` into the terminal and hit enter.
