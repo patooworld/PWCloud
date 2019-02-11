@@ -154,7 +154,38 @@ All prerequisites are already install on machine. As a summary, here is what is 
 12. Click bottom-left gear icon, then **Settings**
 13. Under **User Settings** on the right, find the last '}'. On the line above, add a comma to the end, press enter, then copy the snippet below:
     ```json
-    "server.database.widgets": [
+    "dashboard.server.widgets": [
+        {
+            "name": "Tasks",
+            "gridItemConfig": {
+                "sizex": 1,
+                "sizey": 1
+            },
+            "widget": {
+                "tasks-widget": [
+                    {
+                        "name": "backup",
+                        "when": "!mssql:iscloud"
+                    },
+                    {
+                        "name": "restore",
+                        "when": "!mssql:iscloud"
+                    },
+                    "configureDashboard",
+                    "newQuery"
+                ]
+            }
+        },
+        {
+            "name": "Search",
+            "gridItemConfig": {
+                "sizex": 1,
+                "sizey": 2
+            },
+            "widget": {
+                "explorer-widget": {}
+            }
+        },
         {
             "name": "DB Space",
             "gridItemConfig": {
