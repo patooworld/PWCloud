@@ -152,7 +152,7 @@ All prerequisites are already install on machine. As a summary, here is what is 
 10. Edit name as 'DB Space'
 11. Select the whole JSON snippet and **Copy** all of it.
 12. Click bottom-left gear icon, then **Settings**
-13. Under **User Settings** on the right, find the **second** to last '}'. Add a comma and new line, then copy and paste your insight widget.:
+13. Under **User Settings** on the right, find the last '}'. On the line above, add a comma to the end, press enter, then copy the snippet below:
     ```json
     "server.database.widgets": [
         {
