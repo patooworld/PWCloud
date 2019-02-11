@@ -38,7 +38,7 @@ All prerequisites are already install on machine. As a summary, here is what is 
 1. Open Azure Data Studio.
 2. Click new connection.
 3. Select **Localhost** from **Saved Locations** and click **Connect.**
-4. Click arrow next to localhost under Servers, then click arrow by databases, then **right click** AdventureWorks2014 and click **New Query**
+4. Click arrow next to localhost under Servers, then click arrow by databases, then **right click** WideWorldImporters and click **New Query**
 5. Copy and paste this snippet
     ```sql
     ------------------------------Data file size----------------------------
