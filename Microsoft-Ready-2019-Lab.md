@@ -1,5 +1,5 @@
 # Read First
-During the Microsoft Ready lab you will be following these instructions on a virtual machine and should open this guide in the virtual machine so that you can copy/paste code. Open a web browser in the virtual machine and type in `https://github.com/Microsoft/azuredatastudio/wiki/Microsoft-Ready-2019-lab` to access this guide
+During the Microsoft Ready lab you will be following these instructions on your own device. Open a browser on your device for these instructions, and not inside the actual VM. We will be copy/pasting snippets from this lab to inside the VM. 
 
 # Introduction
 
