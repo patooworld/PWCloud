@@ -31,4 +31,5 @@
 * [Install Azure Data Studio](https://aka.ms/sqlopsstudio)
 * [Get Started](https://aka.ms/get-started-sqlopsstudio)
 * [How to Disable Telemetry Reporting](How-to-Disable-Telemetry-Reporting)
+* [How to turn on Backend Logging](How-to-turn-on-Backend-Logging)
 * [FAQ](https://docs.microsoft.com/sql/sql-operations-studio/faq)
