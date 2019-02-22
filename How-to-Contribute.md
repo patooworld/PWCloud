@@ -97,7 +97,7 @@ git clean -fxd
 ## Development Workflow
 
 ### Incremental Build
-From a terminal, where you have cloned the `sqlopsstudio` repository, execute the following command to run the TypeScript incremental builder:
+From a terminal, where you have cloned the `azuredatastudio` repository, execute the following command to run the TypeScript incremental builder:
 
 ```bash
 yarn run watch
