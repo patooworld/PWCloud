@@ -19,12 +19,28 @@ git clone https://github.com/Microsoft/azuredatastudio.git
 - [Python](https://www.python.org/downloads/), at least version 2.7 (version 3 is __*not*__ supported)
 - C/C++ compiler tool chain
   - **Windows**
-    - Set a `PYTHON` environment variable pointing to your `python.exe`. Eg: `C:\Python27\python.exe`
-    - [Visual Studio 2013 for Windows Desktop](https://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx?wt.mc_id=github_microsoft_vscode) or [Visual Studio 2015](https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx?wt.mc_id=github_microsoft_vscode), make sure to select the option to install all C++ tools and the Windows SDK.
-    - You can also use Felix Rieseberg's [Windows Build Tools npm module](https://github.com/felixrieseberg/windows-build-tools) instead of Visual Studio. The `--debug` flag is helpful if you encounter any problems during installation
-    - Please note that building and debugging via the Windows subsystem for Linux (WSL) is currently not supported.
-  - **OS X**
-    - [Xcode](https://developer.apple.com/xcode/downloads/) and the Command Line Tools (Xcode -> Preferences -> Downloads), which will install `gcc` and the related toolchain containing `make`
+    - Set a `PYTHON` environment variable pointing to your `python.exe`. E.g.: `C:\Python27\python.exe`
+	- Install a compiler for the native modules Azure Data Studio depends on
+		- Option 1 (recommended): Use Windows Build Tools npm module
+			- Start Powershell as Administrator and install [Windows Build Tools npm module](https://github.com/felixrieseberg/windows-build-tools) ([documentation](https://github.com/felixrieseberg/windows-build-tools#visual-studio-2017-vs-visual-studio-2015)).
+				```
+				npm install --global windows-build-tools --vs2015
+				```
+				**Note:** The `--debug` flag is helpful if you encounter any problems during installation.
+
+				**Note:** if you encounter an error *The build tools for v141 (Platform Toolset = 'v141') cannot be found."* you might have a version of Visual Studio installed. Either uninstall that version or make sure to have *VC++ 2015.3 v14.00 (v140) toolset for desktop* installed (see below)
+		- Option 2: Use Visual Studio 2017
+			- Install [Visual Studio 2017 Community Edition](https://visualstudio.microsoft.com/downloads/)
+			- Select *Desktop Development with C++*
+			- Select *VC++ 2015.3 v14.00 (v140) toolset for desktop* on the right hand side
+
+				**Note:** if you encounter an error *The build tools for v141 (Platform Toolset = 'v141') cannot be found."* make sure you installed the *VC++ 2015.3 v14.00 (v140) toolset for desktop* from the previous step
+	- **Restart** your computer
+    - **Warning:** Make sure your profile path only contains ASCII letters, e.g. *John*, otherwise it can lead to [node-gyp usage problems (nodejs/node-gyp/issues#297)](https://github.com/nodejs/node-gyp/issues/297)
+    - **Note**: Building and debugging via the Windows subsystem for Linux (WSL) is currently not supported.
+  - **macOS**
+    - [Xcode](https://developer.apple.com/xcode/downloads/) and the Command Line Tools, which will install `gcc` and the related toolchain containing `make`
+      - Run `xcode-select --install` to install the Command Line Tools
   - **Linux**
     * `make`
     * [GCC](https://gcc.gnu.org) or another compile toolchain
