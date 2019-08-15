@@ -41,6 +41,7 @@ git clone https://github.com/Microsoft/azuredatastudio.git
   - **macOS**
     - [Xcode](https://developer.apple.com/xcode/downloads/) and the Command Line Tools, which will install `gcc` and the related toolchain containing `make`
       - Run `xcode-select --install` to install the Command Line Tools
+    - [MIT Kerberos library]. This should be installed with Xcode, but if this fails install homebrew and run `brew install krb5` to install this.
   - **Linux**
     * `make`
     * [GCC](https://gcc.gnu.org) or another compile toolchain
@@ -50,6 +51,9 @@ git clone https://github.com/Microsoft/azuredatastudio.git
     * [keytar](https://www.npmjs.com/package/keytar) needs `libsecret-1-dev`.
       * On Debian-based Linux: `sudo apt-get install libsecret-1-dev`.
       * On Red Hat-based Linux: `sudo yum install libsecret-devel`.
+    * [MIT Kerberos library]
+      * On Debian-based Linux: `sudo apt-get install libkrb5-dev`.
+      * On Red Hat-based Linux: `sudo yum install -y krb5-devel`.
     * Building deb and rpm packages requires `fakeroot` and `rpm`, run: `sudo apt-get install fakeroot rpm`
 
 Finally, install all dependencies using `Yarn`:
