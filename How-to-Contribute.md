@@ -42,7 +42,7 @@ git clone https://github.com/Microsoft/azuredatastudio.git
     - [Xcode](https://developer.apple.com/xcode/downloads/) and the Command Line Tools, which will install `gcc` and the related toolchain containing `make`
       - Run `xcode-select --install` to install the Command Line Tools
     - [MIT Kerberos library]. This should be installed with Xcode, but if this fails install homebrew and run `brew install krb5` to install this.
-  - **Linux**
+  - **Linux (please note: we do not support the [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/about))**
     * `make`
     * [GCC](https://gcc.gnu.org) or another compile toolchain
     * [native-keymap](https://www.npmjs.com/package/native-keymap) needs `libx11-dev` and `libxkbfile-dev`.
