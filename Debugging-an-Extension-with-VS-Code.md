@@ -55,7 +55,15 @@ We removed the DebugService in SQL Ops Studio. This does some magic when VS Code
             "name": "SqlOps Extension",
             "type": "sqlopsExtensionHost",
             "request": "launch",
-            "runtimeExecutable": "$SQLOPS_DEV/scripts/sql.sh",
+            "windows": {
+                "runtimeExecutable": "${env:SQLOPS_DEV}/scripts/sql.bat",
+            },
+            "osx": {
+                "runtimeExecutable": "$SQLOPS_DEV/scripts/sql.sh"
+            },
+            "linux": {
+                "runtimeExecutable": "$SQLOPS_DEV/scripts/sql.sh"
+            },
             "args": ["--extensionDevelopmentPath=${workspaceRoot}" ],
             "stopOnEntry": false,
             "sourceMaps": true,
