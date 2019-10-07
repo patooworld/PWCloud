@@ -99,11 +99,13 @@ Go to debugging -> Launch azuredatastudio
 
 This step isn't necessary in development, but if you want to create a build with optimized source code for production. Essentially a "release" quality build:
 
-```bash
-# for windows
+```batch
+REM for windows
 yarn run gulp vscode-win32-x64
 cd ../sqlops-windows-x64
+```
 
+```bash
 # for macOS
 yarn run gulp vscode-darwin
 cd ../sqlops-darwin
