@@ -3,7 +3,7 @@
 - Node Version Manager
   - [Windows](https://github.com/coreybutler/nvm-windows)
   - [Linux and Mac](https://github.com/nvm-sh/nvm)
-- Yarn: Install after you have node version manager with `npm install -g yarn`.
+- Yarn: Install after you have node version manager with `npm install -g yarn` - we go over this on the bottom of the document as well.
 - [Python](https://www.python.org/downloads/) anything between 2.7 and 3.0 (version 3 is __*not*__ supported)
 - C/C++ compiler tool chain
   - **Windows**
