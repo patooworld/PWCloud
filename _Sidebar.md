@@ -4,6 +4,7 @@
 
 **Contributing**
 * [How to Contribute](How-to-Contribute)
+* [Developer Getting Started](Developer-Getting-Started-Guide)
 * [Submitting Bugs and Suggestions](Submitting-Bugs-and-Suggestions)
 * [Localization](https://github.com/Microsoft/Localization/wiki/SQL-Operations-Studio)
 * [Troubleshooting Issues](Troubleshooting-Issues)
