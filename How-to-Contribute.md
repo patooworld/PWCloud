@@ -1,7 +1,7 @@
 # Contributing to Azure Data Studio
 There are many ways to contribute to the Azure Data Studio project: logging bugs, submitting pull requests, reporting issues, and creating suggestions.
 
-[Read the developer getting started guide here](https://github.com/microsoft/azuredatastudio/wiki/Developer-Getting-Started-Guide)
+[**Read the developer getting started guide here**](https://github.com/microsoft/azuredatastudio/wiki/Developer-Getting-Started-Guide)
 
 ## Development Workflow
 
