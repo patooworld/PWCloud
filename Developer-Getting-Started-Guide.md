@@ -8,7 +8,7 @@
    - ### Linux Notes:
       - on a brand new linux vm, [C/C++ compiler may need to be installed before Python can be installed](#linux-please-note-we-do-not-support-the-windows-subsystem-for-linux). So install those first and then Python.
       - [instructions]
-          - `sudo apt install python`
+          - On Debian-based Linux:`sudo apt install python`
           or
           - (https://tecadmin.net/install-python-2-7-on-ubuntu-and-linuxmint/)
 - ## C/C++ compiler tool chain
@@ -38,9 +38,9 @@
     - [MIT Kerberos library]. This should be installed with Xcode, but if this fails install homebrew and run `brew install krb5` to install this.
   - ### **Linux (please note: we do not support the [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/about))**
     * `make` 
-       `sudo apt install make`
+       *On Debian-based Linux:`sudo apt install make`
     * [GCC](https://gcc.gnu.org) or another compile toolchain
-       `sudo apt install gcc`
+       *On Debian-based Linux:`sudo apt install gcc`
     * [native-keymap](https://www.npmjs.com/package/native-keymap) needs `libx11-dev` and `libxkbfile-dev`.
       * On Debian-based Linux: `sudo apt-get install libx11-dev libxkbfile-dev`
       * On Red Hat-based Linux: `sudo yum install libX11-devel.x86_64 libxkbfile-devel.x86_64 # or .i686`.
