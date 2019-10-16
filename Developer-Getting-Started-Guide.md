@@ -24,6 +24,7 @@
 				**Note:** The `--debug` flag is helpful if you encounter any problems during installation.
 
 				**Note:** if you encounter an error *The build tools for v141 (Platform Toolset = 'v141') cannot be found."* you might have a version of Visual Studio installed. Either uninstall that version or make sure to have *VC++ 2015.3 v14.00 (v140) toolset for desktop* installed (see below)
+
 		- Option 2: Use Visual Studio 2017 (This is recommended if you're joining the team)
 			- Install [Visual Studio 2017 Community Edition](https://visualstudio.microsoft.com/downloads/)
 			- Select *Desktop Development with C++*
@@ -84,6 +85,10 @@ git clone https://github.com/microsoft/azuredatastudio
 cd azuredatastudio
 yarn
 yarn run watch
+```
+**Note:** When you run 'yarn', if you hit the error *gyp ERR! stack Error: spawn C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\15.0\Bin\MSBuild.exe ENOENT*, change config to use version 2015:
+```
+npm config set msvs_version 2015
 ```
 
 ## Running
