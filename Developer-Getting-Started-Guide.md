@@ -4,9 +4,10 @@
   - [Windows](https://github.com/coreybutler/nvm-windows)
   - [Linux and Mac](https://github.com/nvm-sh/nvm)
 - Yarn: Install after you have node version manager with `npm install -g yarn` - we go over this [here](#setting-up-nodejs--yarn) as well
-- [Python](https://www.python.org/downloads/) anything between 2.7 and 3.0 (version 3 is __*not*__ supported)
-- C/C++ compiler tool chain
-  - **Windows**
+- [Python](https://www.python.org/downloads/) anything between 2.7 and 3.0 (version 3 is __*not*__ supported) 
+   - Linux Note - on a brand new linux vm, [C/C++ compiler needs to be installed before Python can be installed](#linux-please-note-we-do-not-support-the-windows-subsystem-for-linux)
+- ## C/C++ compiler tool chain
+  - ### **Windows**
     - Set a `PYTHON` environment variable pointing to your `python.exe`. E.g.: `C:\Python27\python.exe`
 	- Install a compiler for the native modules Azure Data Studio depends on
 		- Option 1 (recommended): Use Windows Build Tools npm module
@@ -26,11 +27,11 @@
 	- **Restart** your computer
     - **Warning:** Make sure your profile path only contains ASCII letters, e.g. *John*, otherwise it can lead to [node-gyp usage problems (nodejs/node-gyp/issues#297)](https://github.com/nodejs/node-gyp/issues/297)
     - **Note**: Building and debugging via the Windows subsystem for Linux (WSL) is currently not supported.
-  - **macOS**
+  - ### **macOS**
     - [Xcode](https://developer.apple.com/xcode/downloads/) and the Command Line Tools, which will install `gcc` and the related toolchain containing `make`
       - Run `xcode-select --install` to install the Command Line Tools
     - [MIT Kerberos library]. This should be installed with Xcode, but if this fails install homebrew and run `brew install krb5` to install this.
-  - **Linux (please note: we do not support the [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/about))**
+  - ### **Linux (please note: we do not support the [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/about))**
     * `make`
     * [GCC](https://gcc.gnu.org) or another compile toolchain
     * [native-keymap](https://www.npmjs.com/package/native-keymap) needs `libx11-dev` and `libxkbfile-dev`.
