@@ -5,7 +5,9 @@
   - [Linux and Mac](https://github.com/nvm-sh/nvm)
 - Yarn: Install after you have node version manager with `npm install -g yarn` - we go over this [here](#setting-up-nodejs--yarn) as well
 - [Python](https://www.python.org/downloads/) anything between 2.7 and 3.0 (version 3 is __*not*__ supported) 
-   - Linux Note - on a brand new linux vm, [C/C++ compiler needs to be installed before Python can be installed](#linux-please-note-we-do-not-support-the-windows-subsystem-for-linux). So install those first and the Python.
+   - Linux Notes:
+      - [instructions](https://tecadmin.net/install-python-2-7-on-ubuntu-and-linuxmint/)
+      - on a brand new linux vm, [C/C++ compiler needs to be installed before Python can be installed](#linux-please-note-we-do-not-support-the-windows-subsystem-for-linux). So install those first and the Python.
 - ## C/C++ compiler tool chain
   - ### **Windows**
     - Set a `PYTHON` environment variable pointing to your `python.exe`. E.g.: `C:\Python27\python.exe`
@@ -32,8 +34,10 @@
       - Run `xcode-select --install` to install the Command Line Tools
     - [MIT Kerberos library]. This should be installed with Xcode, but if this fails install homebrew and run `brew install krb5` to install this.
   - ### **Linux (please note: we do not support the [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/about))**
-    * `make`
+    * `make` 
+       `sudo apt install make`
     * [GCC](https://gcc.gnu.org) or another compile toolchain
+       `sudo apt install gcc`
     * [native-keymap](https://www.npmjs.com/package/native-keymap) needs `libx11-dev` and `libxkbfile-dev`.
       * On Debian-based Linux: `sudo apt-get install libx11-dev libxkbfile-dev`
       * On Red Hat-based Linux: `sudo yum install libX11-devel.x86_64 libxkbfile-devel.x86_64 # or .i686`.
