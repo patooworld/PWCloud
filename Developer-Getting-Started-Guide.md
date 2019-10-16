@@ -3,7 +3,8 @@
 - ## Node Version Manager
   - [Windows](https://github.com/coreybutler/nvm-windows)
   - [Linux and Mac](https://github.com/nvm-sh/nvm)
-- ## Yarn: Install after you have node version manager with `npm install -g yarn` - we go over this [here](#setting-up-nodejs--yarn) as well
+- ## Yarn: 
+   - Install after you have node version manager with `npm install -g yarn` - we go over this [here](#setting-up-nodejs--yarn) as well
 - ## [Python](https://www.python.org/downloads/) anything between 2.7 and 3.0 (version 3 is __*not*__ supported) 
    - ### Linux Notes:
       - on a brand new linux vm, [C/C++ compiler may need to be installed before Python can be installed](#linux-please-note-we-do-not-support-the-windows-subsystem-for-linux). So install those first and then Python.
