@@ -10,6 +10,10 @@ Azure Data Studio has been designed to focus deeply on the functionality that is
 
 Azure Data Studio is free for private or commercial use.
 
+## Where can I download Azure Data Studio?
+
+[aka.ms/getazuredatastudio](http://aka.ms/getazuredatastudio)
+
 ## Who should use Azure Data Studio?
 
 Anyone can use Azure Data Studio. However, it is designed to simplify tasks performed by database developers, database administrators, system administrators, and independent software vendors.
