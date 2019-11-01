@@ -44,6 +44,10 @@ Please submit bug reports or feedback on the Azure Data Studio GitHub:
 
 SQL and Postgres are currently supported. Other platforms are not yet committed, but we’re watching to see what the demand is.
 
+## Does Azure Data studio allow Azure Active Directory Integrated connections?
+
+At this time Azure Data Studio only officially supports MFA. This is something we will prioritize in our planning as more Azure Data partners use our product.
+
 ## Azure Data Studio vs. SSMS
 
 ### Now that there is Azure Data Studio, does Microsoft plan to deprecate SSMS?
