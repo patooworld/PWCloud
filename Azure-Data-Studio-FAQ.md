@@ -40,6 +40,10 @@ Follow us on Twitter ([@AzureDataStudio](https://twitter.com/azuredatastudio)) t
 Please submit bug reports or feedback on the Azure Data Studio GitHub:
 [https://github.com/microsoft/azuredatastudio](https://github.com/microsoft/azuredatastudio)
 
+## If ADS is a multi-database tool, will it also support CosmosDB, Spark Databricks and/or Azure Data Explorer anytime soon?
+
+SQL and Postgres are currently supported. Other platforms are not yet committed, but we’re watching to see what the demand is.
+
 ## Azure Data Studio vs. SSMS
 
 ### Now that there is Azure Data Studio, does Microsoft plan to deprecate SSMS?
@@ -70,10 +74,6 @@ It depends on the scenario &amp; customer/business need. To help us prioritize, 
 - Need to make use of performance tuning advisors and dashboards
 - Use database diagrams and table designers
 - Need access to Registered Servers
-
-## If ADS is a multi-database tool, will it also support CosmosDB, Spark Databricks and/or Azure Data Explorer anytime soon?
-
-SQL and Postgres are currently supported. Other platforms are not yet committed, but we’re watching to see what the demand is.
 
 ## Where can I learn more about Azure Data Studio?
 
