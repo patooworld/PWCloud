@@ -71,6 +71,10 @@ It depends on the scenario &amp; customer/business need. To help us prioritize, 
 - Use database diagrams and table designers
 - Need access to Registered Servers
 
+## If ADS is a multi-database tool, will it also support CosmosDB, Spark Databricks and/or Azure Data Explorer anytime soon?
+
+SQL and Postgres are currently supported. Other platforms are not yet committed, but we’re watching to see what the demand is.
+
 ## Where can I learn more about Azure Data Studio?
 
 [aka.ms/AzureDataStudio](http://aka.ms/AzureDataStudio)
