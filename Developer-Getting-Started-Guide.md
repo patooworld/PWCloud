@@ -14,7 +14,7 @@
   - ### Yarn: 
      -  The recommended way of installing yarn is through npm. So `npm install -g yarn`.
 - ## [Python](https://www.python.org/downloads/) anything between 2.7 and 3.0 (version >=3.0 is __*not*__ supported) 
-  - ### Win Notes:
+  - ### Windows Notes:
      - download the latest 2.xxx installer from https://www.python.org/downloads and run the setup.
   - ### Mac Notes:
      - `brew install python2`
