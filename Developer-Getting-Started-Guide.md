@@ -3,9 +3,19 @@
 - ## Node Version Manager
   - [Windows](https://github.com/coreybutler/nvm-windows)
   - [Linux and Mac](https://github.com/nvm-sh/nvm)
-- ## Yarn: 
-   - Install after you have node version manager with `npm install -g yarn` - we go over this [here](#setting-up-nodejs--yarn) as well
-- ## [Python](https://www.python.org/downloads/) anything between 2.7 and 3.0 (version 3 is __*not*__ supported) 
+- ## NodeJS & Yarn:
+
+  Right now we're using Node 10. You can do `nvm install 10.16.3` to install that version. This creates a virtual node installation handled and managed by nvm.
+
+
+  If you are on Windows or Linux 64 bit systems and would like to compile to 32 bits, you'll need to set the `npm_config_arch` environment to `ia32` before running `yarn`. This will compile all native node modules for 32-bit architecture.
+
+  **Note:** For more information on how to install NPM modules globally on UNIX systems without resorting to `sudo`, refer to [this guide](http://www.johnpapa.net/how-to-use-npm-global-without-sudo-on-osx/).
+  - ### Yarn: 
+     -  The recommended way of installing yarn is through npm. So `npm install -g yarn`.
+- ## [Python](https://www.python.org/downloads/) anything between 2.7 and 3.0 (version >=3.0 is __*not*__ supported) 
+  - ### Win Notes:
+     - download the latest 2.xxx installer from https://www.python.org/downloads and run the setup.
   - ### Mac Notes:
      - `brew install python2`
   - ### Linux Notes:
@@ -39,11 +49,11 @@
   - ### **macOS**
     - [Xcode](https://developer.apple.com/xcode/downloads/) and the Command Line Tools, which will install `gcc` and the related toolchain containing `make`
       - Run `xcode-select --install` to install the Command Line Tools
-    - [MIT Kerberos library]. This should be installed with Xcode, but if this fails install homebrew and run `brew install krb5` to install this.
+    - [MIT Kerberos library]. This should be installed with Xcode, but if this fails, install homebrew and run `brew install krb5` to install this.
   - ### **Linux (please note: we do not support the [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/about))**
     * `make` 
-       *On Debian-based Linux:`sudo apt install make`
-    * [GCC](https://gcc.gnu.org) or another compile toolchain
+       *On Debian-based Linux: `sudo apt install make`
+    * [GCC](https://gcc.gnu.org) or another compiler toolchain
        *On Debian-based Linux:`sudo apt install gcc`
     * [native-keymap](https://www.npmjs.com/package/native-keymap) needs `libx11-dev` and `libxkbfile-dev`.
       * On Debian-based Linux: `sudo apt-get install libx11-dev libxkbfile-dev`
@@ -61,22 +71,14 @@
 
 - [VSCode](https://code.visualstudio.com/) We have multiple integrations with VSCode's task system so it's highly recommended to use that as your Editor/IDE.
 
-# Setting up NodeJS & Yarn:
 
-Right now we're using Node 10. You can do `nvm install 10.16.3` to install that version. This creates a virtual node installation handled and managed by nvm.
- 
-The recommended way of installing yarn is through npm. So `npm install -g yarn`.
-
-If you are on Windows or Linux 64 bit systems and would like to compile to 32 bits, you'll need to set the `npm_config_arch` environment to `ia32` before running `yarn`. This will compile all native node modules for a 32 bit architecture.
-
-**Note:** For more information on how to install NPM modules globally on UNIX systems without resorting to `sudo`, refer to [this guide](http://www.johnpapa.net/how-to-use-npm-global-without-sudo-on-osx/).
 
 
 # Source Code
 
 ## Getting Authenticated
 
-If you're a new Microsoft employee, you will need to connect your github account to the Microsoft org. Ask a co-worker what the process on that is.
+If you're a new Microsoft employee, you will need to connect your Github account to the Microsoft org. Ask a co-worker what the process of that is.
 
 If you're an outside contributor, simply fork the codebase and make a PR against ours with your changes.
 
@@ -88,7 +90,7 @@ cd azuredatastudio
 yarn
 yarn run watch
 ```
-**Note:** When you run 'yarn', if you hit the error *gyp ERR! stack Error: spawn C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\15.0\Bin\MSBuild.exe ENOENT*, change config to use version 2015:
+**Note:** When you run 'yarn' if you hit the error *gyp ERR! stack Error: spawn C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\15.0\Bin\MSBuild.exe ENOENT*, change the config to use version 2015:
 ```
 npm config set msvs_version 2015
 ```
@@ -113,7 +115,7 @@ Go to debugging -> Launch azuredatastudio
 
 ## Creating optimized builds
 
-This step isn't necessary in development, but if you want to create a build with optimized source code for production. Essentially a "release" quality build:
+This step isn't necessary for development, but if you want to create a build with optimized code for production. Essentially a "release" quality build:
 
 ```batch
 REM for windows
@@ -133,7 +135,7 @@ cd ../sqlops-linux-x64
 
 ## Cleaning the repo
 
-Sometimes we have breaking changes that require the entire code to be rebuilt. For example if we upgrade the electron version of the code, everyone's local development environment will break. To handle this scenario, we do a git clean. This restores the local cloned repository to its original form:
+Sometimes we have breaking changes that require the entire code to be rebuilt. For example, if we upgrade the electron version of the code, everyone's local development environment will break. To handle this scenario, we do a git clean. This restores the locally cloned repository to its original form:
 
 ```bash
 git clean -fxd
