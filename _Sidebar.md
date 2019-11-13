@@ -25,6 +25,7 @@
 * [Building multiple insight widgets](Building-multiple-insight-widgets)
 * [Microsoft Ignite lab](Microsoft-Ignite-lab)
 * [List of Extensions](List-of-Extensions)
+* [Replace sqlops namespace](Replace-sqlops-namespace-with-azdata-namespace)
 
 **Documentation**
 * [Microsoft Ready 2019 Lab](Microsoft-Ready-2019-lab)
