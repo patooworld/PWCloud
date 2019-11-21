@@ -101,6 +101,8 @@ npm config set msvs_version 2015
 
 Go to debugging -> Launch azuredatastudio
 
+  <img src='./media/launch_ads.PNG'>
+
 **OS X and Linux**
 
 ```bash
