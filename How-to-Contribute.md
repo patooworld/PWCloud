@@ -23,6 +23,7 @@ You can either use VS Code or the Chrome Developer Tools to debug Azure Data Stu
 * Open the `azuredatastudio` repository folder
 * Choose the `Launch azuredatastudio` launch configuration from the launch dropdown in the Debug viewlet and press `F5`.
 
+  <img src='./media/launch_ads.PNG'>
 
 #### Using the Chrome Developer Tools
 
