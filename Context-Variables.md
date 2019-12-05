@@ -1,6 +1,6 @@
-For general information about context in vscode and subsequently sqlops see [Extensibility](https://code.visualstudio.com/docs/extensionAPI/extension-points#_example).
+For general information about context in vscode and subsequently Azure Data Studio see [Extensibility](https://code.visualstudio.com/docs/extensionAPI/extension-points#_example).
 
-In Sqlops we have specific context around database connections available for extensions.
+In Azure Data Studio, we have specific context around database connections available for extensions.
 
 # Dashboard
 In dashboard we provide the following context variables.
