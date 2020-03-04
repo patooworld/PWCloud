@@ -78,7 +78,7 @@
 
 ## Getting Authenticated
 
-If you're a new Microsoft employee, you will need to connect your Github account to the Microsoft org. Ask a co-worker what the process of that is.
+If you're a new Microsoft employee, you will need to connect your Github account to the Microsoft org. Follow the instructions at https://docs.opensource.microsoft.com/tools/github/accounts/linking.html and join the **Microsoft** org. 
 
 If you're an outside contributor, simply fork the codebase and make a PR against ours with your changes.
 
