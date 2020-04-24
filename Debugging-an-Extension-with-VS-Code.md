@@ -5,12 +5,12 @@ If you’re looking to build Azure Data Studio extensions you may have noticed t
 Install the `Azure Data Studio Debug` extension from https://marketplace.visualstudio.com/items?itemName=ms-mssql.sqlops-debug
  
 **Why didn’t this “just work” before now?**
-We removed the DebugService in SQL Ops Studio. This does some magic when VS Code is launched in the extension-testing mode. The “fix” is to add a sqlopsExtensionHost debugger type to the node debugger that does the attaching for you.
+We removed the DebugService in Azure Data Studio. This does some magic when VS Code is launched in the extension-testing mode. The “fix” is to add a sqlopsExtensionHost debugger type to the node debugger that does the attaching for you.
  
 **Github Project:** https://github.com/kevcunnane/sqlops-debug 
  
 **Install Instructions**
-*To debug an extension in the SQL Ops Studio installed on your machine:*
+*To debug an extension in the Azure Data Studio installed on your machine:*
 -	Open Azure Data Studio and add azuredatastudio to your path using the `Shell Command: Install 'azuredatastudio' command in PATH` command
 -	Install the attached `SQL Operations Studio Debug` extension from https://marketplace.visualstudio.com/items?itemName=ms-mssql.sqlops-debug
 -	Open your extension in VS Code and add the following launch.json file 
