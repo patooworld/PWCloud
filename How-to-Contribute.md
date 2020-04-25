@@ -19,7 +19,7 @@ It will do an initial full build and then watch for file changes, compiling thos
 You can either use VS Code or the Chrome Developer Tools to debug Azure Data Studio.
 
 #### Using VSCode
-* Install the [Debugger for Chrome](https://marketplace.visualstudio.com/items/msjsdiag.debugger-for-chrome) extension. This extension will let you attach to and debug client side code running in Chrome.
+* Install the [Debugger for Chrome](https://marketplace.visualstudio.com/items/msjsdiag.debugger-for-chrome) extension and [JavaScript Debugger (Nightly)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly) extension. these extensions will let you attach to and debug client side code running in Chrome.
 * Open the `azuredatastudio` repository folder
 * Choose the `Launch azuredatastudio` launch configuration from the launch dropdown in the Debug viewlet and press `F5`.
 
