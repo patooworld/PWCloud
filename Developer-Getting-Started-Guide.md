@@ -8,7 +8,7 @@
   Right now we're using Node 10. You can do `nvm install 10.16.3` to install that version. This creates a virtual node installation handled and managed by nvm.
 
 
-  If you are on Windows or Linux 64 bit systems and would like to compile to 32 bits, you'll need to set the `npm_config_arch` environment to `ia32` before running `yarn`. This will compile all native node modules for 32-bit architecture.
+  If you are on Windows or Linux 64 bit systems and would like to compile to 32 bits, you'll need to set the `npm_config_arch` environment to `ia32` before running `yarn`. This will compile all native node modules for 32-bit architecture. (You're not going to need to do this very often, if ever)
 
   **Note:** For more information on how to install NPM modules globally on UNIX systems without resorting to `sudo`, refer to [this guide](http://www.johnpapa.net/how-to-use-npm-global-without-sudo-on-osx/).
   - ### Yarn: 
