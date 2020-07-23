@@ -15,6 +15,9 @@
 * [Angular UI Guidelines](Angular-UI-Guidelines)
 * [Contributor License Agreement](Contributor-License-Agreement)
 
+**Tool Services**
+* [SQL Tools Service](https://github.com/microsoft/azuredatastudio/wiki/SQL-Tools-Service)
+
 **Extensibility Reference**
 * [Getting Started](Getting-started-with-Extensibility)
 * [Extensibility API](Extensibility-API)
