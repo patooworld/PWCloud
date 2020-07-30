@@ -112,7 +112,7 @@ Go to debugging -> Launch azuredatastudio
 **Windows**
 
 ```bash
-.\scripts\sql.bat
+.\scripts\sql.bat --remote-debugging-port=9222
 ```
 
 ## Creating optimized builds
