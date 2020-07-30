@@ -106,7 +106,7 @@ Go to debugging -> Launch azuredatastudio
 **OS X and Linux**
 
 ```bash
-./scripts/sql.sh
+./scripts/sql.sh --remote-debugging-port=9222
 ```
 
 **Windows**
