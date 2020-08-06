@@ -12,7 +12,7 @@
 
   **Note:** For more information on how to install NPM modules globally on UNIX systems without resorting to `sudo`, refer to [this guide](http://www.johnpapa.net/how-to-use-npm-global-without-sudo-on-osx/).
   - ### Yarn: 
-     -  The recommended way of installing yarn is through npm. So `npm install -g yarn`.
+     -  [Yarn](https://yarnpkg.com/en/), follow the [installation guide](https://yarnpkg.com/en/docs/install)
 - ## [Python](https://www.python.org/downloads/) anything between 2.7 and 3.0 (version >=3.0 is __*not*__ supported) 
   - ### Windows Notes:
      - download the latest 2.xxx installer from https://www.python.org/downloads and run the setup.
