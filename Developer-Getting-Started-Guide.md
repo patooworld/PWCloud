@@ -122,17 +122,17 @@ This step isn't necessary for development, but if you want to create a build wit
 ```batch
 REM for windows
 yarn run gulp vscode-win32-x64
-cd ../sqlops-windows-x64
+cd ../azureadatastudio-windows-x64
 ```
 
 ```bash
 # for macOS
 yarn run gulp vscode-darwin
-cd ../sqlops-darwin
+cd ../azureadatastudio-darwin
 
 # for linux
 yarn run gulp vscode-linux-x64
-cd ../sqlops-linux-x64
+cd ../azureadatastudio-linux-x64
 ```
 
 ## Cleaning the repo
