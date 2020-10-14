@@ -40,7 +40,7 @@ After writing your extension, you need to create a VSIX package to be able to in
 `vsce package`
 
 
-**Publishing the Extension**
+## **Publishing the Extension**
 
 To publish your new extension to Azure Data Studio
 1. Add your extension to the extension gallery file or edit it if updating your extension. update these 2 files accordingly.
@@ -48,18 +48,28 @@ If the new extension release works with the latest stable version of ADS update 
 If the new extension release works with the insiders build of ADS update this file:
 https://github.com/Microsoft/azuredatastudio/blob/release/extensions/extensionsGallery-insider.json
 
-2. Upload the VSIX package
+1. Upload the VSIX package
 
 Third party extensions:
 We don't have support to host third party extensions for now. Instead of downloading the extension, ADS has the option to browses to the download page. To be able to set a download page for your extension please set the value of asset "Microsoft.SQLOps.DownloadPage".
 
 Microsoft extensions:
-contact alanren for help.
+contact alanren/chgagnon for help.
 
-3. Create a PR against release/extensions branch
-4. Send a review request to alanrenmsft
+There are two separate processes to follow based on when the extension is meant to be updated. Typically stable release updates should follow the second
+### 1. Standalone extension release (not part of an ADS Release)
+
+1. Create a PR against release/extensions branch
+  * Make sure to add the extension to both the insiders and stable gallery files
+1. Send a review request to @alanrenmsft and @Charles-Gagnon
+
+### 2. Extension release as part of ADS release
+
+*Note* It's suggested to publish the new version of the extension to the Insiders gallery as soon as you have it for early testing/validation (see above steps)
+1. There should be a PR already opened for the release to update extensions - if not contact the Release DRI to have that done
+1. Push changes to the PR branch with the gallery updates needed
 
 Your extension will be reviewed and will be added to the extension gallery.
 
 **Publishing Extension Updates**
-The process to publish updates is similar to publishing the extension. Please make sure the version is updated in your package.json
+The process to publish updates is similar to publishing the extension. Please make sure the version is updated in your package.json after a release is done so that it's ready for the next release cycle. 
