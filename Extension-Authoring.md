@@ -54,7 +54,7 @@ Third party extensions:
 We don't have support to host third party extensions for now. Instead of downloading the extension, ADS has the option to browses to the download page. To be able to set a download page for your extension please set the value of asset "Microsoft.SQLOps.DownloadPage".
 
 Microsoft extensions:
-contact alanren/chgagnon for help.
+contact @alanren @Charles-Gagnon for help.
 
 There are two separate processes to follow based on when the extension is meant to be updated. Typically stable release updates should follow the second
 ### 1. Standalone extension release (not part of an ADS Release)
