@@ -54,14 +54,14 @@ Third party extensions:
 We don't have support to host third party extensions for now. Instead of downloading the extension, ADS has the option to browses to the download page. To be able to set a download page for your extension please set the value of asset "Microsoft.SQLOps.DownloadPage".
 
 Microsoft extensions:
-contact @alanren @Charles-Gagnon for help.
+contact **@alanren** **@Charles-Gagnon** for help.
 
 There are two separate processes to follow based on when the extension is meant to be updated. Typically stable release updates should follow the second
 ### 1. Standalone extension release (not part of an ADS Release)
 
-1. Create a PR against release/extensions branch
+1. Create a PR against `release/extensions` branch
   * Make sure to add the extension to both the insiders and stable gallery files
-1. Send a review request to @alanrenmsft and @Charles-Gagnon
+1. Send a review request to **@alanrenmsft** and **@Charles-Gagnon**
 
 ### 2. Extension release as part of ADS release
 
@@ -72,4 +72,4 @@ There are two separate processes to follow based on when the extension is meant 
 Your extension will be reviewed and will be added to the extension gallery.
 
 **Publishing Extension Updates**
-The process to publish updates is similar to publishing the extension. Please make sure the version is updated in your package.json after a release is done so that it's ready for the next release cycle. 
+The process to publish updates is similar to publishing the extension. Please make sure the version is updated in your `package.json` after a release is done so that it's ready for the next release cycle. 
