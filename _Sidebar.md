@@ -14,6 +14,7 @@
 * [UI Guidelines](UI-guidelines)
 * [Angular UI Guidelines](Angular-UI-Guidelines)
 * [Contributor License Agreement](Contributor-License-Agreement)
+* [Azure Data Studio Tests](https://github.com/Microsoft/azuredatastudio/blob/master/test/README.md)
 
 **Tool Services**
 * [SQL Tools Service](https://github.com/microsoft/azuredatastudio/wiki/SQL-Tools-Service)
