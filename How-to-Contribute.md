@@ -25,6 +25,8 @@ You can either use VS Code or the Chrome Developer Tools to debug Azure Data Stu
 
   <img src='./media/launch_ads.PNG'>
 
+This will launch and attach to the main renderer process (for code under `src`). To debug extensions under the `extensions` folder use the `Debug Renderer and Extension Host processes` launch configuration. 
+
 #### Using the Chrome Developer Tools
 
 * Run the `Developer: Toggle Developer Tools` command from the Command Palette in your development instance of Azure Data Studio to launch the Chrome tools.
