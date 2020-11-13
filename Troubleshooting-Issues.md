@@ -9,9 +9,11 @@ Run the `Developer: Set Log Level...` command to select the log level for the cu
 
 If you want to enable debug logging for startup then set the log level to `Debug` and run the `Developer: Reload Window` command
 
-### MSSQL Built-In Extension
+### MSSQL (Built-In Extension)
 
-In the User Settings, set the `mssql.logDebugInfo` to true to enable debug logs.
+If the `Mssql: Log Debug Info` user setting is set to true then debug log info will be sent to the `MSSQL` output channel.
+
+The `Mssql: Tracing Level` user setting is used to control the verbosity of the logging.
 
 ## Debug log location
 From Azure Data Studio run the `Developer: Open Logs Folder` command to open the path to the logs. There's many different type of log files that write there, a few of the commonly used ones are:
@@ -20,6 +22,7 @@ From Azure Data Studio run the `Developer: Open Logs Folder` command to open the
 1. `telemetry.log` - When the log level is set to `Trace` this will contain the telemetry events sent by Azure Data Studio
 1. `exthost#/exthost.log` - Log file for the extension host process (this is only the process itself, not the extensions running inside it)
 1. `exthost#/Microsoft.mssql` - Logs for the mssql extension which contains much of the core logic for MSSQL related features
+   * sqltools.log is the log for SQL Tools Service
 1. `exthost#/output_logging_#######` - these folders contain the messages displayed in the `Output` panel in Azure Data Studio. Each file is named `#-<Channel Name>` so for example the `Notebooks` output channel may output to a file named `3-Notebooks.log`.
 
 If asked to provide logs please zip up the entire folder to ensure that the correct logs are included. 
