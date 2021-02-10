@@ -5,7 +5,7 @@
   - [Linux and Mac](https://github.com/nvm-sh/nvm)
 - ## NodeJS & Yarn:
 
-  Right now we're using Node 10. You can do `nvm install 10.16.3` to install that version. This creates a virtual node installation handled and managed by nvm.
+  Right now we're using Node 10. You can do `nvm install 10.17.0` to install that version. This creates a virtual node installation handled and managed by nvm.
 
 
   If you are on Windows or Linux 64 bit systems and would like to compile to 32 bits, you'll need to set the `npm_config_arch` environment to `ia32` before running `yarn`. This will compile all native node modules for 32-bit architecture. (You're not going to need to do this very often, if ever)
