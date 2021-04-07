@@ -143,4 +143,5 @@ Sometimes we have breaking changes that require the entire code to be rebuilt. F
 git clean -fxd
 ```
 
+Additionally sometimes we need to clean the cache manually which is located at C:\Users\{userName}\AppData\Roaming\AzureDataStudio. By doing this all saved servers and their logins will be cleared.
 
