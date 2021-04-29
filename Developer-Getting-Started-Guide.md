@@ -1,78 +1,60 @@
-# Pre-Requisites:
-- ## [Git](https://git-scm.com)
-- ## Node Version Manager
-  - [Windows](https://github.com/coreybutler/nvm-windows)
-  - [Linux and Mac](https://github.com/nvm-sh/nvm)
-- ## NodeJS & Yarn:
+In order to download necessary tools, clone the repository, and install dependencies via `yarn` you need network access.
 
-  Right now we're using Node 10. You can do `nvm install 10.17.0` to install that version. This creates a virtual node installation handled and managed by nvm.
+You'll need the following tools:
 
-
-  If you are on Windows or Linux 64 bit systems and would like to compile to 32 bits, you'll need to set the `npm_config_arch` environment to `ia32` before running `yarn`. This will compile all native node modules for 32-bit architecture. (You're not going to need to do this very often, if ever)
-
-  **Note:** For more information on how to install NPM modules globally on UNIX systems without resorting to `sudo`, refer to [this guide](http://www.johnpapa.net/how-to-use-npm-global-without-sudo-on-osx/).
-  - ### Yarn: 
-     -  [Yarn](https://yarnpkg.com/en/), follow the [installation guide](https://yarnpkg.com/en/docs/install)
-- ## [Python](https://www.python.org/downloads/) anything between 2.7 and 3.0 (version >=3.0 is __*not*__ supported) 
-  - ### Windows Notes:
-     - download the latest 2.xxx installer from https://www.python.org/downloads and run the setup.
-  - ### Mac Notes:
-     - `brew install python2`
-  - ### Linux Notes:
-      - on a brand new linux vm, [C/C++ compiler may need to be installed before Python can be installed](#linux-please-note-we-do-not-support-the-windows-subsystem-for-linux). So install those first and then Python.
-      - [instructions]
-          - On Debian-based Linux:`sudo apt install python`
-          or
-          - (https://tecadmin.net/install-python-2-7-on-ubuntu-and-linuxmint/)
-- ## C/C++ compiler tool chain
-  - ### **Windows**
-    - Set a `PYTHON` environment variable pointing to your `python.exe`. E.g.: `C:\Python27\python.exe`
-	- Install a compiler for the native modules Azure Data Studio depends on
+- [Git](https://git-scm.com)
+- [Node.JS](https://nodejs.org/en/), **x64**, version `>= 10.x`, `<= 14.x`
+- [Yarn](https://yarnpkg.com/en/), follow the [installation guide](https://yarnpkg.com/en/docs/install)
+- [Python](https://www.python.org/downloads/) (required for node-gyp; check the [node-gyp readme](https://github.com/nodejs/node-gyp#installation) for the currently supported Python versions)
+  - **Note:** Python will be automatically installed for Windows users through installing `windows-build-tools` npm module (see below)
+- A C/C++ compiler tool chain for your platform:
+  - **Windows**
+    - Set a `PYTHON` environment variable pointing to your `python.exe`. E.g.: `C:\Python\python.exe`
+	- Install a compiler for the native modules VS Code is depending on
 		- Option 1 (recommended): Use Windows Build Tools npm module
 			- Start Powershell as Administrator and install [Windows Build Tools npm module](https://github.com/felixrieseberg/windows-build-tools) ([documentation](https://github.com/felixrieseberg/windows-build-tools#visual-studio-2017-vs-visual-studio-2015)).
+
+				**Note:** If you get _The build tools for v141 (Platform Toolset = 'v141') cannot be found_ when you run `yarn` later, you might need to delete `VCTargetsPath` from your environment variables before installing.
 				```
-				npm install --global windows-build-tools --vs2015
+				npm install --global windows-build-tools --vs2017
 				```
 				**Note:** The `--debug` flag is helpful if you encounter any problems during installation.
 
-				**Note:** if you encounter an error *The build tools for v141 (Platform Toolset = 'v141') cannot be found."* you might have a version of Visual Studio installed. Either uninstall that version or make sure to have *VC++ 2015.3 v14.00 (v140) toolset for desktop* installed (see below)
+				**Note:** if you have installed a previous version of the build tools using the `--vs2015` flag you need to uninstall the build tools first using `npm uninstall global windows-build-tools` and the Windows Control Panel to uninstall the binaries.
 
-		- Option 2: Use Visual Studio 2017 (This is recommended if you're joining the team)
-			- Install [Visual Studio 2017 Community Edition](https://visualstudio.microsoft.com/downloads/)
+		- Option 2: Use Visual Studio 2019
+			- Install [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/downloads/)
 			- Select *Desktop Development with C++*
-			- Select *VC++ 2015.3 v14.00 (v140) toolset for desktop* on the right hand side
-
-				**Note:** if you encounter an error *The build tools for v141 (Platform Toolset = 'v141') cannot be found."* make sure you installed the *VC++ 2015.3 v14.00 (v140) toolset for desktop* from the previous step
+			- Select *MSVC v142 - VS 2019 C++ x64/x86 build tools (v14.28)* on the right hand side
 	- **Restart** your computer
     - **Warning:** Make sure your profile path only contains ASCII letters, e.g. *John*, otherwise it can lead to [node-gyp usage problems (nodejs/node-gyp/issues#297)](https://github.com/nodejs/node-gyp/issues/297)
     - **Note**: Building and debugging via the Windows subsystem for Linux (WSL) is currently not supported.
-  - ### **macOS**
+
+  - **macOS**
     - [Xcode](https://developer.apple.com/xcode/downloads/) and the Command Line Tools, which will install `gcc` and the related toolchain containing `make`
       - Run `xcode-select --install` to install the Command Line Tools
-    - [MIT Kerberos library]. This should be installed with Xcode, but if this fails, install homebrew and run `brew install krb5` to install this.
-  - ### **Linux (please note: we do not support the [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/about))**
-    * `make` 
-       *On Debian-based Linux: `sudo apt install make`
-    * [GCC](https://gcc.gnu.org) or another compiler toolchain
-       *On Debian-based Linux:`sudo apt install gcc`
-    * [native-keymap](https://www.npmjs.com/package/native-keymap) needs `libx11-dev` and `libxkbfile-dev`.
-      * On Debian-based Linux: `sudo apt-get install libx11-dev libxkbfile-dev`
-      * On Red Hat-based Linux: `sudo yum install libX11-devel.x86_64 libxkbfile-devel.x86_64 # or .i686`.
-    * [keytar](https://www.npmjs.com/package/keytar) needs `libsecret-1-dev`.
-      * On Debian-based Linux: `sudo apt-get install libsecret-1-dev`.
-      * On Red Hat-based Linux: `sudo yum install libsecret-devel`.
-    * [MIT Kerberos library]
-      * On Debian-based Linux: `sudo apt-get install libkrb5-dev`.
-      * On Red Hat-based Linux: `sudo yum install -y krb5-devel`.
+  - **Linux**
+    * On Debian-based Linux: `sudo apt-get install build-essential g++ libx11-dev libxkbfile-dev libsecret-1-dev python-is-python3`
+    * On Red Hat-based Linux: `sudo yum groupinstall "Development Tools" && sudo yum install libX11-devel.x86_64 libxkbfile-devel.x86_64 libsecret-devel # or .i686`.
+    * Others:
+      * `make`
+      * [pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config/)
+      * [GCC](https://gcc.gnu.org) or another compile toolchain
+      * Dependencies:
     * Building deb and rpm packages requires `fakeroot` and `rpm`, run: `sudo apt-get install fakeroot rpm`
-    * **So for Ubuntu, a full installation would be `sudo apt install make gcc libx11-dev libxkbfile-dev libsecret-1-dev libkrb5-dev fakeroot rpm`**
+
+### Troubleshooting
+In case of issues, try deleting the contents of `~/.node-gyp` (alternatively `~/.cache/node-gyp` for Linux, `~/Library/Caches/node-gyp/` for macOS or `%USERPROFILE%\AppData\Local\node-gyp` for Windows) first and then run `yarn cache clean` and then try again.
+
+> If you are on Windows or Linux 64 bit systems and would like to compile to 32 bit, you'll need to set the `npm_config_arch` environment variable to `ia32` before running `yarn`. This will compile all native node modules for a 32 bit architecture.
+
+> **Note:** For more information on how to install NPM modules globally on UNIX systems without resorting to `sudo`, refer to [this guide](http://www.johnpapa.net/how-to-use-npm-global-without-sudo-on-osx/).
+
+> If you have Visual Studio 2019 installed, you may face issues when using the default version of node-gyp. If you have Visual Studio 2019 installed, you may need to follow the solutions [here](https://github.com/nodejs/node-gyp/issues/1747)
 
 # Recommended Tools
 
 - [VSCode](https://code.visualstudio.com/) We have multiple integrations with VSCode's task system so it's highly recommended to use that as your Editor/IDE.
-
-
-
 
 # Source Code
 
