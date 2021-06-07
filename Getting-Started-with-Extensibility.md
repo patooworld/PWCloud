@@ -19,3 +19,7 @@ Please see [Contribution Points](Contribution-points) and [Context Variables](Sq
 ## Azure Data Studio extensibility APIs
 Please see [Extensibility API](Extensibility-API).
 
+## Additional Resources
+- [Azure Data Studio docs on Extension authoring](https://docs.microsoft.com/sql/azure-data-studio/extensions/extension-authoring)
+- [Introductory tutorial on Azure Data Studio extension development](https://github.com/dzsquared/AzureDataStudio_ExtensionDevelopment)
+- [PASStv Recording of session on Azure Data Studio extension development](https://www.youtube.com/watch?v=ToNV5thTNOM)
