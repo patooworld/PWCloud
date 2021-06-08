@@ -117,9 +117,9 @@ yarn run gulp vscode-linux-x64
 cd ../azureadatastudio-linux-x64
 ```
 
-## Creating extension VSIX locally
+## Creating extension VSIX manually
 
-Sometimes you may want to generate the VSIX for an extension locally. This is useful if you want to verify that the built VSIX works as expected or want to give it to someone else to try.
+Sometimes you may want to generate the VSIX for an extension manually. This is useful if you want to verify that the built VSIX works as expected or want to give it to someone else to try.
 
 There are a couple ways to achieve this : 
 
