@@ -43,7 +43,7 @@ After writing your extension, you need to create a VSIX package to be able to in
 ## **Publishing the Extension**
 
 To publish your new extension to Azure Data Studio
-1. Add your extension to the extension gallery file or edit it if updating your extension. update these 2 files accordingly.
+Add your extension to the extension gallery file or edit it if updating your extension. update these 2 files accordingly.
 If the new extension release works with the latest stable version of ADS update this file: https://github.com/Microsoft/azuredatastudio/blob/release/extensions/extensionsGallery.json
 If the new extension release works with the insiders build of ADS update this file:
 https://github.com/Microsoft/azuredatastudio/blob/release/extensions/extensionsGallery-insider.json
