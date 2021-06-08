@@ -117,6 +117,22 @@ yarn run gulp vscode-linux-x64
 cd ../azureadatastudio-linux-x64
 ```
 
+## Creating extension VSIX locally
+
+Sometimes you may want to generate the VSIX for an extension locally. This is useful if you want to verify that the built VSIX works as expected or want to give it to someone else to try.
+
+There are a couple ways to achieve this : 
+
+1. For MS devs only - use the Ad Hoc pipeline and queue a build against your branch. This will generate the VSIX's and add them as artifacts to the build. Note that this does take a while, but it's also the cleanest (no chance of "extra" files being accidently added from your local enlistment)
+2. Run `vsce package` from the extension directory (i.e. `extensions/<name>`). This will only work by default for non-webpacked extensions. If the extension folder has an `extension.webpack.config.js` file in the root then the VSIX that is generated will not contain the compiled files so will not work. You can work around this by deleting the `out/**` entry from the `.vscodeignore` file in the same directory and then re-running the command.
+3. Run these commands
+```bash
+yarn gulp package-rebuild-extensions
+yarn gulp compile-extensions
+yarn gulp package-external-extensions
+```
+This will result in the extension VSIX's being generated in the `.build` folder in the root of the enlistment. Note that you may get an error similar to `Error: EMFILE: too many open files...`. If this happens then edit [extensions.js](https://github.com/microsoft/azuredatastudio/blob/main/build/lib/extensions.js#L205) and comment out the extensions that you don't care about bundling, then re-run the command. 
+
 ## Cleaning the repo
 
 Sometimes we have breaking changes that require the entire code to be rebuilt. For example, if we upgrade the electron version of the code, everyone's local development environment will break. To handle this scenario, we do a git clean. This restores the locally cloned repository to its original form:
