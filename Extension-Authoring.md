@@ -51,7 +51,14 @@ To publish your new extension to Azure Data Studio:
 extensionsGallery-insider.json(If the new extension release works with the insiders build of ADS).
 1. Third party extensions: We don't have support to host third party extensions for now. Instead of downloading the extension, ADS has the option to browses to the download page. To be able to set a download page for your extension please set the value of asset "Microsoft.SQLOps.DownloadPage".
 1. Create a PR against `release/extensions` branch
-1. For **Microsoft owned extensions**, please include a link to the new VSIX file in the PR description.
+1. For **Microsoft owned extensions**, please include a link to the new VSIX file in the PR description and we will upload it to the storage account. you can set the 'Microsoft.VisualStudio.Services.VSIXPackage'as: `https://sqlopsextensions.blob.core.windows.net/extensions/[extension-name]/[vsix-file]`
 1. Your PR will be reviewed and you will be notified when the changes are published.
 
-Here is a PR for example: https://github.com/microsoft/azuredatastudio/pull/15159
+Here are example PRs: 
+
+
+3rd party extension: https://github.com/microsoft/azuredatastudio/pull/15159
+
+
+Microsoft owned extension: https://github.com/microsoft/azuredatastudio/pull/12135
+
