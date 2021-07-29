@@ -133,6 +133,21 @@ yarn gulp package-external-extensions
 ```
 This will result in the extension VSIX's being generated in the `.build` folder in the root of the enlistment. Note that you may get an error similar to `Error: EMFILE: too many open files...`. If this happens then edit [extensions.js](https://github.com/microsoft/azuredatastudio/blob/main/build/lib/extensions.js#L205) and comment out the extensions that you don't care about bundling, then re-run the command. 
 
+## VS Code extension packages
+
+For some extensions in the Azure Data Studio repo we want to create a separate package that is able to run in VS Code as well as ADS. Some extensions may be able to do this without any changes - for example if you don't use any of the "azdata" extension API. But for most extensions they will need to have changes made to be able to run in VS Code.
+
+In particular the package.json for such extensions will usually need some changes - such as modifying the `dependentExtensions` field to reference other extensions running in VS Code (e.g. `ms-mssql.mssql`).
+
+To make this easier and reduce duplication a step was added to the extension packaging step that will do the necessary replacements in the package.json for a given extension and then rebuild the extension to produce a new package.
+
+This step is ran for any extensions that have a file named `package.vscode.json` in the root of the extension folder - next to the `package.json`. For externally packaged extensions (not built-in to Azure Data Studio) this is all that's needed. But for built-in extensions the extension name should be added to [vsCodeExternalExtensions](https://github.com/microsoft/azuredatastudio/blob/main/build/lib/extensions.ts#L274), ONLY extensions that are built-in to ADS but need to be packaged externally for VS Code should be added to this list.
+
+The `package.vscode.json` file contains the properties that will be replacing the corresponding properties in the original `package.json`. This can be any property in the `package.json` and it will replace the entire property with the new value - nested property replacement is not supported at this time.
+
+[package.vscode.json example](https://github.com/microsoft/azuredatastudio/blob/main/extensions/data-workspace/package.vscode.json)
+
+
 ## Cleaning the repo
 
 Sometimes we have breaking changes that require the entire code to be rebuilt. For example, if we upgrade the electron version of the code, everyone's local development environment will break. To handle this scenario, we do a git clean. This restores the locally cloned repository to its original form:
