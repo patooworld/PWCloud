@@ -29,6 +29,8 @@ We're going to be talking about changing the ServiceLayer, this is where most of
 
 - If ADS insists on downloading a new version of SQLToolsService after you've replaced the files, that means you've either not copied them properly, or you've built them for a wrong platform. Try doing a publish first, and don't delete the files that are already in the azuredatastudio path. Just overwrite them.
 
+- If you run into an error that states that message headers must include the ':' symbol, this may be caused by Console.WriteLine() statements in your version of the SQL Tools Service code or any underlying code it refers to (ie: DacFx). In this case, removing the Console.WriteLine() statements should fix the error.
+
 - If you're debugging multiple STS projects at the same time, you're going to need multiple STS VSCode windows as our launch configuration isn't designed to attach to multiple .NET Core Projects at the same time.
 
 - There are a lot of ways this process can be simplified. If you have any ideas please pitch them to the team!
