@@ -12,18 +12,44 @@ This guide assumes you've read the [wiki][STS Wiki] on the [SQL Tools Service][S
 
 ## Developer Guide
 
-We're going to be talking about changing the ServiceLayer, this is where most of the "feature" code lives. This guide is applicable to any of the other projects in STS.
+### Using locally built binaries
 
-- Launch a dev build of ADS once (read the other wiki pages for guides on getting started with ADS)
-- Navigate to `src/Microsoft.SqlTools.ServiceLayer`
-- `dotnet build` or `dotnet publish -r win7-x64` (assuming you're testing this on windows)
-- Copy over the files from `src/Microsoft.SqlTools.ServiceLayer/bin/Debug/netcoreapp#.#/` to `azuredatastudio/extensions/mssql/sqltoolsservice/Windows/#.#.#-release.#/` and overwrite any existing files.
+For debugging or testing local changes it is easiest to use a locally built version of STS. There are two primary ways to accomplish this
 
-    Note: The from path changes based on if you're doing a build or publish. The publish path is: `src/Microsoft.SqlTools.ServiceLayer/bin/Debug/netcoreapp#.#/win7-x64/publish/`. A publish step brings in all the other various system dependencies along side the code you've written. So it's recommended to start off by doing a publish and then you can continue by just using builds.
+- Use the ADS_SQLTOOLSSERVICE environment variable to direct ADS to use a custom STS
+- Copy over the binaries manually into the installed STS location
 
-- Start your ADS dev build that you added the new binaries to.
-- Open your VSCode STS project and click the debug button and press `.NET Core Attach`. Look for `ServiceLayer` and attach to the project.
-- Place breakpoints where you're interested and make ADS invoke that piece of code.
+Both of these require a few common initial steps. Note that these steps are all for the [Microsoft.SqlTools.ServiceLayer](https://github.com/microsoft/sqltoolsservice/tree/main/src/Microsoft.SqlTools.ServiceLayer) project, which is where much of the STS logic is put. There are additional projects though such as [Microsoft.SqlTools.Credentials](https://github.com/microsoft/sqltoolsservice/tree/main/src/Microsoft.SqlTools.Credentials) and [Microsoft.SqlTools.ResourceProvider](https://github.com/microsoft/sqltoolsservice/tree/main/src/Microsoft.SqlTools.ResourceProvider). To replace those just follow the same steps but do them from those folders instead. 
+
+### Common Initial Steps
+
+1. Navigate to `src/Microsoft.SqlTools.ServiceLayer`
+2. Run `dotnet publish` from the command line (or use the publish target in Visual Studio)
+
+This should build and publish the project to a folder similar to `$(Root)/src/Microsoft.SqlTools.ServiceLayer/bin/Debug/$(NetCoreVersion)/publish`
+
+#### Using ADS_SQLTOOLSSERVICE environment variable
+
+1. In a terminal window set the `ADS_SQLTOOLSSERVICE` to the full path of the publish folder from the steps above. e.g. using powershell it would look similar to this.
+
+`$ENV:ADS_SQLTOOLSSERVICE="C:\src\sqltoolsservice\src\Microsoft.SqlTools.ServiceLayer\bin\Debug\net5.0\publish"`
+2. From the same terminal window launch Azure Data Studio. You can also open up the Azure Data Studio folder in VS Code and then use the debug launch targets there to launch ADS as normal if you're also debugging ADS. 
+
+3. Azure Data Studio should pop up a notification indicating that it's using a custom path for STS. If this doesn't appear check you have the environment variable spelled correctly and then check the console logs to see if there were issues finding the expected EXEs
+
+* Note that in order to publish again (for example if you have a further change you want to test out) you will need to close any running instances of ADS before publishing - otherwise the files will be locked and unable to be updated. 
+
+#### Manually replacing binaries 
+
+1. Close down any running instances of ADS
+
+2. Copy over the files from `src/Microsoft.SqlTools.ServiceLayer/bin/Debug/$(NetCoreVersion)/publish` to `$(AzureDataStudioPath)/extensions/mssql/sqltoolsservice/Windows/#.#.#-release.#/` and overwrite any existing files. The AzureDataStudioPath will either be the source enlistment path or the path to the installed version of ADS, e.g. `%LOCALAPPDATA%\Programs\Azure Data Studio\resources\app`
+3. Launch ADS
+4. Open the STS project in VS Code or Visual Studio and :
+   * VS Code - Click the debug button and press `.NET Core Attach`. Search for `MicrosoftSqlToolsServiceLayer` using the filter menu and attach to the process
+   * Visual Studio - Under the debug menu choose `Attach to Process`. Search for `MicrosoftSqlToolsServiceLayer` using the filter menu and attach to the process
+and 
+5. You should now be able to debug STS and set breakpoints as needed
 
 ### Extra Information
 
