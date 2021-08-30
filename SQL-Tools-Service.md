@@ -12,7 +12,7 @@ This guide assumes you've read the [wiki][STS Wiki] on the [SQL Tools Service][S
 
 ## Developer Guide
 
-### Using locally built binaries
+### Using locally built binaries (for debugging/testing)
 
 For debugging or testing local changes it is easiest to use a locally built version of STS. There are two primary ways to accomplish this
 
