@@ -89,11 +89,11 @@ This will run Azure Data Studio from the source enlistment, after which you can 
 
 There are multiple categories of launch targets, grouped by their functionality. 
 
-`Launch Azure Data Studio` - Run Azure Data Studio from sources
-`Launch ADS & Debug ...` - Run Azure Data Studio from sources and attach to the specified processes
-`Attach to ...` - Attaches the debugger to a currently running Azure Data Studio process. Note that the debugger ports must be opened on this process for this to work (off by default for non-dev versions)
-`Run ... Tests` - Runs the specified set of tests
-`Debug ... Tests` - Runs and attaches the debugger for the specified set of tests
+* `Launch Azure Data Studio` - Run Azure Data Studio from sources
+* `Launch ADS & Debug ...` - Run Azure Data Studio from sources and attach to the specified processes
+* `Attach to ...` - Attaches the debugger to a currently running Azure Data Studio process. Note that the debugger ports must be opened on this process for this to work (off by default for non-dev versions)
+* `Run ... Tests` - Runs the specified set of tests
+* `Debug ... Tests` - Runs and attaches the debugger for the specified set of tests
 
 
 **OS X and Linux**
