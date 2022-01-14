@@ -8,6 +8,7 @@
 * [Submitting Bugs and Suggestions](Submitting-Bugs-and-Suggestions)
 * [Localization](https://github.com/Microsoft/Localization/wiki/SQL-Operations-Studio)
 * [Troubleshooting Issues](Troubleshooting-Issues)
+* [Troubleshooting Build Issues](Troubleshooting-Build-Issues)
 * [Engineering FAQ](Engineering-FAQ)
 * [How to update typings files](How-to-update-typings-files)
 * [Importing and using modules](Importing-and-using-modules)
