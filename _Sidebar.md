@@ -39,4 +39,5 @@
 * [Get Started](https://aka.ms/get-started-sqlopsstudio)
 * [How to Disable Telemetry Reporting](How-to-Disable-Telemetry-Reporting)
 * [How to turn on Backend Logging](How-to-turn-on-Backend-Logging)
+* [Troubleshoot Azure Authentication Issues](Troubleshoot-Azure-Authentication-Issues)
 * [FAQ](https://docs.microsoft.com/sql/sql-operations-studio/faq)
