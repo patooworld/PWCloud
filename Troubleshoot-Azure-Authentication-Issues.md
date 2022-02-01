@@ -29,3 +29,8 @@ You can also use the Device Code method to log in. This will provide you with a 
 4. Select the `Auth: Device Code` box
 5. Attempt to log in again
 
+### Unable to add Account / Token Expired
+
+1. Select the account icon in the bottom left
+2. Remove azure account
+3. Add azure account using the connection pane
