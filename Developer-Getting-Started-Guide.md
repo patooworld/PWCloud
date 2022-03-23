@@ -23,7 +23,9 @@ You'll need the following tools:
 				**Note:** if you have installed a previous version of the build tools using the `--vs2015` flag you need to uninstall the build tools first using `npm uninstall global windows-build-tools` and the Windows Control Panel to uninstall the binaries.
 
 		- Option 2: Use Visual Studio 2019
-			- Install [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/downloads/)
+			- Install [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/vs/older-downloads/). 
+
+				**Note:** Ensure you are downloading the 2019 version instead of the 2022 version.
 			- Select *Desktop Development with C++*
 			- Select *MSVC v142 - VS 2019 C++ x64/x86 build tools (v14.28)* on the right hand side
 	- **Restart** your computer
@@ -45,6 +47,8 @@ You'll need the following tools:
 
 ### Troubleshooting
 In case of issues, try deleting the contents of `~/.node-gyp` (alternatively `~/.cache/node-gyp` for Linux, `~/Library/Caches/node-gyp/` for macOS or `%USERPROFILE%\AppData\Local\node-gyp` for Windows) first and then run `yarn cache clean` and then try again.
+
+> On Windows, if you cannot find the AppData folder, go to the File Explorer and enable View > Sort > Hidden items.
 
 > If you are on Windows or Linux 64 bit systems and would like to compile to 32 bit, you'll need to set the `npm_config_arch` environment variable to `ia32` before running `yarn`. This will compile all native node modules for a 32 bit architecture.
 
