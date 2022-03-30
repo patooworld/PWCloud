@@ -27,7 +27,9 @@ If you are having problems accessing the Extensions Manager on Azure Data Studio
 | .NET 6 Runtime | [VSIX](https://go.microsoft.com/fwlink/?linkid=2183933) | - | Provides .NET runtime binaries for use by other extensions
 | Extension for Oracle | [VSIX](https://go.microsoft.com/fwlink/?linkid=2183934) | - | Azure Data Studio extension for Oracle
 | Database Schema Conversion Toolkit (Oracle to Microsoft SQL) | [VSIX](https://go.microsoft.com/fwlink/?linkid=2183935) | - | Azure Data Studio extension to convert Oracle Database objects to Microsoft SQL Server or Azure SQL database objects
- 
+| .NET Interactive | [VSIX](https://go.microsoft.com/fwlink/?linkid=2192009) | [Microsoft/dotnet-interactive](https://github.com/dotnet/interactive) | .NET Interactive Notebooks for Azure Data Studio
+| Jupyter | [VSIX](https://go.microsoft.com/fwlink/?linkid=2192110) | [Microsoft/vscode-jupyter](https://github.com/Microsoft/vscode-jupyter) | Jupyter notebook support, interactive programming and computing that supports Intellisense, debugging and more
+
                                                                                                                           
 
 ### Third Party Extensions
