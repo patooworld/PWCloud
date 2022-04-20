@@ -24,7 +24,7 @@
 * [Getting Started](Getting-started-with-Extensibility)
 * [Extensibility API](Extensibility-API)
 * [Contribution Points](Contribution-points)
-* [Context Variables](Sqlops-Context-Variables)
+* [Context Variables](Context-Variables)
 * [Debugging with VS Code](Debugging-an-Extension-with-VS-Code)
 * [Extension Authoring](Extension-Authoring)
 * [Building multiple insight widgets](Building-multiple-insight-widgets)
