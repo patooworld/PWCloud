@@ -41,3 +41,6 @@
 * [How to turn on Backend Logging](How-to-turn-on-Backend-Logging)
 * [Troubleshoot Azure Authentication Issues](Troubleshoot-Azure-Authentication-Issues)
 * [FAQ](https://docs.microsoft.com/sql/sql-operations-studio/faq)
+
+** Hotfix RCA's**
+* [ADS Hotfix RCA's](Hotfix-RCA's)
