@@ -43,4 +43,4 @@
 * [FAQ](https://docs.microsoft.com/sql/sql-operations-studio/faq)
 
 **Hotfix RCA's**
-* [ADS Hotfix RCA's](Hotfix-RCA's)
+* [ADS April 2022 Hotfix RCA](ADS-April-2022-Hotfix-RCA)
