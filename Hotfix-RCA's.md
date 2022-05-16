@@ -1,1 +1,0 @@
-This section includes the Root Cause Analyses (RCA's) for issues that prompted ADS hotfix releases.
