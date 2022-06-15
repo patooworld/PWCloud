@@ -41,6 +41,7 @@ If you are having problems accessing the Extensions Manager on Azure Data Studio
 | Database Migration Assessment for Oracle | [VSIX](https://go.microsoft.com/fwlink/?linkid=2194329) | - | Provides a mechanism to evaluate the configuration of Oracle Database for migration to Azure
 | .NET Interactive | [VSIX](https://go.microsoft.com/fwlink/?linkid=2192009) | [Microsoft/dotnet-interactive](https://github.com/dotnet/interactive) | .NET Interactive Notebooks for Azure Data Studio
 | Jupyter | [VSIX](https://go.microsoft.com/fwlink/?linkid=2192110) | [Microsoft/vscode-jupyter](https://github.com/Microsoft/vscode-jupyter) | Jupyter notebook support, interactive programming and computing that supports Intellisense, debugging and more
+| Azure Cosmos DB API for MongoDB | [VSIX](https://go.microsoft.com/fwlink/?linkid=2199102) | [Azure/azure-cosmosdb-ads-extension](https://github.com/Azure/azure-cosmosdb-ads-extension) | This extension provides support for Azure Cosmos DB API for MongoDB and MongoDB databases.
                                                                                                                           
 
 ### Third Party Extensions
