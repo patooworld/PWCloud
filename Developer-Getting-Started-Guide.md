@@ -47,6 +47,7 @@ You'll need the following tools:
 
 ### Troubleshooting
 In case of issues, try deleting the contents of `~/.node-gyp` (alternatively `~/.cache/node-gyp` for Linux, `~/Library/Caches/node-gyp/` for macOS or `%USERPROFILE%\AppData\Local\node-gyp` for Windows) first and then run `yarn cache clean` and then try again.
+
 If the issue still persists, refer to https://github.com/microsoft/vscode/wiki/How-to-Contribute, the tools requirements might have changed, please update the requirements on this page accordingly after your issue is resolved.
 
 > On Windows, if you cannot find the AppData folder, go to the File Explorer and enable View > Sort > Hidden items.
