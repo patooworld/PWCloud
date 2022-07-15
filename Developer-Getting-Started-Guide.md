@@ -46,11 +46,30 @@ You'll need the following tools:
     * Building deb and rpm packages requires `fakeroot` and `rpm`, run: `sudo apt-get install fakeroot rpm`
 
 ### Troubleshooting
-In case of issues, try deleting the contents of `~/.node-gyp` (alternatively `~/.cache/node-gyp` for Linux, `~/Library/Caches/node-gyp/` for macOS or `%USERPROFILE%\AppData\Local\node-gyp` for Windows) first and then run `yarn cache clean` and then try again.
+In case of issues, here are some things to try. If the issue still persists, refer to https://github.com/microsoft/vscode/wiki/How-to-Contribute, the tools requirements might have changed, please update the requirements on this page accordingly after your issue is resolved.
 
-If the issue still persists, refer to https://github.com/microsoft/vscode/wiki/How-to-Contribute, the tools requirements might have changed, please update the requirements on this page accordingly after your issue is resolved.
+1. Delete the contents of `~/.node-gyp` (alternatively `~/.cache/node-gyp` for Linux, `~/Library/Caches/node-gyp/` for macOS or `%USERPROFILE%\AppData\Local\node-gyp` for Windows) first and then run `yarn cache clean` and then try again.
 
-> On Windows, if you cannot find the AppData folder, go to the File Explorer and enable View > Sort > Hidden items.
+    * On Windows, if you cannot find the AppData folder, go to the File Explorer and enable View > Sort > Hidden items.
+
+1. If getting `/bin/sh: /usr/bin/python: No such file or directory` or other similar error
+
+   Run `yarn config set python <path to python> -g` (see [node-gyp README](https://github.com/nodejs/node-gyp#installation) for details on supported versions of Python
+
+1. Ensure you have the latest version of npm installed, run `npm update -g` to get the latest. If you have multiple versions of npm installed uninstall any older ones to ensure that node-gyp is using the correct one.
+
+   Errors that were because of outdated npm : 
+
+   ```
+   error <PATH TO ENLISTMENT>/azuredatastudio/node_modules/keytar: Command failed.
+   Exit code: 1
+   Command: prebuild-install || npm run build
+   ```
+1. If getting error similar to `An unexpected error occurred: \"Cannot create property 'python27-python-exe' on string '{\\\"python27-python-exe\\\":true}'\"."}`
+
+   Likely an issue with bad values in your `.yarnrc` file (`%USERPROFILE%/.yarnrc or `~/.yarnrc`). See https://github.com/yarnpkg/yarn/issues/8644 for ways to fix that. 
+
+1. Uninstall and reinstall any Visual Studio installations you have, making sure to select `Desktop Development with C++` when reinstalling. 
 
 > If you are on Windows or Linux 64 bit systems and would like to compile to 32 bit, you'll need to set the `npm_config_arch` environment variable to `ia32` before running `yarn`. This will compile all native node modules for a 32 bit architecture.
 
