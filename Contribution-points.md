@@ -1,14 +1,14 @@
 This document covers the various contribution points that are defined in the package.json extension manifest.
 
-The intellisense is supported inside sqlopsstudio.
+The intellisense is supported inside Azure Data Studio.
 
-## Contributes dashboard
+# Dashboard
 Contribute tab, container, insight widget to the dashboard.
 <img src='./media/dashboard_page.png'>
 
-`dashboard.tabs`
+## dashboard.tabs
 
-Dashboard.tabs will create the tab sections inside the dashboard page. It expects an object or an array of objects.  
+dashboard.tabs will create the tab sections inside the dashboard page. It expects an object or an array of objects.  
 
 ```
 "dashboard.tabs": [
@@ -25,7 +25,7 @@ Dashboard.tabs will create the tab sections inside the dashboard page. It expect
 ]
 ```
 
-`dashboard.containers`
+## dashboard.containers
 
 Instead of specifying dashboard container inline (inside the dashboard.tab). You can register containers using dashboard.containers. It accepts an object or an array of the object.
 
@@ -61,7 +61,7 @@ To refer to registered container, you can simply specify the id of the container
 
 ```
 
-`dashboard.insights`
+## dashboard.insights
 
 You can register insights using dashboard.insights. This is similiar to [Tutorial: Build a custom insight widget](https://docs.microsoft.com/en-us/sql/sql-operations-studio/tutorial-build-custom-insight-sql-server)
 
@@ -205,3 +205,19 @@ There are 4 different container types that we currently support:
 		]
 	}
 	```
+
+# dataExplorer
+
+This is an array of `dataExplorer` contributions, each with the following properties.
+
+## dataExplorer.id
+
+The ID of the view - used when registering the associated `vscode.TreeDataProvider`
+
+## dataExplorer.name
+
+The human-readable name of the view shown in the title bar
+
+## dataExplorer.when
+
+The when-clause condition for when the view will be shown
