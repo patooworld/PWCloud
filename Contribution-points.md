@@ -1,4 +1,4 @@
-This document covers the various contribution points that are defined in the package.json extension manifest.
+This document covers the various contribution points that are defined in the package.json extension manifest. These are in addition to the [ones inherited by VS Code](https://vscode-westeu.azurewebsites.net/api/references/contribution-points).
 
 The intellisense is supported inside Azure Data Studio.
 
@@ -221,3 +221,15 @@ The human-readable name of the view shown in the title bar
 ## dataExplorer.when
 
 The when-clause condition for when the view will be shown
+
+# menus
+
+These are custom menu contributions for Azure Data Studio, in addition to the built-in ones inherited from VS Code. 
+
+## dataExplorer/context
+
+Menu items for Data Explorer contributed views. 
+
+## objectExplorer/item/context
+
+Menu items for the Object Explorer (Server) tree view
