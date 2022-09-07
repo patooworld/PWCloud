@@ -2,7 +2,7 @@ This document covers the various contribution points that are defined in the pac
 
 The intellisense is supported inside Azure Data Studio.
 
-# Dashboard
+# dashboard
 Contribute tab, container, insight widget to the dashboard.
 <img src='./media/dashboard_page.png'>
 
