@@ -5,7 +5,7 @@ You'll need the following tools:
 - [Git](https://git-scm.com)
 - [Node.JS](https://nodejs.org/en/), **x64**, version `>= 16.4.x`, `< 17.x`
 - [Yarn](https://yarnpkg.com/en/), follow the [installation guide](https://yarnpkg.com/en/docs/install)
-- [Python](https://www.python.org/downloads/) (required for node-gyp; check the [node-gyp readme](https://github.com/nodejs/node-gyp#installation) for the currently supported Python versions)
+- [Python](https://www.python.org/downloads/), both `python` (Python2) and `python3` (required for node-gyp; check the [node-gyp readme](https://github.com/nodejs/node-gyp#installation) for the currently supported Python versions)
   - **Note:** Python will be automatically installed for Windows users through installing `windows-build-tools` npm module (see below)
 - A C/C++ compiler tool chain for your platform:
   - **Windows**
