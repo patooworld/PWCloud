@@ -41,6 +41,7 @@ If you are having problems accessing the Extensions Manager on Azure Data Studio
 | .NET Interactive | [VSIX](https://go.microsoft.com/fwlink/?linkid=2192009) | [Microsoft/dotnet-interactive](https://github.com/dotnet/interactive) | .NET Interactive Notebooks for Azure Data Studio
 | Jupyter | [VSIX](https://go.microsoft.com/fwlink/?linkid=2192110) | [Microsoft/vscode-jupyter](https://github.com/Microsoft/vscode-jupyter) | Jupyter notebook support, interactive programming and computing that supports Intellisense, debugging and more
 | Azure Cosmos DB API for MongoDB | [VSIX](https://go.microsoft.com/fwlink/?linkid=2199102) | [Azure/azure-cosmosdb-ads-extension](https://github.com/Azure/azure-cosmosdb-ads-extension) | This extension provides support for Azure Cosmos DB API for MongoDB and MongoDB databases.
+| MySQL | [VSIX](https://go.microsoft.com/fwlink/?linkid=2215502) | [Microsoft/azuredatastudio-mysql](https://github.com/Microsoft/azuredatastudio-mysql/) | MySQL extension for Azure Data Studio.
                                                                                                                           
 
 ### Third Party Extensions
