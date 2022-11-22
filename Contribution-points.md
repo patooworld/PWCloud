@@ -1,7 +1,5 @@
 This document covers the various contribution points that are defined in the package.json extension manifest. These are in addition to the [ones inherited by VS Code](https://vscode-westeu.azurewebsites.net/api/references/contribution-points).
 
-The intellisense is supported inside Azure Data Studio.
-
 # dashboard
 Contribute tab, container, insight widget to the dashboard.
 <img src='./media/dashboard_page.png'>
