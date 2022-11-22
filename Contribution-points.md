@@ -208,7 +208,7 @@ There are 4 different container types that we currently support:
 
 # dataExplorer
 
-This is an array of `dataExplorer` contributions, each with the following properties.
+This is an array of `dataExplorer` contributions, each with the following properties. This is used to add views to the `Connections` view container in the panel - it currently doesn't support having views adding through the normal [contributes.views](https://code.visualstudio.com/api/references/contribution-points#contributes.views) extension point from VS Code.
 
 ## dataExplorer.id
 
