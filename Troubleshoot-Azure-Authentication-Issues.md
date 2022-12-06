@@ -19,6 +19,16 @@ For Edge/Chrome browsers you can disable [HSTS](https://www.chromium.org/hsts/) 
 
 Once that is done you should be able to log in and not have the browser redirect your `localhost` links automatically to `https`
 
+## URLs to whitelist:
+A handful of features within ADS require network communication to work, such as adding an azure account. For this to work properly in a proxy environment, you must have the product correctly configured. 
+
+If you are behind a firewall that needs to allow specific domains used by ADS, here's the list of hostnames you should allow communication to go through: 
+
+- https://management.azure.com 
+- https://login.microsoftonline.com 
+
+The URLs to whitelist can sometimes vary on a case-by-case basis.  In order to verify you aren’t blocking any URLs from going through, go to Help > Toggle Developer Tools and select the Network tab.  Here you will see any URLs that are getting blocked that you may need to whitelist to successfully add your account. 
+
 ### Use the Device Code method
 
 You can also use the Device Code method to log in. This will provide you with a code and a URL to enter which can then be used to login.
