@@ -41,6 +41,3 @@
 * [Debug Trace Logging](Debug-Trace-Logging)
 * [Troubleshoot Azure Authentication Issues](Troubleshoot-Azure-Authentication-Issues)
 * [FAQ](https://docs.microsoft.com/sql/sql-operations-studio/faq)
-
-**Hotfix RCA's**
-* [ADS April 2022 Hotfix RCA](ADS-April-2022-Hotfix-RCA)
