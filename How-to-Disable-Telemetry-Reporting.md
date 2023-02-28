@@ -14,8 +14,6 @@ Azure Data Studio and this page refer to three different types of data with resp
 
 ## How to disable telemetry reporting
 
-Azure Data Studio collects usage data and sends it to Microsoft to help improve our products and services. Read the [Microsoft Enterprise and Developer Privacy Statement](https://privacy.microsoft.com/privacystatement) to learn more.
-
 With the `telemetry.telemetryLevel` user setting, you can control the different types of telemetry we send with a single setting. Here is a table of the different types of data sent with each value of `telemetry.telemetryLevel`:
 
 |       | Crash Reports         | Error Telemetry | Usage Data     |
@@ -55,7 +53,7 @@ When tracing telemetry events, the events are also logged to a local file `telem
 
 ## GDPR and Azure Data Studio
 
-In addition to supporting the General Data Protection Regulation (GDPR), the Azure Data STudio team takes privacy very seriously. That's both for Microsoft as a company and specifically within the Azure Data Studio team.
+In addition to supporting the General Data Protection Regulation (GDPR), the Azure Data Studio team takes privacy very seriously. That's both for Microsoft as a company and specifically within the Azure Data Studio team.
 
 To ensure GDPR compliance, we made several updates to Azure Data Studio, these include:
 
