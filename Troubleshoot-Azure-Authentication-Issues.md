@@ -19,6 +19,12 @@ For Edge/Chrome browsers you can disable [HSTS](https://www.chromium.org/hsts/) 
 
 Once that is done you should be able to log in and not have the browser redirect your `localhost` links automatically to `https`
 
+### Ensure Azure Core extension is enabled
+
+Azure Core extension is `@builtin` extension in Azure Data Studio, please ensure it's not disabled or uninstalled accidentally. This extension is required to be able to authenticate Azure accounts and connect to resources with Azure MFA authentication.
+
+![image](https://user-images.githubusercontent.com/13396919/223286529-94f08db5-5074-4adb-9b5f-1e1418206e69.png)
+
 ## URLs to whitelist:
 A handful of features within ADS require network communication to work, such as adding an azure account. For this to work properly in a proxy environment, you must have the product correctly configured. 
 
