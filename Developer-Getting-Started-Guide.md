@@ -3,32 +3,17 @@ In order to download necessary tools, clone the repository, and install dependen
 You'll need the following tools:
 
 - [Git](https://git-scm.com)
-- [Node.JS](https://nodejs.org/en/), **x64**, version `>= 16.4.x`, `< 17.x`
-- [Yarn](https://yarnpkg.com/en/), follow the [installation guide](https://yarnpkg.com/en/docs/install)
-- [Python](https://www.python.org/downloads/), both `python` (Python2) and `python3` (required for node-gyp; check the [node-gyp readme](https://github.com/nodejs/node-gyp#installation) for the currently supported Python versions)
-  - **Note:** Python will be automatically installed for Windows users through installing `windows-build-tools` npm module (see below)
+- [Node.JS](https://nodejs.org/en/), **x64**, version `>= 16.17.x and < 17`
+- [Yarn 1](https://classic.yarnpkg.com/en/), follow the [installation guide](https://classic.yarnpkg.com/en/docs/install)
+- [Python](https://www.python.org/downloads/) (required for node-gyp; check the [node-gyp readme](https://github.com/nodejs/node-gyp#installation) for the currently supported Python versions)
 - A C/C++ compiler tool chain for your platform:
-  - **Windows**
-    - Set a `PYTHON` environment variable pointing to your `python.exe`. E.g.: `C:\Python\python.exe`
-	- Install a compiler for the native modules VS Code is depending on
-		- Option 1 (recommended): Use Windows Build Tools npm module
-			- Start Powershell as Administrator and install [Windows Build Tools npm module](https://github.com/felixrieseberg/windows-build-tools) ([documentation](https://github.com/felixrieseberg/windows-build-tools#visual-studio-2017-vs-visual-studio-2015)).
-
-				**Note:** If you get _The build tools for v141 (Platform Toolset = 'v141') cannot be found_ when you run `yarn` later, you might need to delete `VCTargetsPath` from your environment variables before installing.
-				```
-				npm install --global windows-build-tools --vs2017
-				```
-				**Note:** The `--debug` flag is helpful if you encounter any problems during installation.
-
-				**Note:** if you have installed a previous version of the build tools using the `--vs2015` flag you need to uninstall the build tools first using `npm uninstall global windows-build-tools` and the Windows Control Panel to uninstall the binaries.
-
-		- Option 2: Use Visual Studio 2019
-			- Install [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/vs/older-downloads/). 
-
-				**Note:** Ensure you are downloading the 2019 version instead of the 2022 version.
-			- Select *Desktop Development with C++*
-			- Select *MSVC v142 - VS 2019 C++ x64/x86 build tools (v14.28)* on the right hand side
-	- **Restart** your computer
+  - **Windows 10/11**
+    - Install the Windows Build Tools:
+      - if you install Node on your system using the Node installer from the [Node.JS](https://nodejs.org/en/download/) page then ensure that you have installed the 'Tools for Native Modules'. Everything should work out of the box then.
+      - if you use a node version manager like [nvm](https://github.com/coreybutler/nvm-windows) or [nvs](https://github.com/jasongin/nvs) then follow these steps:
+        - Install the current version of Python using the [Microsoft Store Package](https://docs.python.org/3/using/windows.html#the-microsoft-store-package).
+        - Install the Visual C++ Build Environment by either installing the [Visual Studio Build Tools](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools) or the [Visual Studio Community Edition](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community). The minimum workload to install is 'Desktop Development with C++'.
+        - open a command prompt and run npm config set msvs_version {visual studio version}. (If you are using Visual Studio 2019 then you need to run npm config set msvs_version 2019)
     - **Warning:** Make sure your profile path only contains ASCII letters, e.g. *John*, otherwise it can lead to [node-gyp usage problems (nodejs/node-gyp/issues#297)](https://github.com/nodejs/node-gyp/issues/297)
     - **Note**: Building and debugging via the Windows subsystem for Linux (WSL) is currently not supported.
 
@@ -44,6 +29,7 @@ You'll need the following tools:
       * [GCC](https://gcc.gnu.org) or another compile toolchain
       * Dependencies:
     * Building deb and rpm packages requires `fakeroot` and `rpm`, run: `sudo apt-get install fakeroot rpm`
+
 
 ### Troubleshooting
 In case of issues, here are some things to try. If the issue still persists, refer to https://github.com/microsoft/vscode/wiki/How-to-Contribute, the tools requirements might have changed, please update the requirements on this page accordingly after your issue is resolved.
