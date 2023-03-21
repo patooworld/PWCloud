@@ -25,7 +25,7 @@ Azure Core extension is `@builtin` extension in Azure Data Studio, please ensure
 
 ![image](https://user-images.githubusercontent.com/13396919/223286529-94f08db5-5074-4adb-9b5f-1e1418206e69.png)
 
-## URLs to whitelist:
+## Common Hostnames to allow:
 A handful of features within ADS require network communication to work, such as adding an azure account. For this to work properly in a proxy environment, you must have the product correctly configured. 
 
 If you are behind a firewall that needs to allow specific domains used by ADS, here's the list of hostnames you should allow communication to go through: 
@@ -33,7 +33,7 @@ If you are behind a firewall that needs to allow specific domains used by ADS, h
 - https://management.azure.com 
 - https://login.microsoftonline.com 
 
-The URLs to whitelist can sometimes vary on a case-by-case basis.  In order to verify you aren’t blocking any URLs from going through, go to Help > Toggle Developer Tools and select the Network tab.  Here you will see any URLs that are getting blocked that you may need to whitelist to successfully add your account. 
+The URLs to allow can sometimes vary on a case-by-case basis.  In order to verify you aren’t blocking any URLs from going through, go to Help > Toggle Developer Tools and select the Network tab.  Here you will see any URLs that are getting blocked that you may need to allow to successfully add your account. 
 
 ### Use the Device Code method
 
