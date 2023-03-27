@@ -231,3 +231,14 @@ Menu items for Data Explorer contributed views.
 ## objectExplorer/item/context
 
 Menu items for the Object Explorer (Server) tree view
+### Default menu item
+To set an item as the default menu item when a node is double-clicked, you can set the `isDefault` property to `true`. An error will be logged to the console if multiple menu items are set as the default action for a node and none of them will be executed.
+e.g.
+```
+        {
+          "command": "mssql.objectProperties",
+          "when": "connectionProvider == MSSQL && nodeType =~ /^(ServerLevelLogin|User)$/ && config.workbench.enablePreviewFeatures",
+          "group": "0_query@1",
+          "isDefault": true
+        }
+```
