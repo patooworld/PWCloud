@@ -1,5 +1,225 @@
 This document covers the various contribution points that are defined in the package.json extension manifest. These are in addition to the [ones inherited by VS Code](https://vscode-westeu.azurewebsites.net/api/references/contribution-points).
 
+# connectionProvider
+
+Defines a connection provider, which is added the list of connections a user can create a connection profile from. The extension defining this must also register a connection provider using `azdata.dataprotocol.registerConnectionProvider` to handle actually making the connections.
+
+## connectionProvider.providerId
+
+type: `string`
+
+The connection provider id, e.g. MSSQL, LOGANALYTICS
+
+## connectionProvider.displayName
+
+type: `string`
+
+The display name of the connection provider, e.g. Microsoft SQL Server, Azure Monitor Logs
+
+## connectionProvider.iconPath
+
+type: `string` or `object`
+
+Path to the connection provider's icon
+
+## connectionProvider.iconPath.id
+
+type: `string`
+
+## connectionProvider.iconPath.path
+
+type: `object`
+
+## connectionProvider.iconPath.path.light
+
+type: `string`
+
+## connectionProvider.iconPath.path.dark
+
+type: `string`
+
+## connectionProvider.iconPath.default
+
+type: `boolean`
+
+## connectionProvider.azureResource
+
+type: `string`
+
+Azure resource endpoint to be used by the connection provider. Defaults to `Sql` if not specified.
+
+## connectionProvider.notebookKernelAlias
+
+type: `string`
+
+Alias to be used for the kernel in notebooks
+
+## connectionProvider.connectionStringOptions
+
+type: `object`
+
+Connection string options for the connection provider
+
+## connectionProvider.connectionStringOptions.isEnabled
+
+type: `boolean`
+
+Whether the connection provider supports connection string as an input option. The default value is false.
+
+## connectionProvider.connectionStringOptions.isDefault
+
+type: `boolean`
+
+Whether the connection provider uses connection string as the default option to connect. The default value is false.
+
+## connectionProvider.connectionOptions
+
+type: `array`
+
+An array of objects with the following properties that define the connection options to display in the Connection Dialog.
+
+### connectionProvider.connectionOptions.name
+
+type: `string`
+
+### connectionProvider.connectionOptions.displayName
+
+type: `string`
+
+### connectionProvider.connectionOptions.description
+
+type: `string`
+
+### connectionProvider.connectionOptions.groupName
+
+type: `string`
+
+### connectionProvider.connectionOptions.valueType
+
+type: `enum`
+
+Either `string`, `multistring`, `password`, `number`, `category`, `boolean` or `object`
+
+### connectionProvider.connectionOptions.specialValueType
+
+type: `enum`
+
+Either `connectionName`, `serverName`, `databaseName`, `authType`, `userName`, `password` or `appName`
+
+### connectionProvider.connectionOptions.defaultValue
+
+type: `string`, `number`, `boolean`, `object`, `integer`, `null` or `array`
+
+### connectionProvider.connectionOptions.defaultValueOsOverrides
+
+type: `array`
+
+#### connectionProvider.connectionOptions.defaultValueOsOverrides.os
+
+type: `enum`
+
+Either `Windows`, `Macintosh` or `Linux`
+
+#### connectionProvider.connectionOptions.defaultValueOsOverrides.defaultValueOverride
+
+type: `string`, `number`, `boolean`, `object`, `integer`, `null` or `array`
+
+### connectionProvider.connectionOptions.objectType
+
+type: 
+
+### connectionProvider.connectionOptions.categoryValues
+
+type: `array`
+
+#### connectionProvider.connectionOptions.categoryValues.name
+
+type: `string`
+
+#### connectionProvider.connectionOptions.categoryValues.displayName
+
+type: `string`
+
+### connectionProvider.connectionOptions.showOnConnectionDialog
+
+type: `boolean`
+
+When set to true, the respective connection option will be rendered on the main connection dialog and not the Advanced Options window.
+
+### connectionProvider.connectionOptions.onSelectionChange
+
+type: `array`
+
+## connectionProvider.isQueryProvider
+
+type: `boolean`
+
+Boolean indicating whether the connection provider supports queries. The default value is true.
+
+## connectionProvider.isExecutionPlanProvider
+
+type: `boolean`
+
+Boolean indicating whether the connection provider supports execution plan.
+
+## connectionProvider.supportedExecutionPlanFileExtensions
+
+type: `array`
+
+List of file extensions supported by the execution plan provider, if execution plan is supported.
+
+### connectionProvider.connectionOptions.isIdentity
+
+type: `boolean`
+
+### connectionProvider.connectionOptions.isRequired
+
+type: `boolean`
+
+### connectionProvider.connectionOptions.isArray
+
+type: `boolean`
+
+# dataExplorer
+
+This is an array of `dataExplorer` contributions, each with the following properties. This is used to add views to the `Connections` view container in the panel - it currently doesn't support having views adding through the normal [contributes.views](https://code.visualstudio.com/api/references/contribution-points#contributes.views) extension point from VS Code.
+
+## dataExplorer.id
+
+The ID of the view - used when registering the associated `vscode.TreeDataProvider`
+
+## dataExplorer.name
+
+The human-readable name of the view shown in the title bar
+
+## dataExplorer.when
+
+The when-clause condition for when the view will be shown
+
+# menus
+
+These are custom menu contributions for Azure Data Studio, in addition to the built-in ones inherited from VS Code. 
+
+## dataExplorer/context
+
+Menu items for Data Explorer contributed views. 
+
+## objectExplorer/item/context
+
+Menu items for the Object Explorer (Server) tree view
+### Default menu item
+To set an item as the default menu item when a node is double-clicked, you can set the `isDefault` property to `true`. An error will be logged to the console if multiple menu items are set as the default action for a node and none of them will be executed.
+
+Example: 
+```
+        {
+          "command": "mssql.objectProperties",
+          "when": "connectionProvider == MSSQL && nodeType =~ /^(ServerLevelLogin|User)$/ && config.workbench.enablePreviewFeatures",
+          "group": "0_query@1",
+          "isDefault": true
+        }
+```
+
 # dashboard
 Contribute tab, container, insight widget to the dashboard.
 <img src='./media/dashboard_page.png'>
@@ -203,43 +423,3 @@ There are 4 different container types that we currently support:
 		]
 	}
 	```
-
-# dataExplorer
-
-This is an array of `dataExplorer` contributions, each with the following properties. This is used to add views to the `Connections` view container in the panel - it currently doesn't support having views adding through the normal [contributes.views](https://code.visualstudio.com/api/references/contribution-points#contributes.views) extension point from VS Code.
-
-## dataExplorer.id
-
-The ID of the view - used when registering the associated `vscode.TreeDataProvider`
-
-## dataExplorer.name
-
-The human-readable name of the view shown in the title bar
-
-## dataExplorer.when
-
-The when-clause condition for when the view will be shown
-
-# menus
-
-These are custom menu contributions for Azure Data Studio, in addition to the built-in ones inherited from VS Code. 
-
-## dataExplorer/context
-
-Menu items for Data Explorer contributed views. 
-
-## objectExplorer/item/context
-
-Menu items for the Object Explorer (Server) tree view
-### Default menu item
-To set an item as the default menu item when a node is double-clicked, you can set the `isDefault` property to `true`. An error will be logged to the console if multiple menu items are set as the default action for a node and none of them will be executed.
-
-Example: 
-```
-        {
-          "command": "mssql.objectProperties",
-          "when": "connectionProvider == MSSQL && nodeType =~ /^(ServerLevelLogin|User)$/ && config.workbench.enablePreviewFeatures",
-          "group": "0_query@1",
-          "isDefault": true
-        }
-```
