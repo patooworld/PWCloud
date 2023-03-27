@@ -22,23 +22,23 @@ type: `string` or `object`
 
 Path to the connection provider's icon
 
-## connectionProvider.iconPath.id
+### connectionProvider.iconPath.id
 
 type: `string`
 
-## connectionProvider.iconPath.path
+### connectionProvider.iconPath.path
 
 type: `object`
 
-## connectionProvider.iconPath.path.light
+#### connectionProvider.iconPath.path.light
 
 type: `string`
 
-## connectionProvider.iconPath.path.dark
+#### connectionProvider.iconPath.path.dark
 
 type: `string`
 
-## connectionProvider.iconPath.default
+### connectionProvider.iconPath.default
 
 type: `boolean`
 
@@ -60,17 +60,35 @@ type: `object`
 
 Connection string options for the connection provider
 
-## connectionProvider.connectionStringOptions.isEnabled
+### connectionProvider.connectionStringOptions.isEnabled
 
 type: `boolean`
 
 Whether the connection provider supports connection string as an input option. The default value is false.
 
-## connectionProvider.connectionStringOptions.isDefault
+### connectionProvider.connectionStringOptions.isDefault
 
 type: `boolean`
 
 Whether the connection provider uses connection string as the default option to connect. The default value is false.
+
+## connectionProvider.isQueryProvider
+
+type: `boolean`
+
+Boolean indicating whether the connection provider supports queries. The default value is true.
+
+## connectionProvider.isExecutionPlanProvider
+
+type: `boolean`
+
+Boolean indicating whether the connection provider supports execution plan.
+
+## connectionProvider.supportedExecutionPlanFileExtensions
+
+type: `array`
+
+List of file extensions supported by the execution plan provider, if execution plan is supported.
 
 ## connectionProvider.connectionOptions
 
@@ -126,7 +144,7 @@ type: `string`, `number`, `boolean`, `object`, `integer`, `null` or `array`
 
 ### connectionProvider.connectionOptions.objectType
 
-type: 
+type: `string`
 
 ### connectionProvider.connectionOptions.categoryValues
 
@@ -150,23 +168,37 @@ When set to true, the respective connection option will be rendered on the main 
 
 type: `array`
 
-## connectionProvider.isQueryProvider
+Used to define list of values based on which another option is rendered visible/hidden.
 
-type: `boolean`
-
-Boolean indicating whether the connection provider supports queries. The default value is true.
-
-## connectionProvider.isExecutionPlanProvider
-
-type: `boolean`
-
-Boolean indicating whether the connection provider supports execution plan.
-
-## connectionProvider.supportedExecutionPlanFileExtensions
+#### connectionProvider.connectionOptions.onSelectionChange.values
 
 type: `array`
 
-List of file extensions supported by the execution plan provider, if execution plan is supported.
+Values that affect actions defined in this event.
+
+#### connectionProvider.connectionOptions.onSelectionChange.dependentOptionActions
+
+type: `array`
+
+Action to be taken on another option when selected value matches to the list of values provided.
+
+##### connectionProvider.connectionOptions.onSelectionChange.dependentOptionActions.optionName
+
+type: `string`
+
+Name of option affected by defined action.
+
+##### connectionProvider.connectionOptions.onSelectionChange.dependentOptionActions.action
+
+type: `enum`
+
+Action to be taken. Either `show` or `hide`.
+
+##### connectionProvider.connectionOptions.onSelectionChange.dependentOptionActions.required
+
+type: `boolean`
+
+Whether or not the option should be set to required when visible. Defaults to false.
 
 ### connectionProvider.connectionOptions.isIdentity
 
