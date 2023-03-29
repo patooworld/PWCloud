@@ -1,6 +1,12 @@
-**Project Management**
-* [Release Process/Issue Tracking](Release-Process-and-Issue-Tracking)
-  * [Performance Issues](Performance-Issues)
+**Documentation**
+* [Get Started](https://aka.ms/get-started-sqlopsstudio)
+* [Install Azure Data Studio](https://aka.ms/sqlopsstudio)
+* [Telemetry](Telemetry)
+* [Microsoft Ready 2019 Lab](Microsoft-Ready-2019-lab)
+* [MS Docs Overview](https://aka.ms/sqlopsstudio-docs)
+* [Debug Trace Logging](Debug-Trace-Logging)
+* [Troubleshoot Azure Authentication Issues](Troubleshoot-Azure-Authentication-Issues)
+* [FAQ](https://docs.microsoft.com/sql/sql-operations-studio/faq)
 
 **Contributing**
 * [How to Contribute](How-to-Contribute)
@@ -32,12 +38,6 @@
 * [List of Extensions](List-of-Extensions)
 * [Replace sqlops namespace](Replace-sqlops-namespace-with-azdata-namespace)
 
-**Documentation**
-* [Microsoft Ready 2019 Lab](Microsoft-Ready-2019-lab)
-* [MS Docs Overview](https://aka.ms/sqlopsstudio-docs)
-* [Install Azure Data Studio](https://aka.ms/sqlopsstudio)
-* [Get Started](https://aka.ms/get-started-sqlopsstudio)
-* [How to Disable Telemetry Reporting](How-to-Disable-Telemetry-Reporting)
-* [Debug Trace Logging](Debug-Trace-Logging)
-* [Troubleshoot Azure Authentication Issues](Troubleshoot-Azure-Authentication-Issues)
-* [FAQ](https://docs.microsoft.com/sql/sql-operations-studio/faq)
+**Project Management**
+* [Release Process/Issue Tracking](Release-Process-and-Issue-Tracking)
+  * [Performance Issues](Performance-Issues)
