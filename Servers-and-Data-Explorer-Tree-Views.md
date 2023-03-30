@@ -46,8 +46,6 @@ Adding new objects or nodes to the Servers view will generally follow these step
 ```mermaid
   flowchart LR
   a[Add new nodes in the tree structure] --> b[Add context menu items] --> c[Hide unsupported menu items]
-  click a href "https://github.com/microsoft/azuredatastudio/wiki/Servers-and-Data-Explorer-Tree-Views#tree-nodes-1"
-  click b href "https://github.com/microsoft/azuredatastudio/wiki/Servers-and-Data-Explorer-Tree-Views/#context-menu"
 ```
 
 The last step is important, as many menu items are added by default to new items but may not necessarily apply to your new nodes. See the [Context Menu](https://github.com/microsoft/azuredatastudio/wiki/Servers-and-Data-Explorer-Tree-Views/#context-menu) section for details on how to hide a menu item for any new nodes being added.
