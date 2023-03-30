@@ -22,7 +22,7 @@ Tree nodes for the Servers view are contributed by registering a provider in an 
 
 The tree is constructed by calling `expandNode` for the provider of the connection. The implementation of the provider here determines how it handles this request, but for providers that use a Data Protocol Client this will result in an `objectexplorer/expand` request being sent to the client. The nodes returned in the corresponding `objectexplorer/expandCompleted` notification will then be used to create the actual child nodes in the tree.
 
-For documentation on the SQL Tools Service implementation of this and how to add new objects to the tree see [Object Explorer](https://github.com/microsoft/sqltoolsservice/blob/main/docs/guide/object_explorer.md).
+For documentation on how to add new objects to the tree for the MSSQL Provider (through SQL Tools Service) see [Add a new SQL Object Type](https://github.com/microsoft/sqltoolsservice/blob/main/docs/guide/object_explorer.md#add-a-new-sql-object-type).
 
 ## Context Menu
 
