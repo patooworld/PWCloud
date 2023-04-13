@@ -164,6 +164,12 @@ type: `boolean`
 
 When set to true, the respective connection option will be rendered on the main connection dialog and not the Advanced Options window.
 
+### connectionProvider.connectionOptions.placeholder
+
+type: `string`
+
+The placeholder text to show in option control when it's value is empty.
+
 ### connectionProvider.connectionOptions.onSelectionChange
 
 type: `array`
