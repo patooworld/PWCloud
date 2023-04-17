@@ -42,7 +42,8 @@ If you are having problems accessing the Extensions Manager on Azure Data Studio
 | Azure Cosmos DB Migration for MongoDB | [VSIX](https://go.microsoft.com/fwlink/?linkid=2233611) | - | This extension helps you assess migration of your MongoDB databases to Azure Cosmos DB for MongoDB |
 | MySQL | [VSIX](https://go.microsoft.com/fwlink/?linkid=2215502) | [Microsoft/azuredatastudio-mysql](https://github.com/Microsoft/azuredatastudio-mysql/) | MySQL extension for Azure Data Studio.
 | Azure PostgreSQL Migration | [VSIX](https://go.microsoft.com/fwlink/?linkid=2226379) | - | Provides a tool to assess and migrate PostgreSQL databases to Azure database for PostgreSQL |
-                                                                                                                          
+| Azure PostgreSQL Migration | [VSIX](https://sqlopsextensions.blob.core.windows.net/extensions/ads-extension-mongo-migration/ads-extension-mongo-migration-1.0.0.vsix) | - | Provides a tool to assess and migrate MongoDB databases to Azure Cosmos DB for MongoDB|                                                                                                                          
+
 
 ### Third Party Extensions
 | Name                                | Download Link                                                                                                                 | Repository Link                                                                                                        | Description                                                                                                                 |
