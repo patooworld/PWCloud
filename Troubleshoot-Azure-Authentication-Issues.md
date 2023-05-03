@@ -27,7 +27,7 @@ Azure Core extension is `@builtin` extension in Azure Data Studio, please ensure
 
 ### Ensure no system CA certificates are expired
 
-Azure Data Studio's default behavior includes validating system's root CA certificates when making a REST API calls using HTTPS Protocol. This is governed by the below setting that is enabled by default:
+Azure Data Studio's default behavior includes validating system's root CA certificates when making REST API calls using HTTPS Protocol. This is controlled by the below setting that is enabled by default:
 
 ![image](https://user-images.githubusercontent.com/13396919/236073624-26d2f007-3409-4a1c-abea-8d5479c512f2.png)
 
