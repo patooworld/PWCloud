@@ -25,6 +25,22 @@ Azure Core extension is `@builtin` extension in Azure Data Studio, please ensure
 
 ![image](https://user-images.githubusercontent.com/13396919/223286529-94f08db5-5074-4adb-9b5f-1e1418206e69.png)
 
+### Ensure no system CA certificates are expired
+
+Azure Data Studio's default behavior includes validating system's root CA certificates when making a REST API calls using HTTPS Protocol. This is governed by the below setting that is enabled by default:
+
+![image](https://user-images.githubusercontent.com/13396919/236073624-26d2f007-3409-4a1c-abea-8d5479c512f2.png)
+
+```
+"http.systemCertificates": true
+```
+
+If a system's Root CA certificate is expired, authentication requests to Azure Active Directory will fail and an error like below would be captured in 'Azure Account' logs:
+
+`error: certificate is expired`
+
+To mitigate this error, you should remove any expired Root CA Certificates or disable the setting to not validate system certificates.
+
 ## Common Hostnames to allow:
 A handful of features within ADS require network communication to work, such as adding an azure account. For this to work properly in a proxy environment, you must have the product correctly configured. 
 
