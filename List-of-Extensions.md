@@ -42,7 +42,8 @@ If you are having problems accessing the Extensions Manager on Azure Data Studio
 | Azure Cosmos DB Migration for MongoDB | [VSIX](https://go.microsoft.com/fwlink/?linkid=2233611) | - | This extension helps you assess migration of your MongoDB databases to Azure Cosmos DB for MongoDB |
 | MySQL | [VSIX](https://go.microsoft.com/fwlink/?linkid=2215502) | [Microsoft/azuredatastudio-mysql](https://github.com/Microsoft/azuredatastudio-mysql/) | MySQL extension for Azure Data Studio.
 | Azure PostgreSQL Migration | [VSIX](https://go.microsoft.com/fwlink/?linkid=2226379) | - | Provides a tool to assess and migrate PostgreSQL databases to Azure database for PostgreSQL |
-| Azure Cosmos DB Migration for MongoDB | [VSIX](https://sqlopsextensions.blob.core.windows.net/extensions/ads-extension-mongo-migration/ads-extension-mongo-migration-1.0.1.vsix) | - | Provides a tool to assess and migrate MongoDB databases to Azure Cosmos DB for MongoDB|                                                                                                                          
+| Azure Cosmos DB Migration for MongoDB | [VSIX](https://sqlopsextensions.blob.core.windows.net/extensions/ads-extension-mongo-migration/ads-extension-mongo-migration-1.0.1.vsix) | - | Provides a tool to assess and migrate MongoDB databases to Azure Cosmos DB for MongoDB|
+| GitHub Copilot| [VSIX](https://go.microsoft.com/fwlink/?linkid=2235685)|[GitHub Copilot](https://github.com/features/copilot)|GitHub Copilot provides autocomplete-style suggestions from an AI pair programmer as you code. You can receive suggestions from GitHub Copilot either by starting to write the code you want to use, or by writing a natural language comment describing what you want the code to do.|                                                                                                                          
 
 
 ### Third Party Extensions
