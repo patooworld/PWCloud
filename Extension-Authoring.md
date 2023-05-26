@@ -65,4 +65,4 @@ Microsoft owned extension: https://github.com/microsoft/azuredatastudio/pull/121
 ## Platform specific extension installers
 Some extensions have to download additional binaries based on the OS and processor architecture after installation, that means users with no internet access won't be able to use the common extension installer, extension authors should produce platform specific extension installers with the binaries bundled in so that no download is needed at runtime.
 
-Currently the Azure Data Studio's extension marketplace doesn't provide support multiple extension installers, extension authors should include a section in the extension readme file which contains the URL to the platform specific extension installers.
+Currently the Azure Data Studio's extension marketplace doesn't support multiple extension installers, extension authors should include a section in the extension readme file which contains the URL to the platform specific extension installers.
