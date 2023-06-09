@@ -90,6 +90,12 @@ type: `array`
 
 List of file extensions supported by the execution plan provider, if execution plan is supported.
 
+## connectionProvider.supportCopyResultsToClipboard
+
+type: `boolean`
+
+Boolean indicateing whether the provider support copy results to clipboard. Default value is false. If true, the copy results to clipboard will be delegated to the provider to avoid passing large amount of data using the RPC channel, otherwise ADS will handle the copy request on the UI side.
+
 ## connectionProvider.connectionOptions
 
 type: `array`
