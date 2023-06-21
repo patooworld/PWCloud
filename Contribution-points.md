@@ -42,6 +42,12 @@ type: `string`
 
 type: `boolean`
 
+## connectionprovider.useFullOptions
+
+type: `boolean`
+
+Whether or not to use all non-default advanced options to create connection URI that uniquely identifies a connection. This configuration is set to 'false' by default. By default, only options specified with a 'specialValueType' are considered for creating connection URI.
+
 ## connectionProvider.azureResource
 
 type: `string`
