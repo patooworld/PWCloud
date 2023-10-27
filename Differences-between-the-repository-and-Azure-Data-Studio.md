@@ -1,11 +1,15 @@
 This article outlines the differences between the [github.com/microsoft/azuredatastudio](https://github.com/microsoft/azuredatastudio) GitHub project (referred to as Azure Data Studio - OSS here) and Microsoft's [Azure Data Studio](https://learn.microsoft.com/azure-data-studio/what-is-azure-data-studio) distribution.
 
-[The Azure Data Studio - OSS Repository](https://github.com/microsoft/azuredatastudio/wiki/Differences-between-the-repository-and-Azure-Data-Studio#the-azuredatastudio---oss-repository)
+## The Azure Data Studio - OSS Repository
+
 The [Azure Data Studio - OSS](https://github.com/microsoft/azuredatastudio) repository is where we (Microsoft) develop the open-source editor upon which we build the [Azure Data Studio](https://learn.microsoft.com/azure-data-studio/what-is-azure-data-studio) product. We contribute source code and manage issues in this repository. We also maintain the wiki, respond to discussions, and provide information about contributing to the product. The source code in this repository is available to everyone under a standard [MIT license](https://github.com/microsoft/azuredatastudio/blob/main/LICENSE.txt).
+
+## Azure Data Studio
 
 [Azure Data Studio](https://learn.microsoft.com/azure-data-studio/what-is-azure-data-studio) is a distribution of the Azure Data Studio - OSS repository with Microsoft specific customizations, including additional source code and extensions, released under a traditional [Microsoft product license](https://learn.microsoft.com/azure-data-studio/license).
 
-[What Goes Where?](https://github.com/microsoft/azuredatastudio/wiki/Differences-between-the-repository-and-Azure-Data-Studio#what-goes-where)
+## What Goes Where?
+
 We take great care to ensure that no proprietary code or assets are accidently contributed to the Azure Data Studio - OSS repo, so that it can be cloned and freely used by anyone in the community.
 
 Our guiding principle is that everything should be open source. If it isn't open source, it must be cleanly separated from the Azure Data Studio - OSS repository so that it is always possible to fork the repo and build a functional editor.
