@@ -21,6 +21,7 @@
 * [Angular UI Guidelines](Angular-UI-Guidelines)
 * [Contributor License Agreement](Contributor-License-Agreement)
 * [Azure Data Studio Tests](https://github.com/Microsoft/azuredatastudio/blob/main/test/README.md)
+* [Why is the Azure Data Studio license different than the repository license?](Differences-between-the-repository-and-Azure-Data-Studio)
 
 **Tool Services**
 * [SQL Tools Service](https://github.com/microsoft/azuredatastudio/wiki/SQL-Tools-Service)
