@@ -100,13 +100,13 @@ List of file extensions supported by the execution plan provider, if execution p
 
 type: `boolean`
 
-The server defined name of the ID assigned to all connections (such as editors or object explorer nodes) if it is supported, such as PID used by SQL Server, this is used for display in areas such as Query Editor where knowing the process ID is needed.
+Boolean indicating whether the provider support copy results to clipboard. Default value is false. If true, the copy results to clipboard will be delegated to the provider to avoid passing large amount of data using the RPC channel, otherwise ADS will handle the copy request on the UI side.
 
 ## connectionProvider.serverConnectionIdName
 
 type: `string`
 
-Boolean indicating whether the provider support copy results to clipboard. Default value is false. If true, the copy results to clipboard will be delegated to the provider to avoid passing large amount of data using the RPC channel, otherwise ADS will handle the copy request on the UI side.
+The server defined name of the ID assigned to all connections (such as editors or object explorer nodes) if it is supported, such as PID used by SQL Server, this is used for display in areas such as Query Editor where knowing the process ID is needed.
 
 ## connectionProvider.connectionOptions
 
