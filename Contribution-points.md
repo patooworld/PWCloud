@@ -106,7 +106,7 @@ Boolean indicating whether the provider support copy results to clipboard. Defau
 
 type: `string`
 
-The server defined name of the ID assigned to all connections (such as editors or object explorer nodes) if it is supported, such as PID used by SQL Server, this is used for display in areas such as Query Editor where knowing the process ID is needed.
+The server defined name of the ID assigned to all connections (such as editors or object explorer nodes) if it is supported by the provider, such as PID used by SQL Server, this is used for display in areas such as Query Editor where knowing the process ID is needed.
 
 ## connectionProvider.connectionOptions
 
