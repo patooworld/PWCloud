@@ -38,7 +38,6 @@ If you are having problems accessing the Extensions Manager on Azure Data Studio
 | Extension for Oracle | [VSIX](https://go.microsoft.com/fwlink/?linkid=2183934) | - | Azure Data Studio extension for Oracle
 | Database Schema Conversion Toolkit | [VSIX](https://go.microsoft.com/fwlink/?linkid=2183935) | - | Azure Data Studio extension to convert Oracle Database objects to Microsoft SQL Server or Azure SQL database objects
 | Database Migration Assessment for Oracle | [VSIX](https://go.microsoft.com/fwlink/?linkid=2194329) | - | Provides a mechanism to evaluate the configuration of Oracle Database for migration to Azure |
-| Data Migration for Oracle | [VSIX](https://go.microsoft.com/fwlink/?linkid=2244009) | - | Data Migration for Oracle extension to migrate data from Oracle to Azure SQL |
 | Database Migration Service Pack for Oracle | [VSIX](https://go.microsoft.com/fwlink/?linkid=2249488) | - | Provides seamless assessment, conversion, and data migration to Azure Database PaaS service, eliminating any potential challenges during the migration process |
 | Azure Cosmos DB API for MongoDB | [VSIX](https://go.microsoft.com/fwlink/?linkid=2199102) | [Azure/azure-cosmosdb-ads-extension](https://github.com/Azure/azure-cosmosdb-ads-extension) | This extension provides support for Azure Cosmos DB API for MongoDB and MongoDB databases.
 | MySQL | [VSIX](https://go.microsoft.com/fwlink/?linkid=2215502) | [Microsoft/azuredatastudio-mysql](https://github.com/Microsoft/azuredatastudio-mysql/) | MySQL extension for Azure Data Studio.
